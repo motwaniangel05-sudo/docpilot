@@ -1,0 +1,7 @@
+{
+  "stale_at1": 0.0,
+  "recall_at5": 0.9737,
+  "p50_ms": 6540,
+  "p95_ms": 6936,
+  "n_questions": 90
+}
