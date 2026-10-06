@@ -17,4 +17,10 @@
 - Tested with scripts/cli_test.py: append excluded for 2.2, present for 1.5, items/iteritems correct
 - Known failure (for README): vague queries like "combine two dataframes by rows" miss pd.concat
 
-## Next: Day 4 - version detection, "changed in X" note, Streamlit app, deploy to Hugging Face Spaces
+## Day 4 (done)
+- Wrote docpilot/version.py (version detection) and docpilot/changes.py (programmatic "changed in X" notes)
+- Wrote app.py (Streamlit) and tested locally
+- DEVIATION: Hugging Face Spaces now requires a paid plan for Docker/Gradio, so deployed on Streamlit Community Cloud instead
+- Live app: https://docpilot-5ov2htcjpmznaondpjkiqg.streamlit.app
+
+## Next: Day 5 - auto-generate benchmark, run evaluation and ablations, produce results.md
