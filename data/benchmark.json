@@ -1,0 +1,632 @@
+[
+  {
+    "q": "In pandas 2.2, with a Series: Return boolean if values in the object are monotonically increasing",
+    "user_version": "2.2",
+    "target": null,
+    "trap": true,
+    "kind": "removed"
+  },
+  {
+    "q": "In pandas 1.5, with a Series: Return boolean if values in the object are monotonically increasing",
+    "user_version": "1.5",
+    "target": "Series.is_monotonic",
+    "trap": false,
+    "kind": "removed"
+  },
+  {
+    "q": "In pandas 2.2, with a DataFrame: Shift the time index, using the index's frequency if available",
+    "user_version": "2.2",
+    "target": null,
+    "trap": true,
+    "kind": "removed"
+  },
+  {
+    "q": "In pandas 1.5, with a DataFrame: Shift the time index, using the index's frequency if available",
+    "user_version": "1.5",
+    "target": "DataFrame.tshift",
+    "trap": false,
+    "kind": "removed"
+  },
+  {
+    "q": "In pandas 2.2, with a DataFrame: Label-based \"fancy indexing\" function for DataFrame",
+    "user_version": "2.2",
+    "target": null,
+    "trap": true,
+    "kind": "removed"
+  },
+  {
+    "q": "In pandas 1.5, with a DataFrame: Label-based \"fancy indexing\" function for DataFrame",
+    "user_version": "1.5",
+    "target": "DataFrame.lookup",
+    "trap": false,
+    "kind": "removed"
+  },
+  {
+    "q": "In pandas 2.2, with a Series: Lazily iterate over (index, value) tuples",
+    "user_version": "2.2",
+    "target": null,
+    "trap": true,
+    "kind": "removed"
+  },
+  {
+    "q": "In pandas 1.5, with a Series: Lazily iterate over (index, value) tuples",
+    "user_version": "1.5",
+    "target": "Series.iteritems",
+    "trap": false,
+    "kind": "removed"
+  },
+  {
+    "q": "In pandas 2.2, with a Series: Return the mean absolute deviation of the values over the requested axis",
+    "user_version": "2.2",
+    "target": null,
+    "trap": true,
+    "kind": "removed"
+  },
+  {
+    "q": "In pandas 1.5, with a Series: Return the mean absolute deviation of the values over the requested axis",
+    "user_version": "1.5",
+    "target": "Series.mad",
+    "trap": false,
+    "kind": "removed"
+  },
+  {
+    "q": "In pandas 2.2, with a Series: Concatenate two or more Series",
+    "user_version": "2.2",
+    "target": null,
+    "trap": true,
+    "kind": "removed"
+  },
+  {
+    "q": "In pandas 1.5, with a Series: Concatenate two or more Series",
+    "user_version": "1.5",
+    "target": "Series.append",
+    "trap": false,
+    "kind": "removed"
+  },
+  {
+    "q": "In pandas 2.2, with a Series: Shift the time index, using the index's frequency if available",
+    "user_version": "2.2",
+    "target": null,
+    "trap": true,
+    "kind": "removed"
+  },
+  {
+    "q": "In pandas 1.5, with a Series: Shift the time index, using the index's frequency if available",
+    "user_version": "1.5",
+    "target": "Series.tshift",
+    "trap": false,
+    "kind": "removed"
+  },
+  {
+    "q": "In pandas 2.2, with a DataFrame: Return the mean absolute deviation of the values over the requested axis",
+    "user_version": "2.2",
+    "target": null,
+    "trap": true,
+    "kind": "removed"
+  },
+  {
+    "q": "In pandas 1.5, with a DataFrame: Return the mean absolute deviation of the values over the requested axis",
+    "user_version": "1.5",
+    "target": "DataFrame.mad",
+    "trap": false,
+    "kind": "removed"
+  },
+  {
+    "q": "In pandas 2.2, with a DataFrame: Equivalent to shift without copying data",
+    "user_version": "2.2",
+    "target": null,
+    "trap": true,
+    "kind": "removed"
+  },
+  {
+    "q": "In pandas 1.5, with a DataFrame: Equivalent to shift without copying data",
+    "user_version": "1.5",
+    "target": "DataFrame.slice_shift",
+    "trap": false,
+    "kind": "removed"
+  },
+  {
+    "q": "In pandas 2.2, with a DataFrame: Append rows of other to the end of caller, returning a new object",
+    "user_version": "2.2",
+    "target": null,
+    "trap": true,
+    "kind": "removed"
+  },
+  {
+    "q": "In pandas 1.5, with a DataFrame: Append rows of other to the end of caller, returning a new object",
+    "user_version": "1.5",
+    "target": "DataFrame.append",
+    "trap": false,
+    "kind": "removed"
+  },
+  {
+    "q": "In pandas 2.2, with a DataFrame: Iterate over (column name, Series) pairs",
+    "user_version": "2.2",
+    "target": null,
+    "trap": true,
+    "kind": "removed"
+  },
+  {
+    "q": "In pandas 1.5, with a DataFrame: Iterate over (column name, Series) pairs",
+    "user_version": "1.5",
+    "target": "DataFrame.iteritems",
+    "trap": false,
+    "kind": "removed"
+  },
+  {
+    "q": "In pandas 2.2, with a Series: Equivalent to shift without copying data",
+    "user_version": "2.2",
+    "target": null,
+    "trap": true,
+    "kind": "removed"
+  },
+  {
+    "q": "In pandas 1.5, with a Series: Equivalent to shift without copying data",
+    "user_version": "1.5",
+    "target": "Series.slice_shift",
+    "trap": false,
+    "kind": "removed"
+  },
+  {
+    "q": "In pandas 1.5, with a Series: Replace values where the conditions are True",
+    "user_version": "1.5",
+    "target": null,
+    "trap": true,
+    "kind": "added"
+  },
+  {
+    "q": "In pandas 2.2, with a Series: Replace values where the conditions are True",
+    "user_version": "2.2",
+    "target": "Series.case_when",
+    "trap": false,
+    "kind": "added"
+  },
+  {
+    "q": "In pandas 1.5, with a DataFrame: Apply a function to a Dataframe elementwise",
+    "user_version": "1.5",
+    "target": null,
+    "trap": true,
+    "kind": "added"
+  },
+  {
+    "q": "In pandas 2.2, with a DataFrame: Apply a function to a Dataframe elementwise",
+    "user_version": "2.2",
+    "target": "DataFrame.map",
+    "trap": false,
+    "kind": "added"
+  },
+  {
+    "q": "In pandas 1.5, with a DataFrame: Count non-NA cells for each column or row",
+    "user_version": "1.5",
+    "target": "DataFrame.count",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "q": "In pandas 2.2, with a top-level function: Reshape wide-format data to long",
+    "user_version": "2.2",
+    "target": "pd.lreshape",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "q": "In pandas 1.5, with a top-level function: Load an SPSS file from the file path, returning a DataFrame",
+    "user_version": "1.5",
+    "target": "pd.read_spss",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "q": "In pandas 2.2, with a Series: Shift index by desired number of periods with an optional time freq",
+    "user_version": "2.2",
+    "target": "Series.shift",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "q": "In pandas 1.5, with a Series: Select values between particular times of the day (e.g., 9:00-9:30 AM)",
+    "user_version": "1.5",
+    "target": "Series.between_time",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "q": "In pandas 2.2, with a DataFrame: Print a concise summary of a DataFrame",
+    "user_version": "2.2",
+    "target": "DataFrame.info",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "q": "In pandas 1.5, with a Series: Return unbiased kurtosis over requested axis",
+    "user_version": "1.5",
+    "target": "Series.kurt",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "q": "In pandas 2.2, with a top-level function: Read SQL query or database table into a DataFrame",
+    "user_version": "2.2",
+    "target": "pd.read_sql",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "q": "In pandas 1.5, with a top-level function: Read SQL query into a DataFrame",
+    "user_version": "1.5",
+    "target": "pd.read_sql_query",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "q": "In pandas 2.2, with a Series: Convert the object to a JSON string",
+    "user_version": "2.2",
+    "target": "Series.to_json",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "q": "In pandas 1.5, with a Series: Invoke function on values of Series",
+    "user_version": "1.5",
+    "target": "Series.apply",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "q": "In pandas 2.2, with a DataFrame: Return the mean of the values over the requested axis",
+    "user_version": "2.2",
+    "target": "DataFrame.mean",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "q": "In pandas 1.5, with a DataFrame: Shift index by desired number of periods with an optional time freq",
+    "user_version": "1.5",
+    "target": "DataFrame.shift",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "q": "In pandas 2.2, with a Series: Replace values where the condition is False",
+    "user_version": "2.2",
+    "target": "Series.where",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "q": "In pandas 1.5, with a DataFrame: Stack the prescribed level(s) from columns to index",
+    "user_version": "1.5",
+    "target": "DataFrame.stack",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "q": "In pandas 2.2, with a Series: Fill NA/NaN values by using the next valid observation to fill the gap",
+    "user_version": "2.2",
+    "target": "Series.bfill",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "q": "In pandas 1.5, with a Series: Return unbiased kurtosis over requested axis",
+    "user_version": "1.5",
+    "target": "Series.kurtosis",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "q": "In pandas 2.2, with a DataFrame: Return unbiased skew over requested axis",
+    "user_version": "2.2",
+    "target": "DataFrame.skew",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "q": "In pandas 1.5, with a top-level function: Load a feather-format object from the file path",
+    "user_version": "1.5",
+    "target": "pd.read_feather",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "q": "In pandas 2.2, with a DataFrame: Return unbiased kurtosis over requested axis",
+    "user_version": "2.2",
+    "target": "DataFrame.kurtosis",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "q": "In pandas 1.5, with a Series: Return unbiased standard error of the mean over requested axis",
+    "user_version": "1.5",
+    "target": "Series.sem",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "q": "In pandas 2.2, with a DataFrame: Return whether all elements are True, potentially over an axis",
+    "user_version": "2.2",
+    "target": "DataFrame.all",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "q": "In pandas 1.5, with a Series: Return the mean of the values over the requested axis",
+    "user_version": "1.5",
+    "target": "Series.mean",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "q": "In pandas 2.2, with a Series: Return the elements in the given *positional* indices along an axis",
+    "user_version": "2.2",
+    "target": "Series.take",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "q": "In pandas 1.5, with a DataFrame: Convert the DataFrame to a dictionary",
+    "user_version": "1.5",
+    "target": "DataFrame.to_dict",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "q": "In pandas 2.2, with a Series: Return unbiased variance over requested axis",
+    "user_version": "2.2",
+    "target": "Series.var",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "q": "In pandas 1.5, with a DataFrame: Trim values at input threshold(s)",
+    "user_version": "1.5",
+    "target": "DataFrame.clip",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "q": "In pandas 2.2, with a DataFrame: Suffix labels with string suffix",
+    "user_version": "2.2",
+    "target": "DataFrame.add_suffix",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "q": "In pandas 1.5, with a top-level function: Return a fixed frequency DatetimeIndex with business day as the default",
+    "user_version": "1.5",
+    "target": "pd.bdate_range",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "q": "In pandas 2.2, with a Series: Return the sum of the values over the requested axis",
+    "user_version": "2.2",
+    "target": "Series.sum",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "q": "In pandas 1.5, with a DataFrame: Set the name of the axis for the index or columns",
+    "user_version": "1.5",
+    "target": "DataFrame.rename_axis",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "q": "In pandas 2.2, with a top-level function: Load a parquet object from the file path, returning a DataFrame",
+    "user_version": "2.2",
+    "target": "pd.read_parquet",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "q": "In pandas 1.5, with a Series: Group Series using a mapper or by a Series of columns",
+    "user_version": "1.5",
+    "target": "Series.groupby",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "q": "In pandas 2.2, with a Series: Resample time-series data",
+    "user_version": "2.2",
+    "target": "Series.resample",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "q": "In pandas 1.5, with a top-level function: Read an Excel file into a pandas DataFrame",
+    "user_version": "1.5",
+    "target": "pd.read_excel",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "q": "In pandas 2.2, with a Series: Fill NA/NaN values by propagating the last valid observation to next valid",
+    "user_version": "2.2",
+    "target": "Series.ffill",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "q": "In pandas 1.5, with a DataFrame: Render object to a LaTeX tabular, longtable, or nested table",
+    "user_version": "1.5",
+    "target": "DataFrame.to_latex",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "q": "In pandas 2.2, with a Series: Set the name of the axis for the index or columns",
+    "user_version": "2.2",
+    "target": "Series.rename_axis",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "q": "In pandas 1.5, with a DataFrame: Return the sum of the values over the requested axis",
+    "user_version": "1.5",
+    "target": "DataFrame.sum",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "q": "In pandas 2.2, with a Series: Trim values at input threshold(s)",
+    "user_version": "2.2",
+    "target": "Series.clip",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "q": "In pandas 1.5, with a Series: Attempt to infer better dtypes for object columns",
+    "user_version": "1.5",
+    "target": "Series.infer_objects",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "q": "In pandas 2.2, with a DataFrame: Convert the object to a JSON string",
+    "user_version": "2.2",
+    "target": "DataFrame.to_json",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "q": "In pandas 1.5, with a DataFrame: Apply a function along an axis of the DataFrame",
+    "user_version": "1.5",
+    "target": "DataFrame.apply",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "q": "In pandas 2.2, with a DataFrame: Return unbiased variance over requested axis",
+    "user_version": "2.2",
+    "target": "DataFrame.var",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "q": "In pandas 1.5, with a Series: Unstack, also known as pivot, Series with MultiIndex to produce DataFrame",
+    "user_version": "1.5",
+    "target": "Series.unstack",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "q": "In pandas 2.2, with a Series: Return sample standard deviation over requested axis",
+    "user_version": "2.2",
+    "target": "Series.std",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "q": "In pandas 1.5, with a Series: Return a new Series with missing values removed",
+    "user_version": "1.5",
+    "target": "Series.dropna",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "q": "In pandas 2.2, with a DataFrame: Replace values where the condition is False",
+    "user_version": "2.2",
+    "target": "DataFrame.where",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "q": "In pandas 1.5, with a top-level function: Load an ORC object from the file path, returning a DataFrame",
+    "user_version": "1.5",
+    "target": "pd.read_orc",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "q": "In pandas 2.2, with a DataFrame: Return the median of the values over the requested axis",
+    "user_version": "2.2",
+    "target": "DataFrame.median",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "q": "In pandas 1.5, with a Series: Convert columns to best possible dtypes using dtypes supporting pd.NA",
+    "user_version": "1.5",
+    "target": "Series.convert_dtypes",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "q": "In pandas 2.2, with a Series: Return the product of the values over the requested axis",
+    "user_version": "2.2",
+    "target": "Series.product",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "q": "In pandas 1.5, with a DataFrame: Return the minimum of the values over the requested axis",
+    "user_version": "1.5",
+    "target": "DataFrame.min",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "q": "In pandas 2.2, with a top-level function: Read a table of fixed-width formatted lines into DataFrame",
+    "user_version": "2.2",
+    "target": "pd.read_fwf",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "q": "In pandas 1.5, with a DataFrame: Pivot a level of the (necessarily hierarchical) index labels",
+    "user_version": "1.5",
+    "target": "DataFrame.unstack",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "q": "In pandas 2.2, with a top-level function: Read general delimited file into DataFrame",
+    "user_version": "2.2",
+    "target": "pd.read_table",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "q": "In pandas 1.5, with a DataFrame: Return unbiased kurtosis over requested axis",
+    "user_version": "1.5",
+    "target": "DataFrame.kurt",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "q": "In pandas 2.2, with a Series: Return the median of the values over the requested axis",
+    "user_version": "2.2",
+    "target": "Series.median",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "q": "In pandas 1.5, with a DataFrame: Synonym for :meth:DataFrame.fillna with method='bfill'",
+    "user_version": "1.5",
+    "target": "DataFrame.bfill",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "q": "In pandas 2.2, with a Series: Return Series with duplicate values removed",
+    "user_version": "2.2",
+    "target": "Series.drop_duplicates",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "q": "In pandas 1.5, with a DataFrame: Group DataFrame using a mapper or by a Series of columns",
+    "user_version": "1.5",
+    "target": "DataFrame.groupby",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "q": "In pandas 2.2, with a top-level function: Encode the object as an enumerated type or categorical variable",
+    "user_version": "2.2",
+    "target": "pd.factorize",
+    "trap": false,
+    "kind": "changed"
+  }
+]

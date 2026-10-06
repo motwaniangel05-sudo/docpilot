@@ -23,4 +23,10 @@
 - DEVIATION: Hugging Face Spaces now requires a paid plan for Docker/Gradio, so deployed on Streamlit Community Cloud instead
 - Live app: https://docpilot-5ov2htcjpmznaondpjkiqg.streamlit.app
 
-## Next: Day 5 - auto-generate benchmark, run evaluation and ablations, produce results.md
+## Day 5 (done)
+- Wrote scripts/run_eval.py: auto-generates 90 questions (14 stale-answer traps, 76 recall), runs 4 configs
+- Results in results.md: version filter cuts Stale@1 from 57.1% to 0.0% and Stale@5 from 100% to 0.0%
+- Recall@5 97.4% with filter; reranker adds ~6.5 s latency with no recall gain (p50 266 ms without vs 6814 ms with)
+- Limitation: only 14 trap questions (12 removed + 2 added symbols with usable docstrings)
+
+## Next: Day 6 - polish UI, Dockerfile check, run_eval.sh, make reranker faster/optional in the live app, redeploy
