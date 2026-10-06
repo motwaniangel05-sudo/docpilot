@@ -135,3 +135,6 @@ Definitions:
 open("results.md", "w").write(md)
 json.dump(details, open("data/eval_details.json", "w"), indent=2)
 print(md)
+
+import subprocess
+subprocess.run([sys.executable, "scripts/add_agreement.py"], check=True)

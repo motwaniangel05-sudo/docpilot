@@ -71,3 +71,7 @@ Optional LLM summary (Groq or Gemini free tier, key stored as a secret, app must
 ## Deployment note
 
 Hugging Face Spaces was the original target, but at deployment time free accounts could only create Static Spaces (Docker and Gradio required a paid plan), so the app is deployed on Streamlit Community Cloud. A `Dockerfile` is included for self-hosting.
+
+## Benchmark validation
+
+I hand-checked 80 samples (50 benchmark questions, 30 symbol/version pairs) against the official pandas 1.5.3 and 2.2.3 docs: 80/80 agree with the benchmark's version labels. Details in `results.md`; raw labels in `data/labels.csv`.

@@ -17,3 +17,10 @@ Definitions:
 - Recall@5: share of recall questions where the correct symbol, in the user's version, is in the top 5.
 - Latency: search only, per query, on a MacBook (M1) CPU, after 3 warm-up queries.
 - Caveat: questions are built from docstring summaries, so they leak some wording of the target symbol.
+
+## Benchmark validation (hand-labeled)
+
+- Question labels: 50/50 agree (100.0%)
+- Version-validity labels: 30/30 agree (100.0%)
+- Overall: 80/80 agree (100.0%)
+- Method: 50 random benchmark questions and 30 (symbol, version) pairs checked by hand against the official pandas 1.5.3 and 2.2.3 docs pages. Raw labels: data/labels.csv.
