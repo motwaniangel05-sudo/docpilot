@@ -12,4 +12,9 @@
 - Created .venv-app (sentence-transformers, qdrant-client, rank_bm25)
 - Built index/ (Qdrant local + bm25.pkl, 14 MB), pushed to GitHub
 
-## Next: Day 3 - BM25 + dense search, RRF, version filter, reranker, CLI test
+## Day 3 (done)
+- Wrote docpilot/search.py: dense (Qdrant) + BM25 + RRF + version filter + bge-reranker-base
+- Tested with scripts/cli_test.py: append excluded for 2.2, present for 1.5, items/iteritems correct
+- Known failure (for README): vague queries like "combine two dataframes by rows" miss pd.concat
+
+## Next: Day 4 - version detection, "changed in X" note, Streamlit app, deploy to Hugging Face Spaces
