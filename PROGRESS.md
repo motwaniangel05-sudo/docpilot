@@ -29,4 +29,8 @@
 - Recall@5 97.4% with filter; reranker adds ~6.5 s latency with no recall gain (p50 266 ms without vs 6814 ms with)
 - Limitation: only 14 trap questions (12 removed + 2 added symbols with usable docstrings)
 
-## Next: Day 6 - polish UI, Dockerfile check, run_eval.sh, make reranker faster/optional in the live app, redeploy
+## Day 6 (done)
+- Polished UI: sidebar version override, example buttons, optional reranker (off by default), results expander
+- Added Dockerfile, .dockerignore, run_eval.sh (reruns extraction, chunks, index, eval)
+
+## Next: Day 7 - README as evaluation report, demo recording, 10 viva questions, final test of live link
