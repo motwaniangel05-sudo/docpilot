@@ -24,3 +24,11 @@ Definitions:
 - Version-validity labels: 30/30 agree (100.0%)
 - Overall: 80/80 agree (100.0%)
 - Method: 50 random benchmark questions and 30 (symbol, version) pairs checked by hand against the official pandas 1.5.3 and 2.2.3 docs pages. Raw labels: data/labels.csv.
+
+## Production metrics (from logs/queries.jsonl)
+
+- Queries logged: 20; cache hit rate: 50.0%
+- Latency p50 / p95 (all): 2448 / 6327 ms
+- Latency p50 / p95 (cache miss, full pipeline): 6052 / 6737 ms
+- Latency p50 / p95 (cache hit): 0 / 0 ms
+- Cost per query: $0.00 (total $0.00). It is zero because all models run locally on CPU, there are no paid API calls, and hosting is on a free tier.
