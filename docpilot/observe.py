@@ -4,7 +4,7 @@ import time
 from collections import OrderedDict
 from pathlib import Path
 
-from docpilot.search import Searcher
+from docpilot.delta import DeltaSearcher
 
 ROOT = Path(__file__).resolve().parent.parent
 LOG_PATH = ROOT / "logs" / "queries.jsonl"
@@ -24,7 +24,7 @@ if not _logger.handlers:
 
 class ObservedSearcher:
     def __init__(self, use_reranker=True, device="cpu", cache_size=256):
-        self.inner = Searcher(use_reranker=use_reranker, device=device)
+        self.inner = DeltaSearcher(use_reranker=use_reranker, device=device)
         self.cache = OrderedDict()
         self.cache_size = cache_size
 

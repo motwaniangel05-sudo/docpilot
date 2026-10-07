@@ -66,3 +66,14 @@ How the threshold was chosen (full disclosure): a first threshold of 0.394, tune
 Limitations: the threshold was tuned on the same questions it is evaluated on, with no held-out set. The natural set is only 24 hand-written questions. 3 of 20 off-topic questions still get answered. Abstention does not catch trap questions: with the version filter on, a removed symbol is replaced by a close neighbor that scores high. Traps are handled by the version filter (stale@1 0.0%) and the REMOVED/CHANGED notes. Some wrong answers also score high (for example a merge question returning `DataFrame.combine`), so a high score is not a guarantee.
 
 ![risk-coverage](data/risk_coverage.png)
+
+## Delta indexing
+
+Symbols whose text is identical across versions are stored and embedded once, with the list of versions they apply to (`applies`); search filters on library and that list (`docpilot/delta.py`, `scripts/build_index_delta.py`).
+
+| | Naive (one chunk per symbol per version) | Delta |
+|---|---|---|
+| Chunks | 3017 | 2700 |
+| Index size on disk | 45.3 MB | 41.2 MB |
+
+Size reduction: **9.2%** (chunks: 10.5%; pandas 16.6%, scikit-learn 11.8%, NumPy 1.1%). The gain is small because most docstrings change at least slightly between versions, so few chunks are byte-identical. Stale@1 (0.0%) and recall@5 (98.35%, no reranker, 150 questions) are identical to the naive index. 127/150 top-5 lists are identical; the rest differ in order only. Limitation: unchanged-text detection is exact string match, with no near-duplicate merging.

@@ -6,7 +6,7 @@ import numpy as np
 
 sys.path.insert(0, ".")
 from docpilot.detect import detect_target
-from docpilot.search import Searcher
+from docpilot.delta import DeltaSearcher
 
 EPS = 1e-9
 chunks = json.load(open("data/chunks.json"))
@@ -16,7 +16,7 @@ for c in chunks:
     exists.setdefault((c["library"], c["version"]), set()).add(c["symbol"])
 
 USE_RR = "--full" in sys.argv
-searcher = Searcher(use_reranker=USE_RR, device="cpu")
+searcher = DeltaSearcher(use_reranker=USE_RR, device="cpu")
 for item in bench[:3]:
     lib, ver, _ = detect_target(item["q"])
     searcher.search(item["q"], version=None, rerank=USE_RR, library=lib)

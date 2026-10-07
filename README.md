@@ -95,3 +95,7 @@ Re-run on a new 150-question benchmark (50 per library, 29 trap questions; `data
 Size and memory (measured on an M1 Mac): 938 to 3017 chunks; index 14 MB to 45 MB. Peak RAM is 589 MB without the reranker and about 1.4 to 1.6 GB with it (bfloat16 did not reduce it). Because of this, abstention is opt-in in the deployed app. CI runs the no-reranker config (baseline: stale@1 0.0, recall@5 0.9835).
 
 Reranker effect on natural phrasing (6 hand-picked queries, not a benchmark): the target is in the top 2 for 5 of 6 queries without the reranker. The exception is "numpy 2.1 product of array elements", where `np.prod` is rank 8 without the reranker and rank 1 with it. The deployed app runs without the reranker by default (RAM), so tick "Use reranker for ranking" for harder queries.
+
+## Delta indexing
+
+Identical symbol text across versions is stored once with a version list. On the 3-library index this cut 3017 chunks to 2700 and index size from 45.3 MB to 41.2 MB (9.2% smaller). Small, because most docstrings change slightly between versions. Stale@1 (0.0%) and recall@5 (98.35%) are unchanged. Details in `results.md`.

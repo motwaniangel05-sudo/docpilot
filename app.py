@@ -25,7 +25,7 @@ CHOICES = ["Auto-detect"] + [f"{lib} {v}" for lib, vs in SUPPORTED.items() for v
 @st.cache_resource
 def load():
     s = ObservedSearcher(use_reranker=False, device="cpu")
-    return s, Changes(s.inner.chunks)
+    return s, Changes([dict(c, version=v) for c in s.inner.chunks for v in c['applies']])
 
 
 @st.cache_resource
