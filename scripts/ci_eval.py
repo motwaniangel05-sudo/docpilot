@@ -13,15 +13,16 @@ chunks = json.load(open("data/chunks.json"))
 bench = json.load(open("data/benchmark.json"))
 exists = {v: {c["symbol"] for c in chunks if c["version"] == v} for v in ("1.5", "2.2")}
 
-searcher = Searcher(use_reranker=True, device="cpu")
+USE_RR = "--full" in sys.argv
+searcher = Searcher(use_reranker=USE_RR, device="cpu")
 for item in bench[:3]:
-    searcher.search(item["q"], version=None, rerank=True)
+    searcher.search(item["q"], version=None, rerank=USE_RR)
 
 lat, stale1, hits = [], [], []
 for item in bench:
     t0 = time.perf_counter()
     ver, _ = detect_version(item["q"])
-    res = searcher.search(item["q"], version=ver, k=5, rerank=True)
+    res = searcher.search(item["q"], version=ver, k=5, rerank=USE_RR)
     lat.append((time.perf_counter() - t0) * 1000)
     uv = item["user_version"]
     if item["trap"]:
