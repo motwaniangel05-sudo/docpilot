@@ -1,0 +1,7 @@
+{
+  "pairs": 1132,
+  "held_out_symbols": 162,
+  "epochs": 2,
+  "lr": 2e-05,
+  "batch": 32
+}

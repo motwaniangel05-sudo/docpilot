@@ -77,3 +77,16 @@ Symbols whose text is identical across versions are stored and embedded once, wi
 | Index size on disk | 45.3 MB | 41.2 MB |
 
 Size reduction: **9.2%** (chunks: 10.5%; pandas 16.6%, scikit-learn 11.8%, NumPy 1.1%). The gain is small because most docstrings change at least slightly between versions, so few chunks are byte-identical. Stale@1 (0.0%) and recall@5 (98.35%, no reranker, 150 questions) are identical to the naive index. 127/150 top-5 lists are identical; the rest differ in order only. Limitation: unchanged-text detection is exact string match, with no near-duplicate merging.
+
+## Embedding fine-tuning ablation
+
+bge-small fine-tuned with MultipleNegativesRankingLoss on 1132 synthetic (question, chunk) pairs built from docstring summaries (2 epochs, lr 2e-5, batch 32). Symbols and summaries used in the 150-question benchmark or the 24 natural questions were excluded from training. Version filter on, no reranker. Benchmark = 121 recall questions (Recall@1, Recall@5) and 29 trap questions (Stale@1); Natural = 24 hand-written questions.
+
+| Embedder | Retrieval | Recall@1 | Recall@5 | Stale@1 | Natural R@1 | Natural R@5 |
+|---|---|---|---|---|---|---|
+| base bge-small | dense | 81.0% | 98.3% | 0.0% | 54.2% | 91.7% |
+| base bge-small | hybrid | 83.5% | 98.3% | 0.0% | 58.3% | 83.3% |
+| fine-tuned bge-small | dense | 90.9% | 100.0% | 0.0% | 58.3% | 95.8% |
+| fine-tuned bge-small | hybrid | 90.1% | 98.3% | 0.0% | 58.3% | 83.3% |
+
+Caveats: training questions are synthetic templates over docstring first lines (the same source as the benchmark, so the benchmark is easier than real queries); NumPy ufunc docstrings start with a signature, which adds noisy pairs; the natural set is small.

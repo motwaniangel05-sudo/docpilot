@@ -1,0 +1,30 @@
+{
+  "base bge-small | dense": {
+    "r1": 0.8099,
+    "r5": 0.9835,
+    "stale1": 0.0,
+    "nat5": 0.9167,
+    "nat1": 0.5417
+  },
+  "base bge-small | hybrid": {
+    "r1": 0.8347,
+    "r5": 0.9835,
+    "stale1": 0.0,
+    "nat5": 0.8333,
+    "nat1": 0.5833
+  },
+  "fine-tuned bge-small | dense": {
+    "r1": 0.9091,
+    "r5": 1.0,
+    "stale1": 0.0,
+    "nat5": 0.9583,
+    "nat1": 0.5833
+  },
+  "fine-tuned bge-small | hybrid": {
+    "r1": 0.9008,
+    "r5": 0.9835,
+    "stale1": 0.0,
+    "nat5": 0.8333,
+    "nat1": 0.5833
+  }
+}

@@ -99,3 +99,7 @@ Reranker effect on natural phrasing (6 hand-picked queries, not a benchmark): th
 ## Delta indexing
 
 Identical symbol text across versions is stored once with a version list. On the 3-library index this cut 3017 chunks to 2700 and index size from 45.3 MB to 41.2 MB (9.2% smaller). Small, because most docstrings change slightly between versions. Stale@1 (0.0%) and recall@5 (98.35%) are unchanged. Details in `results.md`.
+
+## Embedding fine-tuning ablation
+
+Fine-tuned bge-small on 1132 synthetic question-chunk pairs (symbols from the benchmark and natural questions excluded from training). With the version filter on and no reranker: dense Recall@1 81.0% to 90.9% and Recall@5 98.3% to 100.0%. In the hybrid (dense + BM25) config the deployed app uses, Recall@1 goes 83.5% to 90.1% but Recall@5 is unchanged at 98.3%. Natural-phrased R@5 (24 questions, so 1 question = 4.2 points) is 91.7% to 95.8% dense and 83.3% for both models hybrid. Stale@1 stays 0.0%. The fine-tuned model is not deployed (about 130 MB; the app still uses base bge-small). Caveats: training questions are templates over docstring first lines, the same source as the benchmark, and some NumPy pairs are just signatures. Full table in `results.md`.
