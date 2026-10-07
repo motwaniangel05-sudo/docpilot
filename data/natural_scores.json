@@ -1,0 +1,194 @@
+[
+  {
+    "q": "how do I append a row in pandas 1.5",
+    "version": "1.5",
+    "target": "DataFrame.append",
+    "score": 0.1563238501548767,
+    "hit": true,
+    "top1": "DataFrame.append"
+  },
+  {
+    "q": "how to group rows and sum in pandas 2.2",
+    "version": "2.2",
+    "target": "DataFrame.groupby",
+    "score": 0.23834696412086487,
+    "hit": true,
+    "top1": "Series.groupby"
+  },
+  {
+    "q": "how do I merge two dataframes in pandas 1.5",
+    "version": "1.5",
+    "target": "DataFrame.merge",
+    "score": 0.966131865978241,
+    "hit": false,
+    "top1": "DataFrame.combine"
+  },
+  {
+    "q": "remove duplicate rows pandas 2.2",
+    "version": "2.2",
+    "target": "DataFrame.drop_duplicates",
+    "score": 0.315994530916214,
+    "hit": true,
+    "top1": "Series.duplicated"
+  },
+  {
+    "q": "fill missing values in pandas 1.5",
+    "version": "1.5",
+    "target": "DataFrame.fillna",
+    "score": 0.24661606550216675,
+    "hit": true,
+    "top1": "Series.fillna"
+  },
+  {
+    "q": "sort a dataframe by a column pandas 2.2",
+    "version": "2.2",
+    "target": "DataFrame.sort_values",
+    "score": 0.9688757061958313,
+    "hit": true,
+    "top1": "DataFrame.nlargest"
+  },
+  {
+    "q": "make a pivot table in pandas 1.5",
+    "version": "1.5",
+    "target": "DataFrame.pivot_table",
+    "score": 0.32111433148384094,
+    "hit": true,
+    "top1": "pd.pivot_table"
+  },
+  {
+    "q": "count unique values in a series pandas 2.2",
+    "version": "2.2",
+    "target": "Series.value_counts",
+    "score": 0.9187814593315125,
+    "hit": true,
+    "top1": "Series.value_counts"
+  },
+  {
+    "q": "rename columns pandas 1.5",
+    "version": "1.5",
+    "target": "DataFrame.rename",
+    "score": 0.2950412631034851,
+    "hit": true,
+    "top1": "DataFrame.itertuples"
+  },
+  {
+    "q": "drop rows with NaN pandas 2.2",
+    "version": "2.2",
+    "target": "DataFrame.dropna",
+    "score": 0.5910077095031738,
+    "hit": false,
+    "top1": "Series.dropna"
+  },
+  {
+    "q": "apply a function to each column pandas 1.5",
+    "version": "1.5",
+    "target": "DataFrame.apply",
+    "score": 0.6276851892471313,
+    "hit": true,
+    "top1": "DataFrame.apply"
+  },
+  {
+    "q": "iterate over columns as key value pairs pandas 1.5",
+    "version": "1.5",
+    "target": "DataFrame.iteritems",
+    "score": 0.9419798851013184,
+    "hit": true,
+    "top1": "DataFrame.iterrows"
+  },
+  {
+    "q": "iterate over columns as key value pairs pandas 2.2",
+    "version": "2.2",
+    "target": "DataFrame.items",
+    "score": 0.9233552813529968,
+    "hit": true,
+    "top1": "DataFrame.items"
+  },
+  {
+    "q": "read a csv file in pandas 2.2",
+    "version": "2.2",
+    "target": "pd.read_csv",
+    "score": 0.9397227168083191,
+    "hit": true,
+    "top1": "pd.read_clipboard"
+  },
+  {
+    "q": "combine dataframes vertically pandas 1.5",
+    "version": "1.5",
+    "target": "pd.concat",
+    "score": 0.30559274554252625,
+    "hit": false,
+    "top1": "DataFrame.combine"
+  },
+  {
+    "q": "convert strings to datetime pandas 2.2",
+    "version": "2.2",
+    "target": "pd.to_datetime",
+    "score": 0.800151526927948,
+    "hit": true,
+    "top1": "DataFrame.convert_dtypes"
+  },
+  {
+    "q": "unpivot a dataframe wide to long pandas 1.5",
+    "version": "1.5",
+    "target": "pd.melt",
+    "score": 0.921215832233429,
+    "hit": true,
+    "top1": "pd.wide_to_long"
+  },
+  {
+    "q": "select rows by label pandas 2.2",
+    "version": "2.2",
+    "target": "DataFrame.loc",
+    "score": 0.25667035579681396,
+    "hit": true,
+    "top1": "DataFrame.truncate"
+  },
+  {
+    "q": "get the first 5 rows pandas 1.5",
+    "version": "1.5",
+    "target": "DataFrame.head",
+    "score": 0.03432871401309967,
+    "hit": true,
+    "top1": "Series.asof"
+  },
+  {
+    "q": "write dataframe to csv pandas 2.2",
+    "version": "2.2",
+    "target": "DataFrame.to_csv",
+    "score": 0.969021201133728,
+    "hit": false,
+    "top1": "pd.read_clipboard"
+  },
+  {
+    "q": "describe summary statistics pandas 1.5",
+    "version": "1.5",
+    "target": "DataFrame.describe",
+    "score": 0.17364449799060822,
+    "hit": true,
+    "top1": "DataFrame.memory_usage"
+  },
+  {
+    "q": "change column dtype pandas 2.2",
+    "version": "2.2",
+    "target": "DataFrame.astype",
+    "score": 0.6319006085395813,
+    "hit": true,
+    "top1": "DataFrame.astype"
+  },
+  {
+    "q": "reset the index pandas 1.5",
+    "version": "1.5",
+    "target": "DataFrame.reset_index",
+    "score": 0.13244418799877167,
+    "hit": true,
+    "top1": "Series.reset_index"
+  },
+  {
+    "q": "transpose a dataframe pandas 2.2",
+    "version": "2.2",
+    "target": "DataFrame.transpose",
+    "score": 0.9679386019706726,
+    "hit": true,
+    "top1": "DataFrame.transpose"
+  }
+]

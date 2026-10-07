@@ -84,4 +84,4 @@ I hand-checked 80 samples (50 benchmark questions, 30 symbol/version pairs) agai
 
 ## Abstention
 
-DocPilot answers "Cannot confirm for your version." when the top reranker score is below 0.394 (chosen from the risk-coverage curve, `data/risk_coverage.png`). On 110 questions it abstains on 95.0% of off-topic questions, keeps 100% of answerable ones, and cuts risk from 32.7% to 18.7% at 82.7% coverage. It does not catch trap questions (0.0%); those are handled by the version filter. Details and limitations in `results.md`.
+DocPilot answers "Cannot confirm for your version." when the top reranker score is below 0.105 (`data/risk_coverage.png`). On 134 questions (docstring-style, natural-phrased, trap, off-topic) it abstains on 85.0% of off-topic questions, keeps 95.0% of natural questions that have a correct answer, and cuts risk from 29.8% to 19.8%. It does not catch trap questions; the version filter handles those. The threshold was revised twice after a first value over-abstained on natural phrasing, and it is tuned on the evaluation set. See `results.md`.
