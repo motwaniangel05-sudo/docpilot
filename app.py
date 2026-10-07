@@ -5,7 +5,7 @@ import streamlit as st
 from sentence_transformers import CrossEncoder
 
 from docpilot.changes import Changes
-from docpilot.search import Searcher
+from docpilot.observe import ObservedSearcher
 from docpilot.version import detect_version
 
 st.set_page_config(page_title="DocPilot", page_icon="🐼", layout="wide")
@@ -20,8 +20,8 @@ EXAMPLES = [
 
 @st.cache_resource
 def load():
-    s = Searcher(use_reranker=False, device="cpu")
-    return s, Changes(s.chunks)
+    s = ObservedSearcher(use_reranker=False, device="cpu")
+    return s, Changes(s.inner.chunks)
 
 
 @st.cache_resource
@@ -41,6 +41,7 @@ with st.sidebar:
     override = st.selectbox("pandas version", ["Auto-detect", "1.5", "2.2"])
     use_rr = st.checkbox("Use reranker (slower, about 6 s per query)", value=False)
     st.caption("Search is hybrid: BM25 + dense (bge-small) fused with RRF, filtered to your pandas version.")
+    st.caption("Repeated queries are served from an in-memory cache. Cost per query: $0.00 (local models, free hosting).")
     st.caption("Free apps sleep when idle. The first load after sleeping can take a minute or two.")
 
 st.title("🐼 DocPilot")
@@ -65,13 +66,13 @@ if st.button("Search", type="primary") and question.strip():
         version = override
         st.info(f"Using pandas {version} (selected in the sidebar).")
 
-    if use_rr and searcher.reranker is None:
+    if use_rr and searcher.inner.reranker is None:
         with st.spinner("Loading reranker (first time only)..."):
-            searcher.reranker = load_reranker()
+            searcher.inner.reranker = load_reranker()
 
     t0 = time.perf_counter()
     results = searcher.search(question, version=version, k=5, rerank=use_rr)
-    wide = searcher.search(question, version=None, k=10, rerank=False)
+    wide = searcher.inner.search(question, version=None, k=10, rerank=False)
     ms = (time.perf_counter() - t0) * 1000
 
     for w in changes.warnings(wide, version):

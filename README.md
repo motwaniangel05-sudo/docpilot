@@ -75,3 +75,9 @@ Hugging Face Spaces was the original target, but at deployment time free account
 ## Benchmark validation
 
 I hand-checked 80 samples (50 benchmark questions, 30 symbol/version pairs) against the official pandas 1.5.3 and 2.2.3 docs: 80/80 agree with the benchmark's version labels. Details in `results.md`; raw labels in `data/labels.csv`.
+
+## CI and production metrics
+
+- GitHub Actions (`.github/workflows/eval.yml`) runs `scripts/ci_eval.py` on every push and fails if stale@1 or recall@5 is worse than `baseline.json` (stale@1 0.0%, recall@5 97.4%).
+- `docpilot/observe.py` adds an LRU query cache, JSON-lines logging (`logs/queries.jsonl`), and cost tracking. `scripts/log_report.py` writes p50/p95 latency and cache hit rate to `results.md`.
+- Demo run (20 queries, 50% repeats): cache miss p50 6052 ms, cache hit about 0 ms. Cost per query is $0.00 because all models run locally on CPU with free hosting.
