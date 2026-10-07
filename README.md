@@ -85,3 +85,11 @@ I hand-checked 80 samples (50 benchmark questions, 30 symbol/version pairs) agai
 ## Abstention
 
 DocPilot answers "Cannot confirm for your version." when the top reranker score is below 0.105 (`data/risk_coverage.png`). On 134 questions (docstring-style, natural-phrased, trap, off-topic) it abstains on 85.0% of off-topic questions, keeps 95.0% of natural questions that have a correct answer, and cuts risk from 29.8% to 19.8%. It does not catch trap questions; the version filter handles those. The threshold was revised twice after a first value over-abstained on natural phrasing, and it is tuned on the evaluation set. See `results.md`.
+
+## Coverage: pandas, NumPy, scikit-learn
+
+Index now covers pandas (1.5, 2.0, 2.2), NumPy (1.26, 2.1) and scikit-learn (1.3, 1.5), built by the same extraction pipeline (`scripts/extract_symbols.py`, `scripts/extract_lib.py`, `scripts/build_chunks.py`). Every chunk has `library`, `version`, `valid_from`, `valid_until`; search filters on library and version.
+
+Re-run on a new 150-question benchmark (50 per library, 29 trap questions; `data/benchmark_multi.json`). Full system (version filter + reranker): stale@1 0.0%, recall@5 100.0%. Without the reranker: stale@1 0.0%, recall@5 98.3%. Without the version filter, stale@1 is 69.0% (no reranker) and 79.3% (with reranker). The sklearn trap set is small (5), and stale 0.0% is partly by construction because the version filter makes absent symbols unreachable. Earlier pandas-only tables, the 80 hand-labeled samples and the abstention threshold come from the pandas-only benchmark; they were not redone for NumPy or scikit-learn.
+
+Size and memory (measured on an M1 Mac): 938 to 3017 chunks; index 14 MB to 45 MB. Peak RAM is 589 MB without the reranker and about 1.4 to 1.6 GB with it (bfloat16 did not reduce it). Because of this, abstention is opt-in in the deployed app. CI runs the no-reranker config (baseline: stale@1 0.0, recall@5 0.9835).

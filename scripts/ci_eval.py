@@ -5,28 +5,31 @@ import time
 import numpy as np
 
 sys.path.insert(0, ".")
+from docpilot.detect import detect_target
 from docpilot.search import Searcher
-from docpilot.version import detect_version
 
 EPS = 1e-9
 chunks = json.load(open("data/chunks.json"))
-bench = json.load(open("data/benchmark.json"))
-exists = {v: {c["symbol"] for c in chunks if c["version"] == v} for v in ("1.5", "2.2")}
+bench = json.load(open("data/benchmark_multi.json"))
+exists = {}
+for c in chunks:
+    exists.setdefault((c["library"], c["version"]), set()).add(c["symbol"])
 
 USE_RR = "--full" in sys.argv
 searcher = Searcher(use_reranker=USE_RR, device="cpu")
 for item in bench[:3]:
-    searcher.search(item["q"], version=None, rerank=USE_RR)
+    lib, ver, _ = detect_target(item["q"])
+    searcher.search(item["q"], version=None, rerank=USE_RR, library=lib)
 
 lat, stale1, hits = [], [], []
 for item in bench:
     t0 = time.perf_counter()
-    ver, _ = detect_version(item["q"])
-    res = searcher.search(item["q"], version=ver, k=5, rerank=USE_RR)
+    lib, ver, _ = detect_target(item["q"])
+    res = searcher.search(item["q"], version=ver, k=5, rerank=USE_RR, library=lib)
     lat.append((time.perf_counter() - t0) * 1000)
     uv = item["user_version"]
     if item["trap"]:
-        stale1.append(res[0]["symbol"] not in exists[uv])
+        stale1.append(res[0]["symbol"] not in exists[(item["lib"], uv)])
     if item["target"]:
         hits.append(any(r["symbol"] == item["target"] and r["version"] == uv for r in res))
 

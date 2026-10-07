@@ -2,14 +2,14 @@ import json
 from pathlib import Path
 
 CFG = Path(__file__).resolve().parent.parent / "data" / "abstain_config.json"
-THRESHOLD = json.load(open(CFG))["threshold"] if CFG.exists() else 0.394
+THRESHOLD = json.load(open(CFG))["threshold"] if CFG.exists() else 0.105
 MESSAGE = "Cannot confirm for your version."
 
 
-def scored_search(s, query, version, k=5, pool=30):
+def scored_search(s, query, version, k=5, pool=30, library="pandas"):
     """Hybrid search + rerank. Returns (top reranker score, top-k chunks). s must be a Searcher with a reranker."""
-    dense = s._dense(query, version, pool)
-    sparse = s._bm25(query, version, pool)
+    dense = s._dense(query, version, pool, library)
+    sparse = s._bm25(query, version, pool, library)
     rrf = {}
     for ranking in (dense, sparse):
         for r, idx in enumerate(ranking):

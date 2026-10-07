@@ -1,7 +1,7 @@
 {
   "stale_at1": 0.0,
-  "recall_at5": 0.9737,
-  "p50_ms": 271,
-  "p95_ms": 292,
-  "n_questions": 90
+  "recall_at5": 0.9835,
+  "p50_ms": 163,
+  "p95_ms": 306,
+  "n_questions": 150
 }

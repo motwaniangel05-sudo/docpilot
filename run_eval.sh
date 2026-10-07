@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Reruns everything: venvs, symbol extraction, chunks, index, benchmark, evaluation -> results.md
+# Reruns everything: venvs, symbol extraction, chunks, index, multi-library benchmark, evaluation -> results.md
 set -euo pipefail
 cd "$(dirname "$0")"
 
@@ -9,7 +9,10 @@ cd "$(dirname "$0")"
 
 .venv-pd15/bin/python scripts/extract_symbols.py data/symbols_1.5.json
 .venv-pd22/bin/python scripts/extract_symbols.py data/symbols_2.2.json
-.venv-pd22/bin/python scripts/build_chunks.py
+./scripts/setup_u4.sh
+.venv-app/bin/python scripts/build_chunks.py
 .venv-app/bin/python scripts/build_index.py
-.venv-app/bin/python scripts/run_eval.py
+.venv-app/bin/python scripts/run_eval_multi.py
+.venv-app/bin/python scripts/add_agreement.py > /dev/null
+.venv-app/bin/python scripts/add_abstention.py > /dev/null
 echo "Done. See results.md"

@@ -1,0 +1,1202 @@
+[
+  {
+    "lib": "pandas",
+    "q": "In pandas 1.5, with a Series: Replace values where the conditions are True",
+    "user_version": "1.5",
+    "target": null,
+    "trap": true,
+    "kind": "absent"
+  },
+  {
+    "lib": "pandas",
+    "q": "In pandas 2.2, with a Series: Replace values where the conditions are True",
+    "user_version": "2.2",
+    "target": "Series.case_when",
+    "trap": false,
+    "kind": "present"
+  },
+  {
+    "lib": "pandas",
+    "q": "In pandas 2.0, with a Series: Equivalent to shift without copying data",
+    "user_version": "2.0",
+    "target": null,
+    "trap": true,
+    "kind": "absent"
+  },
+  {
+    "lib": "pandas",
+    "q": "In pandas 1.5, with a Series: Equivalent to shift without copying data",
+    "user_version": "1.5",
+    "target": "Series.slice_shift",
+    "trap": false,
+    "kind": "present"
+  },
+  {
+    "lib": "pandas",
+    "q": "In pandas 2.0, with a Series: Concatenate two or more Series",
+    "user_version": "2.0",
+    "target": null,
+    "trap": true,
+    "kind": "absent"
+  },
+  {
+    "lib": "pandas",
+    "q": "In pandas 1.5, with a Series: Concatenate two or more Series",
+    "user_version": "1.5",
+    "target": "Series.append",
+    "trap": false,
+    "kind": "present"
+  },
+  {
+    "lib": "pandas",
+    "q": "In pandas 2.2, with a DataFrame: Shift the time index, using the index's frequency if available",
+    "user_version": "2.2",
+    "target": null,
+    "trap": true,
+    "kind": "absent"
+  },
+  {
+    "lib": "pandas",
+    "q": "In pandas 1.5, with a DataFrame: Shift the time index, using the index's frequency if available",
+    "user_version": "1.5",
+    "target": "DataFrame.tshift",
+    "trap": false,
+    "kind": "present"
+  },
+  {
+    "lib": "pandas",
+    "q": "In pandas 2.0, with a Series: Shift the time index, using the index's frequency if available",
+    "user_version": "2.0",
+    "target": null,
+    "trap": true,
+    "kind": "absent"
+  },
+  {
+    "lib": "pandas",
+    "q": "In pandas 1.5, with a Series: Shift the time index, using the index's frequency if available",
+    "user_version": "1.5",
+    "target": "Series.tshift",
+    "trap": false,
+    "kind": "present"
+  },
+  {
+    "lib": "pandas",
+    "q": "In pandas 2.2, with a Series: Return the mean absolute deviation of the values over the requested axis",
+    "user_version": "2.2",
+    "target": null,
+    "trap": true,
+    "kind": "absent"
+  },
+  {
+    "lib": "pandas",
+    "q": "In pandas 1.5, with a Series: Return the mean absolute deviation of the values over the requested axis",
+    "user_version": "1.5",
+    "target": "Series.mad",
+    "trap": false,
+    "kind": "present"
+  },
+  {
+    "lib": "pandas",
+    "q": "In pandas 2.2, with a DataFrame: Equivalent to shift without copying data",
+    "user_version": "2.2",
+    "target": null,
+    "trap": true,
+    "kind": "absent"
+  },
+  {
+    "lib": "pandas",
+    "q": "In pandas 1.5, with a DataFrame: Equivalent to shift without copying data",
+    "user_version": "1.5",
+    "target": "DataFrame.slice_shift",
+    "trap": false,
+    "kind": "present"
+  },
+  {
+    "lib": "pandas",
+    "q": "In pandas 2.2, with a DataFrame: Label-based \"fancy indexing\" function for DataFrame",
+    "user_version": "2.2",
+    "target": null,
+    "trap": true,
+    "kind": "absent"
+  },
+  {
+    "lib": "pandas",
+    "q": "In pandas 1.5, with a DataFrame: Label-based \"fancy indexing\" function for DataFrame",
+    "user_version": "1.5",
+    "target": "DataFrame.lookup",
+    "trap": false,
+    "kind": "present"
+  },
+  {
+    "lib": "pandas",
+    "q": "In pandas 2.2, with a Series: Return boolean if values in the object are monotonically increasing",
+    "user_version": "2.2",
+    "target": null,
+    "trap": true,
+    "kind": "absent"
+  },
+  {
+    "lib": "pandas",
+    "q": "In pandas 1.5, with a Series: Return boolean if values in the object are monotonically increasing",
+    "user_version": "1.5",
+    "target": "Series.is_monotonic",
+    "trap": false,
+    "kind": "present"
+  },
+  {
+    "lib": "pandas",
+    "q": "In pandas 2.2, with a DataFrame: Return the mean absolute deviation of the values over the requested axis",
+    "user_version": "2.2",
+    "target": null,
+    "trap": true,
+    "kind": "absent"
+  },
+  {
+    "lib": "pandas",
+    "q": "In pandas 1.5, with a DataFrame: Return the mean absolute deviation of the values over the requested axis",
+    "user_version": "1.5",
+    "target": "DataFrame.mad",
+    "trap": false,
+    "kind": "present"
+  },
+  {
+    "lib": "pandas",
+    "q": "In pandas 1.5, with a DataFrame: Apply a function to a Dataframe elementwise",
+    "user_version": "1.5",
+    "target": null,
+    "trap": true,
+    "kind": "absent"
+  },
+  {
+    "lib": "pandas",
+    "q": "In pandas 2.2, with a DataFrame: Apply a function to a Dataframe elementwise",
+    "user_version": "2.2",
+    "target": "DataFrame.map",
+    "trap": false,
+    "kind": "present"
+  },
+  {
+    "lib": "pandas",
+    "q": "In pandas 2.0, with a DataFrame: Append rows of other to the end of caller, returning a new object",
+    "user_version": "2.0",
+    "target": null,
+    "trap": true,
+    "kind": "absent"
+  },
+  {
+    "lib": "pandas",
+    "q": "In pandas 1.5, with a DataFrame: Append rows of other to the end of caller, returning a new object",
+    "user_version": "1.5",
+    "target": "DataFrame.append",
+    "trap": false,
+    "kind": "present"
+  },
+  {
+    "lib": "pandas",
+    "q": "In pandas 2.2, with a DataFrame: Shift index by desired number of periods with an optional time freq",
+    "user_version": "2.2",
+    "target": "DataFrame.shift",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "lib": "pandas",
+    "q": "In pandas 1.5, with a top-level function: Convert argument to a numeric type",
+    "user_version": "1.5",
+    "target": "pd.to_numeric",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "lib": "pandas",
+    "q": "In pandas 1.5, with a Series: Return Greater than of series and other, element-wise (binary operator gt)",
+    "user_version": "1.5",
+    "target": "Series.gt",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "lib": "pandas",
+    "q": "In pandas 2.0, with a Series: Return an object with matching indices as other object",
+    "user_version": "2.0",
+    "target": "Series.reindex_like",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "lib": "pandas",
+    "q": "In pandas 2.2, with a Series: Return Multiplication of series and other, element-wise (binary operator mul)",
+    "user_version": "2.2",
+    "target": "Series.mul",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "lib": "pandas",
+    "q": "In pandas 2.0, with a DataFrame: Get Greater than or equal to of dataframe and other, element-wise (binary operator ge)",
+    "user_version": "2.0",
+    "target": "DataFrame.ge",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "lib": "pandas",
+    "q": "In pandas 2.2, with a Series: Return Exponential power of series and other, element-wise (binary operator rpow)",
+    "user_version": "2.2",
+    "target": "Series.rpow",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "lib": "pandas",
+    "q": "In pandas 2.2, with a Series: Return cumulative sum over a DataFrame or Series axis",
+    "user_version": "2.2",
+    "target": "Series.cumsum",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "lib": "pandas",
+    "q": "In pandas 1.5, with a DataFrame: Return unbiased kurtosis over requested axis",
+    "user_version": "1.5",
+    "target": "DataFrame.kurt",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "lib": "pandas",
+    "q": "In pandas 2.2, with a top-level function: Compute a simple cross tabulation of two (or more) factors",
+    "user_version": "2.2",
+    "target": "pd.crosstab",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "lib": "pandas",
+    "q": "In pandas 2.2, with a DataFrame: Render a DataFrame to a console-friendly tabular output",
+    "user_version": "2.2",
+    "target": "DataFrame.to_string",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "lib": "pandas",
+    "q": "In pandas 2.0, with a Series: Render a string representation of the Series",
+    "user_version": "2.0",
+    "target": "Series.to_string",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "lib": "pandas",
+    "q": "In pandas 2.0, with a DataFrame: Compute pairwise covariance of columns, excluding NA/null values",
+    "user_version": "2.0",
+    "target": "DataFrame.cov",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "lib": "pandas",
+    "q": "In pandas 2.2, with a Series: Write object to an Excel sheet",
+    "user_version": "2.2",
+    "target": "Series.to_excel",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "lib": "pandas",
+    "q": "In pandas 1.5, with a DataFrame: Return boolean Series denoting duplicate rows",
+    "user_version": "1.5",
+    "target": "DataFrame.duplicated",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "lib": "pandas",
+    "q": "In pandas 2.0, with a Series: Provide exponentially weighted (EW) calculations",
+    "user_version": "2.0",
+    "target": "Series.ewm",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "lib": "pandas",
+    "q": "In pandas 2.0, with a Series: Return a Series/DataFrame with absolute numeric value of each element",
+    "user_version": "2.0",
+    "target": "Series.abs",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "lib": "pandas",
+    "q": "In pandas 1.5, with a Series: Return Not equal to of series and other, element-wise (binary operator ne)",
+    "user_version": "1.5",
+    "target": "Series.ne",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "lib": "pandas",
+    "q": "In pandas 2.0, with a top-level function: Load pickled pandas object (or any object) from file",
+    "user_version": "2.0",
+    "target": "pd.read_pickle",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "lib": "pandas",
+    "q": "In pandas 2.2, with a Series: Resample time-series data",
+    "user_version": "2.2",
+    "target": "Series.resample",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "lib": "pandas",
+    "q": "In pandas 2.2, with a top-level function: Perform a merge for ordered data with optional filling/interpolation",
+    "user_version": "2.2",
+    "target": "pd.merge_ordered",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "lib": "pandas",
+    "q": "In pandas 2.2, with a DataFrame: Create a spreadsheet-style pivot table as a DataFrame",
+    "user_version": "2.2",
+    "target": "DataFrame.pivot_table",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "lib": "pandas",
+    "q": "In pandas 2.0, with a DataFrame: Suffix labels with string suffix",
+    "user_version": "2.0",
+    "target": "DataFrame.add_suffix",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "lib": "pandas",
+    "q": "In pandas 2.0, with a Series: Align two objects on their axes with the specified join method",
+    "user_version": "2.0",
+    "target": "Series.align",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "lib": "pandas",
+    "q": "In pandas 2.0, with a Series: Convert tz-aware axis to target time zone",
+    "user_version": "2.0",
+    "target": "Series.tz_convert",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "lib": "pandas",
+    "q": "In pandas 2.0, with a Series: Return the smallest n elements",
+    "user_version": "2.0",
+    "target": "Series.nsmallest",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "lib": "numpy",
+    "q": "In numpy 2.1, with a function: Return a copy of an array sorted along the first axis",
+    "user_version": "2.1",
+    "target": null,
+    "trap": true,
+    "kind": "absent"
+  },
+  {
+    "lib": "numpy",
+    "q": "In numpy 1.26, with a function: Return a copy of an array sorted along the first axis",
+    "user_version": "1.26",
+    "target": "np.msort",
+    "trap": false,
+    "kind": "present"
+  },
+  {
+    "lib": "numpy",
+    "q": "In numpy 2.1, with a function: Return the string representation of a scalar dtype",
+    "user_version": "2.1",
+    "target": null,
+    "trap": true,
+    "kind": "absent"
+  },
+  {
+    "lib": "numpy",
+    "q": "In numpy 1.26, with a function: Return the string representation of a scalar dtype",
+    "user_version": "1.26",
+    "target": "np.sctype2char",
+    "trap": false,
+    "kind": "present"
+  },
+  {
+    "lib": "numpy",
+    "q": "In numpy 2.1, with a function: Return the cumulative product over the given axis",
+    "user_version": "2.1",
+    "target": null,
+    "trap": true,
+    "kind": "absent"
+  },
+  {
+    "lib": "numpy",
+    "q": "In numpy 1.26, with a function: Return the cumulative product over the given axis",
+    "user_version": "1.26",
+    "target": "np.cumproduct",
+    "trap": false,
+    "kind": "present"
+  },
+  {
+    "lib": "numpy",
+    "q": "In numpy 1.26, with a function: Computes the matrix norm of a matrix (or a stack of matrices) x",
+    "user_version": "1.26",
+    "target": null,
+    "trap": true,
+    "kind": "absent"
+  },
+  {
+    "lib": "numpy",
+    "q": "In numpy 2.1, with a function: Computes the matrix norm of a matrix (or a stack of matrices) x",
+    "user_version": "2.1",
+    "target": "np.linalg.matrix_norm",
+    "trap": false,
+    "kind": "present"
+  },
+  {
+    "lib": "numpy",
+    "q": "In numpy 2.1, with a function: Determine if a class is a subclass of a second class",
+    "user_version": "2.1",
+    "target": null,
+    "trap": true,
+    "kind": "absent"
+  },
+  {
+    "lib": "numpy",
+    "q": "In numpy 1.26, with a function: Determine if a class is a subclass of a second class",
+    "user_version": "1.26",
+    "target": "np.issubclass_",
+    "trap": false,
+    "kind": "present"
+  },
+  {
+    "lib": "numpy",
+    "q": "In numpy 2.1, with a function: Check if all elements of input array are true",
+    "user_version": "2.1",
+    "target": null,
+    "trap": true,
+    "kind": "absent"
+  },
+  {
+    "lib": "numpy",
+    "q": "In numpy 1.26, with a function: Check if all elements of input array are true",
+    "user_version": "1.26",
+    "target": "np.alltrue",
+    "trap": false,
+    "kind": "present"
+  },
+  {
+    "lib": "numpy",
+    "q": "In numpy 1.26, with a function: Returns specified diagonals of a matrix (or a stack of matrices) x",
+    "user_version": "1.26",
+    "target": null,
+    "trap": true,
+    "kind": "absent"
+  },
+  {
+    "lib": "numpy",
+    "q": "In numpy 2.1, with a function: Returns specified diagonals of a matrix (or a stack of matrices) x",
+    "user_version": "2.1",
+    "target": "np.linalg.diagonal",
+    "trap": false,
+    "kind": "present"
+  },
+  {
+    "lib": "numpy",
+    "q": "In numpy 2.1, with a function: Do a keyword search on docstrings",
+    "user_version": "2.1",
+    "target": null,
+    "trap": true,
+    "kind": "absent"
+  },
+  {
+    "lib": "numpy",
+    "q": "In numpy 1.26, with a function: Do a keyword search on docstrings",
+    "user_version": "1.26",
+    "target": "np.lookfor",
+    "trap": false,
+    "kind": "present"
+  },
+  {
+    "lib": "numpy",
+    "q": "In numpy 1.26, with a function: Compute tensor dot product along specified axes",
+    "user_version": "1.26",
+    "target": null,
+    "trap": true,
+    "kind": "absent"
+  },
+  {
+    "lib": "numpy",
+    "q": "In numpy 2.1, with a function: Compute tensor dot product along specified axes",
+    "user_version": "2.1",
+    "target": "np.linalg.tensordot",
+    "trap": false,
+    "kind": "present"
+  },
+  {
+    "lib": "numpy",
+    "q": "In numpy 2.1, with a function: compare_chararrays(a1, a2, cmp, rstrip)",
+    "user_version": "2.1",
+    "target": null,
+    "trap": true,
+    "kind": "absent"
+  },
+  {
+    "lib": "numpy",
+    "q": "In numpy 1.26, with a function: compare_chararrays(a1, a2, cmp, rstrip)",
+    "user_version": "1.26",
+    "target": "np.compare_chararrays",
+    "trap": false,
+    "kind": "present"
+  },
+  {
+    "lib": "numpy",
+    "q": "In numpy 1.26, with a function: Integrate along the given axis using the composite trapezoidal rule",
+    "user_version": "1.26",
+    "target": null,
+    "trap": true,
+    "kind": "absent"
+  },
+  {
+    "lib": "numpy",
+    "q": "In numpy 2.1, with a function: Integrate along the given axis using the composite trapezoidal rule",
+    "user_version": "2.1",
+    "target": "np.trapezoid",
+    "trap": false,
+    "kind": "present"
+  },
+  {
+    "lib": "numpy",
+    "q": "In numpy 2.1, with a function: Load ASCII data from a file and return it in a record array",
+    "user_version": "2.1",
+    "target": null,
+    "trap": true,
+    "kind": "absent"
+  },
+  {
+    "lib": "numpy",
+    "q": "In numpy 1.26, with a function: Load ASCII data from a file and return it in a record array",
+    "user_version": "1.26",
+    "target": "np.recfromtxt",
+    "trap": false,
+    "kind": "present"
+  },
+  {
+    "lib": "numpy",
+    "q": "In numpy 2.1, with a function: Compute the variance along the specified axis, while ignoring NaNs",
+    "user_version": "2.1",
+    "target": "np.nanvar",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "lib": "numpy",
+    "q": "In numpy 2.1, with a function: standard_cauchy(size=None)",
+    "user_version": "2.1",
+    "target": "np.random.standard_cauchy",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "lib": "numpy",
+    "q": "In numpy 2.1, with a function: Compute the (Moore-Penrose) pseudo-inverse of a matrix",
+    "user_version": "2.1",
+    "target": "np.linalg.pinv",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "lib": "numpy",
+    "q": "In numpy 1.26, with a function: lognormal(mean=0.0, sigma=1.0, size=None)",
+    "user_version": "1.26",
+    "target": "np.random.lognormal",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "lib": "numpy",
+    "q": "In numpy 1.26, with a function: exponential(scale=1.0, size=None)",
+    "user_version": "1.26",
+    "target": "np.random.exponential",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "lib": "numpy",
+    "q": "In numpy 2.1, with a function: default_rng(seed=None) Construct a new Generator with the default BitGenerator (PCG64)",
+    "user_version": "2.1",
+    "target": "np.random.default_rng",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "lib": "numpy",
+    "q": "In numpy 1.26, with a function: pareto(a, size=None)",
+    "user_version": "1.26",
+    "target": "np.random.pareto",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "lib": "numpy",
+    "q": "In numpy 2.1, with a function: Compute the qth percentile of the data along the specified axis, while ignoring nan values",
+    "user_version": "2.1",
+    "target": "np.nanpercentile",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "lib": "numpy",
+    "q": "In numpy 1.26, with a function: Computes the inverse of rfft2",
+    "user_version": "1.26",
+    "target": "np.fft.irfft2",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "lib": "numpy",
+    "q": "In numpy 2.1, with a function: beta(a, b, size=None)",
+    "user_version": "2.1",
+    "target": "np.random.beta",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "lib": "numpy",
+    "q": "In numpy 2.1, with a function: noncentral_f(dfnum, dfden, nonc, size=None)",
+    "user_version": "2.1",
+    "target": "np.random.noncentral_f",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "lib": "numpy",
+    "q": "In numpy 2.1, with a function: binomial(n, p, size=None)",
+    "user_version": "2.1",
+    "target": "np.random.binomial",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "lib": "numpy",
+    "q": "In numpy 2.1, with a function: Compute the standard deviation along the specified axis",
+    "user_version": "2.1",
+    "target": "np.std",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "lib": "numpy",
+    "q": "In numpy 1.26, with a function: standard_normal(size=None)",
+    "user_version": "1.26",
+    "target": "np.random.standard_normal",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "lib": "numpy",
+    "q": "In numpy 2.1, with a function: Compute the variance along the specified axis",
+    "user_version": "2.1",
+    "target": "np.var",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "lib": "numpy",
+    "q": "In numpy 1.26, with a function: Return a new array of given shape and type, filled with ones",
+    "user_version": "1.26",
+    "target": "np.ones",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "lib": "numpy",
+    "q": "In numpy 1.26, with a function: Returns the indices that would sort an array",
+    "user_version": "1.26",
+    "target": "np.argsort",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "lib": "numpy",
+    "q": "In numpy 2.1, with a function: poisson(lam=1.0, size=None)",
+    "user_version": "2.1",
+    "target": "np.random.poisson",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "lib": "numpy",
+    "q": "In numpy 1.26, with a function: Compute the q-th quantile of the data along the specified axis",
+    "user_version": "1.26",
+    "target": "np.quantile",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "lib": "numpy",
+    "q": "In numpy 2.1, with a function: uniform(low=0.0, high=1.0, size=None)",
+    "user_version": "2.1",
+    "target": "np.random.uniform",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "lib": "numpy",
+    "q": "In numpy 1.26, with a function: Returns the singleton RandomState's bit generator",
+    "user_version": "1.26",
+    "target": "np.random.get_bit_generator",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "lib": "numpy",
+    "q": "In numpy 2.1, with a function: randint(low, high=None, size=None, dtype=int)",
+    "user_version": "2.1",
+    "target": "np.random.randint",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "lib": "numpy",
+    "q": "In numpy 1.26, with a function: Return a new array of given shape and type, filled with fill_value",
+    "user_version": "1.26",
+    "target": "np.full",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "lib": "numpy",
+    "q": "In numpy 1.26, with a function: Gives a new shape to an array without changing its data",
+    "user_version": "1.26",
+    "target": "np.reshape",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "lib": "numpy",
+    "q": "In numpy 2.1, with a function: Compute the inverse FFT of a signal that has Hermitian symmetry",
+    "user_version": "2.1",
+    "target": "np.fft.ihfft",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "lib": "numpy",
+    "q": "In numpy 1.26, with a function: noncentral_chisquare(df, nonc, size=None)",
+    "user_version": "1.26",
+    "target": "np.random.noncentral_chisquare",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "lib": "sklearn",
+    "q": "In scikit-learn 1.3, with a class: Classifier that post-tunes the decision threshold using cross-validation",
+    "user_version": "1.3",
+    "target": null,
+    "trap": true,
+    "kind": "absent"
+  },
+  {
+    "lib": "sklearn",
+    "q": "In scikit-learn 1.5, with a class: Classifier that post-tunes the decision threshold using cross-validation",
+    "user_version": "1.5",
+    "target": "sklearn.model_selection.TunedThresholdClassifierCV",
+    "trap": false,
+    "kind": "present"
+  },
+  {
+    "lib": "sklearn",
+    "q": "In scikit-learn 1.3, with a function: Root mean squared logarithmic error regression loss",
+    "user_version": "1.3",
+    "target": null,
+    "trap": true,
+    "kind": "absent"
+  },
+  {
+    "lib": "sklearn",
+    "q": "In scikit-learn 1.5, with a function: Root mean squared logarithmic error regression loss",
+    "user_version": "1.5",
+    "target": "sklearn.metrics.root_mean_squared_log_error",
+    "trap": false,
+    "kind": "present"
+  },
+  {
+    "lib": "sklearn",
+    "q": "In scikit-learn 1.3, with a function: Root mean squared error regression loss",
+    "user_version": "1.3",
+    "target": null,
+    "trap": true,
+    "kind": "absent"
+  },
+  {
+    "lib": "sklearn",
+    "q": "In scikit-learn 1.5, with a function: Root mean squared error regression loss",
+    "user_version": "1.5",
+    "target": "sklearn.metrics.root_mean_squared_error",
+    "trap": false,
+    "kind": "present"
+  },
+  {
+    "lib": "sklearn",
+    "q": "In scikit-learn 1.3, with a class: Binary classifier that manually sets the decision threshold",
+    "user_version": "1.3",
+    "target": null,
+    "trap": true,
+    "kind": "absent"
+  },
+  {
+    "lib": "sklearn",
+    "q": "In scikit-learn 1.5, with a class: Binary classifier that manually sets the decision threshold",
+    "user_version": "1.5",
+    "target": "sklearn.model_selection.FixedThresholdClassifier",
+    "trap": false,
+    "kind": "present"
+  },
+  {
+    "lib": "sklearn",
+    "q": "In scikit-learn 1.3, with a function: :math:D^2 score function, fraction of log loss explained",
+    "user_version": "1.3",
+    "target": null,
+    "trap": true,
+    "kind": "absent"
+  },
+  {
+    "lib": "sklearn",
+    "q": "In scikit-learn 1.5, with a function: :math:D^2 score function, fraction of log loss explained",
+    "user_version": "1.5",
+    "target": "sklearn.metrics.d2_log_loss_score",
+    "trap": false,
+    "kind": "present"
+  },
+  {
+    "lib": "sklearn",
+    "q": "In scikit-learn 1.3, with a class: Bayesian ARD regression",
+    "user_version": "1.3",
+    "target": "sklearn.linear_model.ARDRegression",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "lib": "sklearn",
+    "q": "In scikit-learn 1.5, with a class: Orthogonal Matching Pursuit model (OMP)",
+    "user_version": "1.5",
+    "target": "sklearn.linear_model.OrthogonalMatchingPursuit",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "lib": "sklearn",
+    "q": "In scikit-learn 1.5, with a function: Compute Least Angle Regression or Lasso path using the LARS algorithm",
+    "user_version": "1.5",
+    "target": "sklearn.linear_model.lars_path",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "lib": "sklearn",
+    "q": "In scikit-learn 1.5, with a function: Evaluate a score by cross-validation",
+    "user_version": "1.5",
+    "target": "sklearn.model_selection.cross_val_score",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "lib": "sklearn",
+    "q": "In scikit-learn 1.5, with a class: Cross-validated Orthogonal Matching Pursuit model (OMP)",
+    "user_version": "1.5",
+    "target": "sklearn.linear_model.OrthogonalMatchingPursuitCV",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "lib": "sklearn",
+    "q": "In scikit-learn 1.5, with a class: A Bagging classifier",
+    "user_version": "1.5",
+    "target": "sklearn.ensemble.BaggingClassifier",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "lib": "sklearn",
+    "q": "In scikit-learn 1.3, with a function: Generate cross-validated estimates for each input data point",
+    "user_version": "1.3",
+    "target": "sklearn.model_selection.cross_val_predict",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "lib": "sklearn",
+    "q": "In scikit-learn 1.5, with a class: A decision tree classifier",
+    "user_version": "1.5",
+    "target": "sklearn.tree.DecisionTreeClassifier",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "lib": "sklearn",
+    "q": "In scikit-learn 1.5, with a class: Linear Support Vector Regression",
+    "user_version": "1.5",
+    "target": "sklearn.svm.LinearSVR",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "lib": "sklearn",
+    "q": "In scikit-learn 1.5, with a class: An extremely randomized tree regressor",
+    "user_version": "1.5",
+    "target": "sklearn.tree.ExtraTreeRegressor",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "lib": "sklearn",
+    "q": "In scikit-learn 1.5, with a class: Mini-batch Sparse Principal Components Analysis",
+    "user_version": "1.5",
+    "target": "sklearn.decomposition.MiniBatchSparsePCA",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "lib": "sklearn",
+    "q": "In scikit-learn 1.5, with a class: Concatenates results of multiple transformer objects",
+    "user_version": "1.5",
+    "target": "sklearn.pipeline.FeatureUnion",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "lib": "sklearn",
+    "q": "In scikit-learn 1.3, with a class: Mini-batch dictionary learning",
+    "user_version": "1.3",
+    "target": "sklearn.decomposition.MiniBatchDictionaryLearning",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "lib": "sklearn",
+    "q": "In scikit-learn 1.5, with a class: Lasso model fit with Least Angle Regression a.k.a",
+    "user_version": "1.5",
+    "target": "sklearn.linear_model.LassoLars",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "lib": "sklearn",
+    "q": "In scikit-learn 1.3, with a class: Non-Negative Matrix Factorization (NMF)",
+    "user_version": "1.3",
+    "target": "sklearn.decomposition.NMF",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "lib": "sklearn",
+    "q": "In scikit-learn 1.3, with a class: Least Angle Regression model a.k.a",
+    "user_version": "1.3",
+    "target": "sklearn.linear_model.Lars",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "lib": "sklearn",
+    "q": "In scikit-learn 1.3, with a class: Base class for all ensemble classes",
+    "user_version": "1.3",
+    "target": "sklearn.ensemble.BaseEnsemble",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "lib": "sklearn",
+    "q": "In scikit-learn 1.3, with a class: Bin continuous data into intervals",
+    "user_version": "1.3",
+    "target": "sklearn.preprocessing.KBinsDiscretizer",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "lib": "sklearn",
+    "q": "In scikit-learn 1.5, with a function: Evaluate metric(s) by cross-validation and also record fit/score times",
+    "user_version": "1.5",
+    "target": "sklearn.model_selection.cross_validate",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "lib": "sklearn",
+    "q": "In scikit-learn 1.3, with a class: Ridge classifier with built-in cross-validation",
+    "user_version": "1.3",
+    "target": "sklearn.linear_model.RidgeClassifierCV",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "lib": "sklearn",
+    "q": "In scikit-learn 1.5, with a function: Log loss, aka logistic loss or cross-entropy loss",
+    "user_version": "1.5",
+    "target": "sklearn.metrics.log_loss",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "lib": "sklearn",
+    "q": "In scikit-learn 1.3, with a class: Base class for decision trees",
+    "user_version": "1.3",
+    "target": "sklearn.tree.BaseDecisionTree",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "lib": "sklearn",
+    "q": "In scikit-learn 1.3, with a class: Ridge regression with built-in cross-validation",
+    "user_version": "1.3",
+    "target": "sklearn.linear_model.RidgeCV",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "lib": "sklearn",
+    "q": "In scikit-learn 1.5, with a class: Histogram-based Gradient Boosting Regression Tree",
+    "user_version": "1.5",
+    "target": "sklearn.ensemble.HistGradientBoostingRegressor",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "lib": "sklearn",
+    "q": "In scikit-learn 1.3, with a function: Determine scorer from user options",
+    "user_version": "1.3",
+    "target": "sklearn.metrics.check_scoring",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "lib": "sklearn",
+    "q": "In scikit-learn 1.5, with a class: Logistic Regression (aka logit, MaxEnt) classifier",
+    "user_version": "1.5",
+    "target": "sklearn.linear_model.LogisticRegression",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "lib": "sklearn",
+    "q": "In scikit-learn 1.5, with a class: Lasso model fit with Lars using BIC or AIC for model selection",
+    "user_version": "1.5",
+    "target": "sklearn.linear_model.LassoLarsIC",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "lib": "sklearn",
+    "q": "In scikit-learn 1.5, with a class: Select features according to a percentile of the highest scores",
+    "user_version": "1.5",
+    "target": "sklearn.feature_selection.SelectPercentile",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "lib": "sklearn",
+    "q": "In scikit-learn 1.3, with a class: Agglomerative Clustering",
+    "user_version": "1.3",
+    "target": "sklearn.cluster.AgglomerativeClustering",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "lib": "sklearn",
+    "q": "In scikit-learn 1.5, with a class: Filter: Select the p-values for an estimated false discovery rate",
+    "user_version": "1.5",
+    "target": "sklearn.feature_selection.SelectFdr",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "lib": "sklearn",
+    "q": "In scikit-learn 1.5, with a function: Solve a dictionary learning matrix factorization problem online",
+    "user_version": "1.5",
+    "target": "sklearn.decomposition.dict_learning_online",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "lib": "sklearn",
+    "q": "In scikit-learn 1.5, with a function: Make a scorer from a performance metric or loss function",
+    "user_version": "1.5",
+    "target": "sklearn.metrics.make_scorer",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "lib": "sklearn",
+    "q": "In scikit-learn 1.3, with a class: Histogram-based Gradient Boosting Classification Tree",
+    "user_version": "1.3",
+    "target": "sklearn.ensemble.HistGradientBoostingClassifier",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "lib": "sklearn",
+    "q": "In scikit-learn 1.3, with a class: Bayesian ridge regression",
+    "user_version": "1.3",
+    "target": "sklearn.linear_model.BayesianRidge",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "lib": "sklearn",
+    "q": "In scikit-learn 1.3, with a class: An extra-trees classifier",
+    "user_version": "1.3",
+    "target": "sklearn.ensemble.ExtraTreesClassifier",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "lib": "sklearn",
+    "q": "In scikit-learn 1.5, with a function: Mean squared logarithmic error regression loss",
+    "user_version": "1.5",
+    "target": "sklearn.metrics.mean_squared_log_error",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "lib": "sklearn",
+    "q": "In scikit-learn 1.3, with a class: Cross-validated Least Angle Regression model",
+    "user_version": "1.3",
+    "target": "sklearn.linear_model.LarsCV",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "lib": "sklearn",
+    "q": "In scikit-learn 1.3, with a function: Mean squared error regression loss",
+    "user_version": "1.3",
+    "target": "sklearn.metrics.mean_squared_error",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "lib": "sklearn",
+    "q": "In scikit-learn 1.5, with a class: Select features according to the k highest scores",
+    "user_version": "1.5",
+    "target": "sklearn.feature_selection.SelectKBest",
+    "trap": false,
+    "kind": "changed"
+  },
+  {
+    "lib": "sklearn",
+    "q": "In scikit-learn 1.5, with a class: Linear regression model that predicts conditional quantiles",
+    "user_version": "1.5",
+    "target": "sklearn.linear_model.QuantileRegressor",
+    "trap": false,
+    "kind": "changed"
+  }
+]

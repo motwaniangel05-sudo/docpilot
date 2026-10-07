@@ -1,22 +1,32 @@
 # Evaluation results
 
-Benchmark: 90 auto-generated questions from symbol differences between pandas 1.5.3 and 2.2.3
-(removed=12, added=2, changed signatures=62).
-Trap questions (stale-answer test): 14. Recall questions: 76. Version detection accuracy: 100.0%.
+Benchmark: 150 auto-generated questions across pandas (1.5, 2.0, 2.2), NumPy (1.26, 2.1) and scikit-learn (1.3, 1.5),
+50 per library. Trap questions (symbol absent in the user's version): 29. Recall questions: 121.
+Library and version detection accuracy: 100.0%. Index: 3017 chunks.
 
 | Config | Stale@1 (trap) | Stale@5 (trap) | Wrong-version@1 | Recall@5 | p50 ms | p95 ms |
 |---|---|---|---|---|---|---|
-| No filter, no reranker | 57.1% | 100.0% | 38.9% | 96.1% | 260 | 288 |
-| Version filter, no reranker | 0.0% | 0.0% | 0.0% | 97.4% | 266 | 296 |
-| No filter + reranker | 71.4% | 100.0% | 51.1% | 94.7% | 6526 | 7257 |
-| Version filter + reranker (full system) | 0.0% | 0.0% | 0.0% | 97.4% | 6814 | 7614 |
+| No version filter, no reranker | 69.0% | 100.0% | 48.0% | 96.7% | 253 | 296 |
+| Version filter, no reranker | 0.0% | 0.0% | 0.0% | 98.3% | 268 | 307 |
+| No version filter + reranker | 79.3% | 96.6% | 53.3% | 95.9% | 7483 | 9043 |
+| Version filter + reranker (full system) | 0.0% | 0.0% | 0.0% | 100.0% | 8048 | 11823 |
+
+Full system, per library:
+
+| Library | Questions | Trap | Stale@1 | Stale@5 | Recall@5 |
+|---|---|---|---|---|---|
+| pandas | 50 | 12 | 0.0% | 0.0% | 100.0% |
+| numpy | 50 | 12 | 0.0% | 0.0% | 100.0% |
+| sklearn | 50 | 5 | 0.0% | 0.0% | 100.0% |
 
 Definitions:
-- Stale@1 / Stale@5: share of trap questions where the top-1 / any of the top-5 results is a symbol that does not exist in the user's pandas version (for example DataFrame.append for a pandas 2.2 user).
-- Wrong-version@1: share of all questions whose top-1 chunk belongs to the other pandas version.
+- Stale@1 / Stale@5: share of trap questions where the top-1 / any of the top-5 results is a symbol that does not exist in the user's library version.
+- Wrong-version@1: share of all questions whose top-1 chunk belongs to another version of the library.
 - Recall@5: share of recall questions where the correct symbol, in the user's version, is in the top 5.
-- Latency: search only, per query, on a MacBook (M1) CPU, after 3 warm-up queries.
+- All configs filter by library (detected from the question); "version filter" adds the detected version.
+- Latency: search only, per query, MacBook M1 CPU, after 3 warm-up queries.
 - Caveat: questions are built from docstring summaries, so they leak some wording of the target symbol.
+- The 80 hand-labeled samples (below) were drawn from the earlier pandas-only benchmark, not this one.
 
 ## Benchmark validation (hand-labeled)
 
