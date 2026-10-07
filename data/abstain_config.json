@@ -1,0 +1,9 @@
+{
+  "threshold": 0.394,
+  "coverage": 0.8273,
+  "risk": 0.1868,
+  "recall_answered": 1.0,
+  "oos_abstained": 0.95,
+  "trap_abstained": 0.0,
+  "risk_no_abstention": 0.3273
+}

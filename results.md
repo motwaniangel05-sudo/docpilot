@@ -32,3 +32,23 @@ Definitions:
 - Latency p50 / p95 (cache miss, full pipeline): 6052 / 6737 ms
 - Latency p50 / p95 (cache hit): 0 / 0 ms
 - Cost per query: $0.00 (total $0.00). It is zero because all models run locally on CPU, there are no paid API calls, and hosting is on a free tier.
+
+## Abstention (confidence threshold)
+
+Confidence = top reranker score (bge-reranker-base) after version-filtered hybrid retrieval. If it is below **0.394**, the app answers "Cannot confirm for your version." The threshold was chosen from the risk-coverage curve (`data/risk_coverage.png`) by a rule fixed in advance: the lowest threshold that lets at most 1 of 20 off-topic questions through.
+
+Eval set (110 questions): 76 answerable, 14 trap (symbol removed or not yet added in the user's version), 20 off-topic.
+
+| Metric | Value |
+|---|---|
+| Threshold | 0.394 |
+| Coverage (share answered) | 82.7% |
+| Risk (answered but wrong or unanswerable) at threshold | 18.7% |
+| Risk with no abstention | 32.7% |
+| Answerable questions still answered | 100.0% |
+| Off-topic questions correctly abstained | 95.0% |
+| Trap questions abstained | 0.0% |
+
+Limitations: the reranker score separates off-topic questions cleanly but not trap questions. With the version filter on, a removed symbol (for example `Series.is_monotonic`) is replaced by a close neighbor (`Series.is_monotonic_increasing`) that scores high, so traps are not caught by abstention. They are handled by the version filter (stale@1 0.0%) and the REMOVED/CHANGED notes. The threshold was tuned on the same 110 questions, with no held-out set.
+
+![risk-coverage](data/risk_coverage.png)

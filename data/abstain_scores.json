@@ -1,0 +1,1102 @@
+[
+  {
+    "q": "In pandas 2.2, with a Series: Return boolean if values in the object are monotonically increasing",
+    "user_version": "2.2",
+    "target": null,
+    "group": "trap",
+    "dense_top": 0.9234234943557065,
+    "rr_top": 0.9947745203971863,
+    "top1": "Series.is_monotonic_increasing v2.2",
+    "hit": null
+  },
+  {
+    "q": "In pandas 1.5, with a Series: Return boolean if values in the object are monotonically increasing",
+    "user_version": "1.5",
+    "target": "Series.is_monotonic",
+    "group": "recall",
+    "dense_top": 0.92828634870524,
+    "rr_top": 0.9925827980041504,
+    "top1": "Series.is_monotonic v1.5",
+    "hit": true
+  },
+  {
+    "q": "In pandas 2.2, with a DataFrame: Shift the time index, using the index's frequency if available",
+    "user_version": "2.2",
+    "target": null,
+    "group": "trap",
+    "dense_top": 0.8206934753205607,
+    "rr_top": 0.9879171252250671,
+    "top1": "DataFrame.shift v2.2",
+    "hit": null
+  },
+  {
+    "q": "In pandas 1.5, with a DataFrame: Shift the time index, using the index's frequency if available",
+    "user_version": "1.5",
+    "target": "DataFrame.tshift",
+    "group": "recall",
+    "dense_top": 0.8328930673513391,
+    "rr_top": 0.9994004964828491,
+    "top1": "DataFrame.tshift v1.5",
+    "hit": true
+  },
+  {
+    "q": "In pandas 2.2, with a DataFrame: Label-based \"fancy indexing\" function for DataFrame",
+    "user_version": "2.2",
+    "target": null,
+    "group": "trap",
+    "dense_top": 0.7575430951470946,
+    "rr_top": 0.9543542861938477,
+    "top1": "DataFrame.items v2.2",
+    "hit": null
+  },
+  {
+    "q": "In pandas 1.5, with a DataFrame: Label-based \"fancy indexing\" function for DataFrame",
+    "user_version": "1.5",
+    "target": "DataFrame.lookup",
+    "group": "recall",
+    "dense_top": 0.8308076441917716,
+    "rr_top": 0.9989431500434875,
+    "top1": "DataFrame.lookup v1.5",
+    "hit": true
+  },
+  {
+    "q": "In pandas 2.2, with a Series: Lazily iterate over (index, value) tuples",
+    "user_version": "2.2",
+    "target": null,
+    "group": "trap",
+    "dense_top": 0.8897982564113924,
+    "rr_top": 0.99222332239151,
+    "top1": "Series.items v2.2",
+    "hit": null
+  },
+  {
+    "q": "In pandas 1.5, with a Series: Lazily iterate over (index, value) tuples",
+    "user_version": "1.5",
+    "target": "Series.iteritems",
+    "group": "recall",
+    "dense_top": 0.8898395420703873,
+    "rr_top": 0.9893143177032471,
+    "top1": "Series.items v1.5",
+    "hit": true
+  },
+  {
+    "q": "In pandas 2.2, with a Series: Return the mean absolute deviation of the values over the requested axis",
+    "user_version": "2.2",
+    "target": null,
+    "group": "trap",
+    "dense_top": 0.8127802353140056,
+    "rr_top": 0.9833120107650757,
+    "top1": "Series.mean v2.2",
+    "hit": null
+  },
+  {
+    "q": "In pandas 1.5, with a Series: Return the mean absolute deviation of the values over the requested axis",
+    "user_version": "1.5",
+    "target": "Series.mad",
+    "group": "recall",
+    "dense_top": 0.8436783630239792,
+    "rr_top": 0.9990399479866028,
+    "top1": "Series.mad v1.5",
+    "hit": true
+  },
+  {
+    "q": "In pandas 2.2, with a Series: Concatenate two or more Series",
+    "user_version": "2.2",
+    "target": null,
+    "group": "trap",
+    "dense_top": 0.7736258801495098,
+    "rr_top": 0.5892122983932495,
+    "top1": "Series.combine v2.2",
+    "hit": null
+  },
+  {
+    "q": "In pandas 1.5, with a Series: Concatenate two or more Series",
+    "user_version": "1.5",
+    "target": "Series.append",
+    "group": "recall",
+    "dense_top": 0.8025464932991137,
+    "rr_top": 0.978082537651062,
+    "top1": "Series.append v1.5",
+    "hit": true
+  },
+  {
+    "q": "In pandas 2.2, with a Series: Shift the time index, using the index's frequency if available",
+    "user_version": "2.2",
+    "target": null,
+    "group": "trap",
+    "dense_top": 0.8331340474141784,
+    "rr_top": 0.92460036277771,
+    "top1": "Series.shift v2.2",
+    "hit": null
+  },
+  {
+    "q": "In pandas 1.5, with a Series: Shift the time index, using the index's frequency if available",
+    "user_version": "1.5",
+    "target": "Series.tshift",
+    "group": "recall",
+    "dense_top": 0.8335727070298844,
+    "rr_top": 0.9990953207015991,
+    "top1": "Series.tshift v1.5",
+    "hit": true
+  },
+  {
+    "q": "In pandas 2.2, with a DataFrame: Return the mean absolute deviation of the values over the requested axis",
+    "user_version": "2.2",
+    "target": null,
+    "group": "trap",
+    "dense_top": 0.8080311158251544,
+    "rr_top": 0.9794162511825562,
+    "top1": "DataFrame.std v2.2",
+    "hit": null
+  },
+  {
+    "q": "In pandas 1.5, with a DataFrame: Return the mean absolute deviation of the values over the requested axis",
+    "user_version": "1.5",
+    "target": "DataFrame.mad",
+    "group": "recall",
+    "dense_top": 0.8490508869247986,
+    "rr_top": 0.9993384480476379,
+    "top1": "DataFrame.mad v1.5",
+    "hit": true
+  },
+  {
+    "q": "In pandas 2.2, with a DataFrame: Equivalent to shift without copying data",
+    "user_version": "2.2",
+    "target": null,
+    "group": "trap",
+    "dense_top": 0.8201483277752856,
+    "rr_top": 0.6829786896705627,
+    "top1": "DataFrame.shift v2.2",
+    "hit": null
+  },
+  {
+    "q": "In pandas 1.5, with a DataFrame: Equivalent to shift without copying data",
+    "user_version": "1.5",
+    "target": "DataFrame.slice_shift",
+    "group": "recall",
+    "dense_top": 0.8310708617407387,
+    "rr_top": 0.9971518516540527,
+    "top1": "DataFrame.slice_shift v1.5",
+    "hit": true
+  },
+  {
+    "q": "In pandas 2.2, with a DataFrame: Append rows of other to the end of caller, returning a new object",
+    "user_version": "2.2",
+    "target": null,
+    "group": "trap",
+    "dense_top": 0.7528172234496161,
+    "rr_top": 0.9825436472892761,
+    "top1": "DataFrame.set_flags v2.2",
+    "hit": null
+  },
+  {
+    "q": "In pandas 1.5, with a DataFrame: Append rows of other to the end of caller, returning a new object",
+    "user_version": "1.5",
+    "target": "DataFrame.append",
+    "group": "recall",
+    "dense_top": 0.8235087980764675,
+    "rr_top": 0.9994401335716248,
+    "top1": "DataFrame.append v1.5",
+    "hit": true
+  },
+  {
+    "q": "In pandas 2.2, with a DataFrame: Iterate over (column name, Series) pairs",
+    "user_version": "2.2",
+    "target": null,
+    "group": "trap",
+    "dense_top": 0.8591333279533223,
+    "rr_top": 0.9975600242614746,
+    "top1": "DataFrame.items v2.2",
+    "hit": null
+  },
+  {
+    "q": "In pandas 1.5, with a DataFrame: Iterate over (column name, Series) pairs",
+    "user_version": "1.5",
+    "target": "DataFrame.iteritems",
+    "group": "recall",
+    "dense_top": 0.8593530412623857,
+    "rr_top": 0.9968979358673096,
+    "top1": "DataFrame.items v1.5",
+    "hit": true
+  },
+  {
+    "q": "In pandas 2.2, with a Series: Equivalent to shift without copying data",
+    "user_version": "2.2",
+    "target": null,
+    "group": "trap",
+    "dense_top": 0.8067165801667018,
+    "rr_top": 0.5592638850212097,
+    "top1": "Series.copy v2.2",
+    "hit": null
+  },
+  {
+    "q": "In pandas 1.5, with a Series: Equivalent to shift without copying data",
+    "user_version": "1.5",
+    "target": "Series.slice_shift",
+    "group": "recall",
+    "dense_top": 0.8260322414045238,
+    "rr_top": 0.994288444519043,
+    "top1": "Series.slice_shift v1.5",
+    "hit": true
+  },
+  {
+    "q": "In pandas 1.5, with a Series: Replace values where the conditions are True",
+    "user_version": "1.5",
+    "target": null,
+    "group": "trap",
+    "dense_top": 0.8507475510517222,
+    "rr_top": 0.9920517206192017,
+    "top1": "Series.mask v1.5",
+    "hit": null
+  },
+  {
+    "q": "In pandas 2.2, with a Series: Replace values where the conditions are True",
+    "user_version": "2.2",
+    "target": "Series.case_when",
+    "group": "recall",
+    "dense_top": 0.8416818322518036,
+    "rr_top": 0.9959231615066528,
+    "top1": "Series.case_when v2.2",
+    "hit": true
+  },
+  {
+    "q": "In pandas 1.5, with a DataFrame: Apply a function to a Dataframe elementwise",
+    "user_version": "1.5",
+    "target": null,
+    "group": "trap",
+    "dense_top": 0.8454217081870345,
+    "rr_top": 0.9992757439613342,
+    "top1": "DataFrame.applymap v1.5",
+    "hit": null
+  },
+  {
+    "q": "In pandas 2.2, with a DataFrame: Apply a function to a Dataframe elementwise",
+    "user_version": "2.2",
+    "target": "DataFrame.map",
+    "group": "recall",
+    "dense_top": 0.8400678780776775,
+    "rr_top": 0.9991764426231384,
+    "top1": "DataFrame.applymap v2.2",
+    "hit": true
+  },
+  {
+    "q": "In pandas 1.5, with a DataFrame: Count non-NA cells for each column or row",
+    "user_version": "1.5",
+    "target": "DataFrame.count",
+    "group": "recall",
+    "dense_top": 0.8843140775749347,
+    "rr_top": 0.9995312690734863,
+    "top1": "DataFrame.count v1.5",
+    "hit": true
+  },
+  {
+    "q": "In pandas 2.2, with a top-level function: Reshape wide-format data to long",
+    "user_version": "2.2",
+    "target": "pd.lreshape",
+    "group": "recall",
+    "dense_top": 0.7808661874997785,
+    "rr_top": 0.9697008728981018,
+    "top1": "pd.lreshape v2.2",
+    "hit": true
+  },
+  {
+    "q": "In pandas 1.5, with a top-level function: Load an SPSS file from the file path, returning a DataFrame",
+    "user_version": "1.5",
+    "target": "pd.read_spss",
+    "group": "recall",
+    "dense_top": 0.8412421197637143,
+    "rr_top": 0.9996453523635864,
+    "top1": "pd.read_spss v1.5",
+    "hit": true
+  },
+  {
+    "q": "In pandas 2.2, with a Series: Shift index by desired number of periods with an optional time freq",
+    "user_version": "2.2",
+    "target": "Series.shift",
+    "group": "recall",
+    "dense_top": 0.8794206526073468,
+    "rr_top": 0.9990721940994263,
+    "top1": "Series.shift v2.2",
+    "hit": true
+  },
+  {
+    "q": "In pandas 1.5, with a Series: Select values between particular times of the day (e.g., 9:00-9:30 AM)",
+    "user_version": "1.5",
+    "target": "Series.between_time",
+    "group": "recall",
+    "dense_top": 0.8452043897089987,
+    "rr_top": 0.9997084736824036,
+    "top1": "Series.between_time v1.5",
+    "hit": true
+  },
+  {
+    "q": "In pandas 2.2, with a DataFrame: Print a concise summary of a DataFrame",
+    "user_version": "2.2",
+    "target": "DataFrame.info",
+    "group": "recall",
+    "dense_top": 0.7655322971743499,
+    "rr_top": 0.9981762170791626,
+    "top1": "DataFrame.info v2.2",
+    "hit": true
+  },
+  {
+    "q": "In pandas 1.5, with a Series: Return unbiased kurtosis over requested axis",
+    "user_version": "1.5",
+    "target": "Series.kurt",
+    "group": "recall",
+    "dense_top": 0.8538779983779263,
+    "rr_top": 0.985741376876831,
+    "top1": "Series.kurtosis v1.5",
+    "hit": true
+  },
+  {
+    "q": "In pandas 2.2, with a top-level function: Read SQL query or database table into a DataFrame",
+    "user_version": "2.2",
+    "target": "pd.read_sql",
+    "group": "recall",
+    "dense_top": 0.8420008656598909,
+    "rr_top": 0.9839453101158142,
+    "top1": "pd.read_sql_table v2.2",
+    "hit": true
+  },
+  {
+    "q": "In pandas 1.5, with a top-level function: Read SQL query into a DataFrame",
+    "user_version": "1.5",
+    "target": "pd.read_sql_query",
+    "group": "recall",
+    "dense_top": 0.8408795446181969,
+    "rr_top": 0.958524227142334,
+    "top1": "pd.read_sql v1.5",
+    "hit": true
+  },
+  {
+    "q": "In pandas 2.2, with a Series: Convert the object to a JSON string",
+    "user_version": "2.2",
+    "target": "Series.to_json",
+    "group": "recall",
+    "dense_top": 0.8494524561509079,
+    "rr_top": 0.9947138428688049,
+    "top1": "Series.to_json v2.2",
+    "hit": true
+  },
+  {
+    "q": "In pandas 1.5, with a Series: Invoke function on values of Series",
+    "user_version": "1.5",
+    "target": "Series.apply",
+    "group": "recall",
+    "dense_top": 0.770486926064549,
+    "rr_top": 0.9589072465896606,
+    "top1": "Series.apply v1.5",
+    "hit": true
+  },
+  {
+    "q": "In pandas 2.2, with a DataFrame: Return the mean of the values over the requested axis",
+    "user_version": "2.2",
+    "target": "DataFrame.mean",
+    "group": "recall",
+    "dense_top": 0.8342101743718855,
+    "rr_top": 0.9993937015533447,
+    "top1": "Series.mean v2.2",
+    "hit": true
+  },
+  {
+    "q": "In pandas 1.5, with a DataFrame: Shift index by desired number of periods with an optional time freq",
+    "user_version": "1.5",
+    "target": "DataFrame.shift",
+    "group": "recall",
+    "dense_top": 0.8934268428697079,
+    "rr_top": 0.9993409514427185,
+    "top1": "DataFrame.shift v1.5",
+    "hit": true
+  },
+  {
+    "q": "In pandas 2.2, with a Series: Replace values where the condition is False",
+    "user_version": "2.2",
+    "target": "Series.where",
+    "group": "recall",
+    "dense_top": 0.8474915116434037,
+    "rr_top": 0.9970697164535522,
+    "top1": "Series.where v2.2",
+    "hit": true
+  },
+  {
+    "q": "In pandas 1.5, with a DataFrame: Stack the prescribed level(s) from columns to index",
+    "user_version": "1.5",
+    "target": "DataFrame.stack",
+    "group": "recall",
+    "dense_top": 0.8950896486212401,
+    "rr_top": 0.9984873533248901,
+    "top1": "DataFrame.stack v1.5",
+    "hit": true
+  },
+  {
+    "q": "In pandas 2.2, with a Series: Fill NA/NaN values by using the next valid observation to fill the gap",
+    "user_version": "2.2",
+    "target": "Series.bfill",
+    "group": "recall",
+    "dense_top": 0.8625360822247499,
+    "rr_top": 0.9994039535522461,
+    "top1": "Series.backfill v2.2",
+    "hit": true
+  },
+  {
+    "q": "In pandas 1.5, with a Series: Return unbiased kurtosis over requested axis",
+    "user_version": "1.5",
+    "target": "Series.kurtosis",
+    "group": "recall",
+    "dense_top": 0.8538779983779263,
+    "rr_top": 0.985741376876831,
+    "top1": "Series.kurtosis v1.5",
+    "hit": true
+  },
+  {
+    "q": "In pandas 2.2, with a DataFrame: Return unbiased skew over requested axis",
+    "user_version": "2.2",
+    "target": "DataFrame.skew",
+    "group": "recall",
+    "dense_top": 0.8407288652990711,
+    "rr_top": 0.9977484345436096,
+    "top1": "Series.skew v2.2",
+    "hit": true
+  },
+  {
+    "q": "In pandas 1.5, with a top-level function: Load a feather-format object from the file path",
+    "user_version": "1.5",
+    "target": "pd.read_feather",
+    "group": "recall",
+    "dense_top": 0.8524448529801945,
+    "rr_top": 0.9905080795288086,
+    "top1": "pd.read_feather v1.5",
+    "hit": true
+  },
+  {
+    "q": "In pandas 2.2, with a DataFrame: Return unbiased kurtosis over requested axis",
+    "user_version": "2.2",
+    "target": "DataFrame.kurtosis",
+    "group": "recall",
+    "dense_top": 0.8795847150351703,
+    "rr_top": 0.9953466057777405,
+    "top1": "Series.kurtosis v2.2",
+    "hit": true
+  },
+  {
+    "q": "In pandas 1.5, with a Series: Return unbiased standard error of the mean over requested axis",
+    "user_version": "1.5",
+    "target": "Series.sem",
+    "group": "recall",
+    "dense_top": 0.8173883787657488,
+    "rr_top": 0.9990503191947937,
+    "top1": "Series.sem v1.5",
+    "hit": true
+  },
+  {
+    "q": "In pandas 2.2, with a DataFrame: Return whether all elements are True, potentially over an axis",
+    "user_version": "2.2",
+    "target": "DataFrame.all",
+    "group": "recall",
+    "dense_top": 0.857392769378798,
+    "rr_top": 0.9997419714927673,
+    "top1": "Series.all v2.2",
+    "hit": true
+  },
+  {
+    "q": "In pandas 1.5, with a Series: Return the mean of the values over the requested axis",
+    "user_version": "1.5",
+    "target": "Series.mean",
+    "group": "recall",
+    "dense_top": 0.8470829029314756,
+    "rr_top": 0.9990262985229492,
+    "top1": "Series.mean v1.5",
+    "hit": true
+  },
+  {
+    "q": "In pandas 2.2, with a Series: Return the elements in the given *positional* indices along an axis",
+    "user_version": "2.2",
+    "target": "Series.take",
+    "group": "recall",
+    "dense_top": 0.8382314807139929,
+    "rr_top": 0.9996306896209717,
+    "top1": "Series.take v2.2",
+    "hit": true
+  },
+  {
+    "q": "In pandas 1.5, with a DataFrame: Convert the DataFrame to a dictionary",
+    "user_version": "1.5",
+    "target": "DataFrame.to_dict",
+    "group": "recall",
+    "dense_top": 0.7946525500954167,
+    "rr_top": 0.9950941801071167,
+    "top1": "DataFrame.from_dict v1.5",
+    "hit": true
+  },
+  {
+    "q": "In pandas 2.2, with a Series: Return unbiased variance over requested axis",
+    "user_version": "2.2",
+    "target": "Series.var",
+    "group": "recall",
+    "dense_top": 0.7921559846088898,
+    "rr_top": 0.9974870681762695,
+    "top1": "Series.var v2.2",
+    "hit": true
+  },
+  {
+    "q": "In pandas 1.5, with a DataFrame: Trim values at input threshold(s)",
+    "user_version": "1.5",
+    "target": "DataFrame.clip",
+    "group": "recall",
+    "dense_top": 0.8520955421243084,
+    "rr_top": 0.9612017869949341,
+    "top1": "DataFrame.clip v1.5",
+    "hit": true
+  },
+  {
+    "q": "In pandas 2.2, with a DataFrame: Suffix labels with string suffix",
+    "user_version": "2.2",
+    "target": "DataFrame.add_suffix",
+    "group": "recall",
+    "dense_top": 0.8799697628726966,
+    "rr_top": 0.9772213697433472,
+    "top1": "DataFrame.add_suffix v2.2",
+    "hit": true
+  },
+  {
+    "q": "In pandas 1.5, with a top-level function: Return a fixed frequency DatetimeIndex with business day as the default",
+    "user_version": "1.5",
+    "target": "pd.bdate_range",
+    "group": "recall",
+    "dense_top": 0.849063464043845,
+    "rr_top": 0.997323751449585,
+    "top1": "pd.bdate_range v1.5",
+    "hit": true
+  },
+  {
+    "q": "In pandas 2.2, with a Series: Return the sum of the values over the requested axis",
+    "user_version": "2.2",
+    "target": "Series.sum",
+    "group": "recall",
+    "dense_top": 0.8310646286880286,
+    "rr_top": 0.9990677237510681,
+    "top1": "Series.sum v2.2",
+    "hit": true
+  },
+  {
+    "q": "In pandas 1.5, with a DataFrame: Set the name of the axis for the index or columns",
+    "user_version": "1.5",
+    "target": "DataFrame.rename_axis",
+    "group": "recall",
+    "dense_top": 0.861793063956546,
+    "rr_top": 0.9968390464782715,
+    "top1": "DataFrame.rename_axis v1.5",
+    "hit": true
+  },
+  {
+    "q": "In pandas 2.2, with a top-level function: Load a parquet object from the file path, returning a DataFrame",
+    "user_version": "2.2",
+    "target": "pd.read_parquet",
+    "group": "recall",
+    "dense_top": 0.8244287246542132,
+    "rr_top": 0.9994794726371765,
+    "top1": "pd.read_parquet v2.2",
+    "hit": true
+  },
+  {
+    "q": "In pandas 1.5, with a Series: Group Series using a mapper or by a Series of columns",
+    "user_version": "1.5",
+    "target": "Series.groupby",
+    "group": "recall",
+    "dense_top": 0.808187718454105,
+    "rr_top": 0.9899688363075256,
+    "top1": "Series.groupby v1.5",
+    "hit": true
+  },
+  {
+    "q": "In pandas 2.2, with a Series: Resample time-series data",
+    "user_version": "2.2",
+    "target": "Series.resample",
+    "group": "recall",
+    "dense_top": 0.7771284203825661,
+    "rr_top": 0.9704539775848389,
+    "top1": "Series.resample v2.2",
+    "hit": true
+  },
+  {
+    "q": "In pandas 1.5, with a top-level function: Read an Excel file into a pandas DataFrame",
+    "user_version": "1.5",
+    "target": "pd.read_excel",
+    "group": "recall",
+    "dense_top": 0.8120779009028374,
+    "rr_top": 0.6881935596466064,
+    "top1": "DataFrame.isnull v1.5",
+    "hit": false
+  },
+  {
+    "q": "In pandas 2.2, with a Series: Fill NA/NaN values by propagating the last valid observation to next valid",
+    "user_version": "2.2",
+    "target": "Series.ffill",
+    "group": "recall",
+    "dense_top": 0.8818508103149694,
+    "rr_top": 0.9987493753433228,
+    "top1": "Series.pad v2.2",
+    "hit": true
+  },
+  {
+    "q": "In pandas 1.5, with a DataFrame: Render object to a LaTeX tabular, longtable, or nested table",
+    "user_version": "1.5",
+    "target": "DataFrame.to_latex",
+    "group": "recall",
+    "dense_top": 0.8091965641277041,
+    "rr_top": 0.9946863651275635,
+    "top1": "DataFrame.to_latex v1.5",
+    "hit": true
+  },
+  {
+    "q": "In pandas 2.2, with a Series: Set the name of the axis for the index or columns",
+    "user_version": "2.2",
+    "target": "Series.rename_axis",
+    "group": "recall",
+    "dense_top": 0.8544492575947386,
+    "rr_top": 0.9941996335983276,
+    "top1": "Series.rename_axis v2.2",
+    "hit": true
+  },
+  {
+    "q": "In pandas 1.5, with a DataFrame: Return the sum of the values over the requested axis",
+    "user_version": "1.5",
+    "target": "DataFrame.sum",
+    "group": "recall",
+    "dense_top": 0.8453599776482907,
+    "rr_top": 0.9988724589347839,
+    "top1": "DataFrame.sum v1.5",
+    "hit": true
+  },
+  {
+    "q": "In pandas 2.2, with a Series: Trim values at input threshold(s)",
+    "user_version": "2.2",
+    "target": "Series.clip",
+    "group": "recall",
+    "dense_top": 0.8375917524953321,
+    "rr_top": 0.9652381539344788,
+    "top1": "Series.clip v2.2",
+    "hit": true
+  },
+  {
+    "q": "In pandas 1.5, with a Series: Attempt to infer better dtypes for object columns",
+    "user_version": "1.5",
+    "target": "Series.infer_objects",
+    "group": "recall",
+    "dense_top": 0.8612064223778662,
+    "rr_top": 0.999380350112915,
+    "top1": "Series.infer_objects v1.5",
+    "hit": true
+  },
+  {
+    "q": "In pandas 2.2, with a DataFrame: Convert the object to a JSON string",
+    "user_version": "2.2",
+    "target": "DataFrame.to_json",
+    "group": "recall",
+    "dense_top": 0.8323785662465116,
+    "rr_top": 0.9923237562179565,
+    "top1": "DataFrame.to_json v2.2",
+    "hit": true
+  },
+  {
+    "q": "In pandas 1.5, with a DataFrame: Apply a function along an axis of the DataFrame",
+    "user_version": "1.5",
+    "target": "DataFrame.apply",
+    "group": "recall",
+    "dense_top": 0.8210676478369319,
+    "rr_top": 0.99937903881073,
+    "top1": "DataFrame.apply v1.5",
+    "hit": true
+  },
+  {
+    "q": "In pandas 2.2, with a DataFrame: Return unbiased variance over requested axis",
+    "user_version": "2.2",
+    "target": "DataFrame.var",
+    "group": "recall",
+    "dense_top": 0.798205233652268,
+    "rr_top": 0.9989783763885498,
+    "top1": "DataFrame.var v2.2",
+    "hit": true
+  },
+  {
+    "q": "In pandas 1.5, with a Series: Unstack, also known as pivot, Series with MultiIndex to produce DataFrame",
+    "user_version": "1.5",
+    "target": "Series.unstack",
+    "group": "recall",
+    "dense_top": 0.9019825560101016,
+    "rr_top": 0.9994983673095703,
+    "top1": "Series.unstack v1.5",
+    "hit": true
+  },
+  {
+    "q": "In pandas 2.2, with a Series: Return sample standard deviation over requested axis",
+    "user_version": "2.2",
+    "target": "Series.std",
+    "group": "recall",
+    "dense_top": 0.7907042396827594,
+    "rr_top": 0.9969245791435242,
+    "top1": "Series.std v2.2",
+    "hit": true
+  },
+  {
+    "q": "In pandas 1.5, with a Series: Return a new Series with missing values removed",
+    "user_version": "1.5",
+    "target": "Series.dropna",
+    "group": "recall",
+    "dense_top": 0.8090806922613634,
+    "rr_top": 0.9961716532707214,
+    "top1": "Series.dropna v1.5",
+    "hit": true
+  },
+  {
+    "q": "In pandas 2.2, with a DataFrame: Replace values where the condition is False",
+    "user_version": "2.2",
+    "target": "DataFrame.where",
+    "group": "recall",
+    "dense_top": 0.8586842334519984,
+    "rr_top": 0.998322069644928,
+    "top1": "DataFrame.where v2.2",
+    "hit": true
+  },
+  {
+    "q": "In pandas 1.5, with a top-level function: Load an ORC object from the file path, returning a DataFrame",
+    "user_version": "1.5",
+    "target": "pd.read_orc",
+    "group": "recall",
+    "dense_top": 0.8681000882860721,
+    "rr_top": 0.9995290040969849,
+    "top1": "pd.read_orc v1.5",
+    "hit": true
+  },
+  {
+    "q": "In pandas 2.2, with a DataFrame: Return the median of the values over the requested axis",
+    "user_version": "2.2",
+    "target": "DataFrame.median",
+    "group": "recall",
+    "dense_top": 0.8440618604143281,
+    "rr_top": 0.9992377758026123,
+    "top1": "Series.median v2.2",
+    "hit": true
+  },
+  {
+    "q": "In pandas 1.5, with a Series: Convert columns to best possible dtypes using dtypes supporting pd.NA",
+    "user_version": "1.5",
+    "target": "Series.convert_dtypes",
+    "group": "recall",
+    "dense_top": 0.8400404816673004,
+    "rr_top": 0.9988516569137573,
+    "top1": "Series.convert_dtypes v1.5",
+    "hit": true
+  },
+  {
+    "q": "In pandas 2.2, with a Series: Return the product of the values over the requested axis",
+    "user_version": "2.2",
+    "target": "Series.product",
+    "group": "recall",
+    "dense_top": 0.8320109070563899,
+    "rr_top": 0.9989363551139832,
+    "top1": "Series.product v2.2",
+    "hit": true
+  },
+  {
+    "q": "In pandas 1.5, with a DataFrame: Return the minimum of the values over the requested axis",
+    "user_version": "1.5",
+    "target": "DataFrame.min",
+    "group": "recall",
+    "dense_top": 0.8613710537157022,
+    "rr_top": 0.9987674951553345,
+    "top1": "DataFrame.min v1.5",
+    "hit": true
+  },
+  {
+    "q": "In pandas 2.2, with a top-level function: Read a table of fixed-width formatted lines into DataFrame",
+    "user_version": "2.2",
+    "target": "pd.read_fwf",
+    "group": "recall",
+    "dense_top": 0.7940727588366909,
+    "rr_top": 0.9977372884750366,
+    "top1": "pd.read_clipboard v2.2",
+    "hit": true
+  },
+  {
+    "q": "In pandas 1.5, with a DataFrame: Pivot a level of the (necessarily hierarchical) index labels",
+    "user_version": "1.5",
+    "target": "DataFrame.unstack",
+    "group": "recall",
+    "dense_top": 0.8653812021596614,
+    "rr_top": 0.9989421963691711,
+    "top1": "DataFrame.unstack v1.5",
+    "hit": true
+  },
+  {
+    "q": "In pandas 2.2, with a top-level function: Read general delimited file into DataFrame",
+    "user_version": "2.2",
+    "target": "pd.read_table",
+    "group": "recall",
+    "dense_top": 0.7498461134825083,
+    "rr_top": 0.9677703380584717,
+    "top1": "pd.read_clipboard v2.2",
+    "hit": false
+  },
+  {
+    "q": "In pandas 1.5, with a DataFrame: Return unbiased kurtosis over requested axis",
+    "user_version": "1.5",
+    "target": "DataFrame.kurt",
+    "group": "recall",
+    "dense_top": 0.8630682272854088,
+    "rr_top": 0.993423342704773,
+    "top1": "DataFrame.kurt v1.5",
+    "hit": true
+  },
+  {
+    "q": "In pandas 2.2, with a Series: Return the median of the values over the requested axis",
+    "user_version": "2.2",
+    "target": "Series.median",
+    "group": "recall",
+    "dense_top": 0.848876515871664,
+    "rr_top": 0.9993283748626709,
+    "top1": "Series.median v2.2",
+    "hit": true
+  },
+  {
+    "q": "In pandas 1.5, with a DataFrame: Synonym for :meth:DataFrame.fillna with method='bfill'",
+    "user_version": "1.5",
+    "target": "DataFrame.bfill",
+    "group": "recall",
+    "dense_top": 0.8260966951503954,
+    "rr_top": 0.9970911741256714,
+    "top1": "DataFrame.backfill v1.5",
+    "hit": true
+  },
+  {
+    "q": "In pandas 2.2, with a Series: Return Series with duplicate values removed",
+    "user_version": "2.2",
+    "target": "Series.drop_duplicates",
+    "group": "recall",
+    "dense_top": 0.8009870418603002,
+    "rr_top": 0.9828498959541321,
+    "top1": "Series.drop_duplicates v2.2",
+    "hit": true
+  },
+  {
+    "q": "In pandas 1.5, with a DataFrame: Group DataFrame using a mapper or by a Series of columns",
+    "user_version": "1.5",
+    "target": "DataFrame.groupby",
+    "group": "recall",
+    "dense_top": 0.8041966670093966,
+    "rr_top": 0.9938812255859375,
+    "top1": "DataFrame.groupby v1.5",
+    "hit": true
+  },
+  {
+    "q": "In pandas 2.2, with a top-level function: Encode the object as an enumerated type or categorical variable",
+    "user_version": "2.2",
+    "target": "pd.factorize",
+    "group": "recall",
+    "dense_top": 0.7751770637775127,
+    "rr_top": 0.9994537234306335,
+    "top1": "Series.factorize v2.2",
+    "hit": true
+  },
+  {
+    "q": "In pandas 1.5, how do I bake sourdough bread at home",
+    "user_version": "1.5",
+    "target": null,
+    "group": "oos",
+    "dense_top": 0.652289271578205,
+    "rr_top": 0.0012862453004345298,
+    "top1": "Series.take v1.5",
+    "hit": null
+  },
+  {
+    "q": "In pandas 2.2, what is the capital of Australia",
+    "user_version": "2.2",
+    "target": null,
+    "group": "oos",
+    "dense_top": 0.6456955107532019,
+    "rr_top": 0.012565587647259235,
+    "top1": "Series.tz_localize v2.2",
+    "hit": null
+  },
+  {
+    "q": "In pandas 1.5, train a convolutional neural network on MNIST",
+    "user_version": "1.5",
+    "target": null,
+    "group": "oos",
+    "dense_top": 0.6520503224384055,
+    "rr_top": 0.015415603294968605,
+    "top1": "Series.mask v1.5",
+    "hit": null
+  },
+  {
+    "q": "In pandas 2.2, how to center a div in CSS",
+    "user_version": "2.2",
+    "target": null,
+    "group": "oos",
+    "dense_top": 0.6844095516798296,
+    "rr_top": 0.06174597144126892,
+    "top1": "DataFrame.rolling v2.2",
+    "hit": null
+  },
+  {
+    "q": "In pandas 1.5, best way to learn the guitar quickly",
+    "user_version": "1.5",
+    "target": null,
+    "group": "oos",
+    "dense_top": 0.6293760517211764,
+    "rr_top": 0.0019786327611654997,
+    "top1": "pd.interval_range v1.5",
+    "hit": null
+  },
+  {
+    "q": "In pandas 2.2, deploy a Docker container to AWS Lambda",
+    "user_version": "2.2",
+    "target": null,
+    "group": "oos",
+    "dense_top": 0.6381484838205336,
+    "rr_top": 0.009344472549855709,
+    "top1": "Series.to_markdown v2.2",
+    "hit": null
+  },
+  {
+    "q": "In pandas 1.5, write a SQL query that joins three tables",
+    "user_version": "1.5",
+    "target": null,
+    "group": "oos",
+    "dense_top": 0.7565641937185408,
+    "rr_top": 0.6189040541648865,
+    "top1": "pd.read_table v1.5",
+    "hit": null
+  },
+  {
+    "q": "In pandas 2.2, how do I change a flat tire on a bicycle",
+    "user_version": "2.2",
+    "target": null,
+    "group": "oos",
+    "dense_top": 0.6534938489332471,
+    "rr_top": 0.014033325016498566,
+    "top1": "Series.case_when v2.2",
+    "hit": null
+  },
+  {
+    "q": "In pandas 1.5, explain the plot of Hamlet",
+    "user_version": "1.5",
+    "target": null,
+    "group": "oos",
+    "dense_top": 0.6582866544409514,
+    "rr_top": 0.026142675429582596,
+    "top1": "DataFrame.boxplot v1.5",
+    "hit": null
+  },
+  {
+    "q": "In pandas 2.2, set up a React project with Vite",
+    "user_version": "2.2",
+    "target": null,
+    "group": "oos",
+    "dense_top": 0.6587388975055747,
+    "rr_top": 0.009368954226374626,
+    "top1": "DataFrame.to_markdown v2.2",
+    "hit": null
+  },
+  {
+    "q": "In pandas 1.5, convert Celsius to Fahrenheit by hand",
+    "user_version": "1.5",
+    "target": null,
+    "group": "oos",
+    "dense_top": 0.7328047593604442,
+    "rr_top": 0.01170668937265873,
+    "top1": "DataFrame.asfreq v1.5",
+    "hit": null
+  },
+  {
+    "q": "In pandas 2.2, how do I make a git branch from a tag",
+    "user_version": "2.2",
+    "target": null,
+    "group": "oos",
+    "dense_top": 0.6415347454825008,
+    "rr_top": 0.01911275088787079,
+    "top1": "pd.read_clipboard v2.2",
+    "hit": null
+  },
+  {
+    "q": "In pandas 1.5, what is the speed of light in a vacuum",
+    "user_version": "1.5",
+    "target": null,
+    "group": "oos",
+    "dense_top": 0.6536566793723724,
+    "rr_top": 0.025767164304852486,
+    "top1": "DataFrame.to_xarray v1.5",
+    "hit": null
+  },
+  {
+    "q": "In pandas 2.2, plot a 3D surface with matplotlib",
+    "user_version": "2.2",
+    "target": null,
+    "group": "oos",
+    "dense_top": 0.6979894477976691,
+    "rr_top": 0.39309024810791016,
+    "top1": "DataFrame.boxplot v2.2",
+    "hit": null
+  },
+  {
+    "q": "In pandas 1.5, fine-tune BERT for sentiment analysis",
+    "user_version": "1.5",
+    "target": null,
+    "group": "oos",
+    "dense_top": 0.672965443891437,
+    "rr_top": 0.009231132455170155,
+    "top1": "DataFrame.describe v1.5",
+    "hit": null
+  },
+  {
+    "q": "In pandas 2.2, how to get a Schengen visa as a student",
+    "user_version": "2.2",
+    "target": null,
+    "group": "oos",
+    "dense_top": 0.6652350269186174,
+    "rr_top": 0.006033565383404493,
+    "top1": "pd.read_json v2.2",
+    "hit": null
+  },
+  {
+    "q": "In pandas 1.5, reverse a linked list in C++",
+    "user_version": "1.5",
+    "target": null,
+    "group": "oos",
+    "dense_top": 0.741464477117052,
+    "rr_top": 0.07765257358551025,
+    "top1": "Series.multiply v1.5",
+    "hit": null
+  },
+  {
+    "q": "In pandas 2.2, how do I cook basmati rice",
+    "user_version": "2.2",
+    "target": null,
+    "group": "oos",
+    "dense_top": 0.6237166914621064,
+    "rr_top": 0.002346862806007266,
+    "top1": "Series.reindex_like v2.2",
+    "hit": null
+  },
+  {
+    "q": "In pandas 1.5, install CUDA drivers on Ubuntu",
+    "user_version": "1.5",
+    "target": null,
+    "group": "oos",
+    "dense_top": 0.6332900409033967,
+    "rr_top": 0.011280583217740059,
+    "top1": "DataFrame.where v1.5",
+    "hit": null
+  },
+  {
+    "q": "In pandas 2.2, write a regular expression for email validation",
+    "user_version": "2.2",
+    "target": null,
+    "group": "oos",
+    "dense_top": 0.6791261280168333,
+    "rr_top": 0.1371733695268631,
+    "top1": "pd.wide_to_long v2.2",
+    "hit": null
+  }
+]

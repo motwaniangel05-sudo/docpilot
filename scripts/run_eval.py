@@ -138,3 +138,4 @@ print(md)
 
 import subprocess
 subprocess.run([sys.executable, "scripts/add_agreement.py"], check=True)
+subprocess.run([sys.executable, "scripts/add_abstention.py"], check=True)
