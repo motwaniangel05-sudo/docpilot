@@ -2,7 +2,29 @@
 
 **Live app: https://docpilot-5ov2htcjpmznaondpjkiqg.streamlit.app**
 
-Version-aware RAG assistant for the pandas library. Ask "how do I do X in pandas?" for pandas 1.5 or 2.2. It retrieves the right API symbol for your version and warns when the answer differs (for example `DataFrame.append` exists in 1.5 and was removed in 2.0).
+Version-aware RAG assistant for API docs: pandas (1.5, 2.0, 2.2), NumPy (1.26, 2.1), scikit-learn (1.3, 1.5). It retrieves the right API symbol for your library version and warns when the answer differs (for example `DataFrame.append` exists in pandas 1.5 and was removed in 2.0).
+
+## Headline numbers
+
+| What | Result |
+|---|---|
+| Benchmark | 150 auto-generated questions (29 trap), 3 libraries |
+| Stale-answer rate@1 (full system) | 0.0% (69.0% without the version filter) |
+| Recall@5 | 100% full system, 98.3% without reranker (the deployed default) |
+| Benchmark validation | 80/80 hand-checked labels (pandas-only sample) |
+| CI | Fails on any regression vs `baseline.json` |
+| Cost per query | $0.00 (local models, free hosting) |
+| Abstention | 85% of off-topic questions abstained, 95% of correct natural answers kept (opt-in) |
+| Index | 3017 to 2700 chunks, 45.3 to 41.2 MB with delta indexing |
+| Peak RAM | 589 MB without reranker, about 1.4 GB with it |
+
+## Known limitations
+
+- Benchmark questions come from docstring summaries, so they are easier than real queries.
+- The 0.0% stale rate is partly by construction (the version filter makes absent symbols unreachable).
+- Abstention does not catch trap questions, and its threshold was tuned on the evaluation set.
+- Hand validation covered only the pandas benchmark.
+- The fine-tuned embedder is not deployed.
 
 Free Streamlit Community Cloud apps sleep when idle. If you see a "wake up" button, click it and wait a minute or two.
 
