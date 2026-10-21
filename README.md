@@ -125,3 +125,13 @@ Identical symbol text across versions is stored once with a version list. On the
 ## Embedding fine-tuning ablation
 
 Fine-tuned bge-small on 1132 synthetic question-chunk pairs (symbols from the benchmark and natural questions excluded from training). With the version filter on and no reranker: dense Recall@1 81.0% to 90.9% and Recall@5 98.3% to 100.0%. In the hybrid (dense + BM25) config the deployed app uses, Recall@1 goes 83.5% to 90.1% but Recall@5 is unchanged at 98.3%. Natural-phrased R@5 (24 questions, so 1 question = 4.2 points) is 91.7% to 95.8% dense and 83.3% for both models hybrid. Stale@1 stays 0.0%. The fine-tuned model is not deployed (about 130 MB; the app still uses base bge-small). Caveats: training questions are templates over docstring first lines, the same source as the benchmark, and some NumPy pairs are just signatures. Full table in `results.md`.
+
+
+## Code checker (P1)
+
+New tab in the app: paste a Python snippet, choose pandas 1.5, 2.0 or 2.2, and DocPilot lists calls that were removed or deprecated in that version, with line number, replacement and the version of the change. It uses Python's `ast` module and never runs your code.
+
+- Rules: `data/api_rules.json` (29 APIs: 12 removed, 17 deprecated), built by `scripts/build_rules.py` from the symbol files and docstring deprecation notes, with hand-added replacements from the pandas whatsnew.
+- Tests: `pytest tests/test_checker.py` (20 tests).
+- Evaluation (`python scripts/eval_checker.py`, 40 hand-written snippets): strict precision 92.9% / recall 83.9%; name-level precision 96.4% / recall 87.1%.
+- Known limits: misses `self.df`, `from pandas import ...` and values returned from functions; flags `iteritems` on plain dicts. The test set is self-written, so treat the numbers as an upper bound.

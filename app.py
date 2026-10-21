@@ -7,10 +7,12 @@ from sentence_transformers import CrossEncoder
 
 from docpilot.abstain import MESSAGE, THRESHOLD, scored_search, should_abstain
 from docpilot.changes import Changes
+from docpilot.checker import SUPPORTED as CHECK_VERSIONS, check_code, load_rules
 from docpilot.detect import SUPPORTED, detect_target
 from docpilot.observe import ObservedSearcher, _logger
 
 st.set_page_config(page_title="DocPilot", page_icon="🐼", layout="wide")
+N_RULES = len(json.load(open("data/api_rules.json")))
 
 EXAMPLES = [
     "how do I append a row to a dataframe in pandas 2.2?",
@@ -61,60 +63,92 @@ with st.sidebar:
 st.title("🐼 DocPilot")
 st.caption("Version-aware API assistant for pandas, NumPy and scikit-learn. Notes like REMOVED or CHANGED are computed by comparing the real API of each version, not by an LLM.")
 
-st.write("Try an example:")
-cols = st.columns(len(EXAMPLES))
-for col, ex in zip(cols, EXAMPLES):
-    col.button(ex.replace("\n", " ")[:34] + "...", on_click=set_q, args=(ex,), use_container_width=True)
+tab_search, tab_check = st.tabs(["Search docs", "Code checker"])
 
-question = st.text_area(
-    "Ask a question (mention library and version, or paste your requirements.txt)",
-    key="q",
-    height=110,
-)
+with tab_search:
+    st.write("Try an example:")
+    cols = st.columns(len(EXAMPLES))
+    for col, ex in zip(cols, EXAMPLES):
+        col.button(ex.replace("\n", " ")[:34] + "...", on_click=set_q, args=(ex,), use_container_width=True)
 
-if st.button("Search", type="primary") and question.strip():
-    if override == "Auto-detect":
-        library, version, msg = detect_target(question)
-        st.info(msg)
-    else:
-        library, version = override.split()
-        st.info(f"Using {library} {version} (selected in the sidebar).")
+    question = st.text_area(
+        "Ask a question (mention library and version, or paste your requirements.txt)",
+        key="q",
+        height=110,
+    )
 
-    if (use_rr or use_abstain) and searcher.inner.reranker is None:
-        with st.spinner("Loading reranker (first time only)..."):
-            searcher.inner.reranker = load_reranker()
+    if st.button("Search", type="primary") and question.strip():
+        if override == "Auto-detect":
+            library, version, msg = detect_target(question)
+            st.info(msg)
+        else:
+            library, version = override.split()
+            st.info(f"Using {library} {version} (selected in the sidebar).")
 
-    t0 = time.perf_counter()
-    abstained, score = False, None
-    if use_abstain:
-        score, results = cached_scored(searcher.inner, question, version, library)
-        abstained = should_abstain(score)
-        _logger.info(json.dumps({"query": question, "library": library, "version": version,
-                                 "abstain": abstained, "score": round(score, 4), "cost_usd": 0.0}))
-    else:
-        results = searcher.search(question, version=version, k=5, rerank=use_rr, library=library)
-    wide = searcher.inner.search(question, version=None, k=10, rerank=False, library=library)
-    ms = (time.perf_counter() - t0) * 1000
+        if (use_rr or use_abstain) and searcher.inner.reranker is None:
+            with st.spinner("Loading reranker (first time only)..."):
+                searcher.inner.reranker = load_reranker()
 
-    for w in changes.warnings(wide, version, library):
-        st.warning(w)
+        t0 = time.perf_counter()
+        abstained, score = False, None
+        if use_abstain:
+            score, results = cached_scored(searcher.inner, question, version, library)
+            abstained = should_abstain(score)
+            _logger.info(json.dumps({"query": question, "library": library, "version": version,
+                                     "abstain": abstained, "score": round(score, 4), "cost_usd": 0.0}))
+        else:
+            results = searcher.search(question, version=version, k=5, rerank=use_rr, library=library)
+        wide = searcher.inner.search(question, version=None, k=10, rerank=False, library=library)
+        ms = (time.perf_counter() - t0) * 1000
 
-    if abstained:
-        st.error(f"{MESSAGE} ({library} {version}; confidence {score:.3f} is below the threshold {THRESHOLD}.)")
-        with st.expander("Closest matches (low confidence)"):
-            for r in results:
-                st.write(f"- {r['symbol']}{r['signature']}")
-    else:
-        st.caption(f"Top {len(results)} results for {library} {version} in {ms:.0f} ms")
-        for i, r in enumerate(results):
-            with st.container(border=True):
-                st.subheader(f"{i + 1}. {r['symbol']}")
-                st.code(f"{r['symbol']}{r['signature']}", language="python")
-                note = changes.note(r["symbol"], version, library)
-                if note:
-                    st.warning(note)
-                with st.expander("Docstring"):
-                    st.text(r["docstring"])
+        for w in changes.warnings(wide, version, library):
+            st.warning(w)
+
+        if abstained:
+            st.error(f"{MESSAGE} ({library} {version}; confidence {score:.3f} is below the threshold {THRESHOLD}.)")
+            with st.expander("Closest matches (low confidence)"):
+                for r in results:
+                    st.write(f"- {r['symbol']}{r['signature']}")
+        else:
+            st.caption(f"Top {len(results)} results for {library} {version} in {ms:.0f} ms")
+            for i, r in enumerate(results):
+                with st.container(border=True):
+                    st.subheader(f"{i + 1}. {r['symbol']}")
+                    st.code(f"{r['symbol']}{r['signature']}", language="python")
+                    note = changes.note(r["symbol"], version, library)
+                    if note:
+                        st.warning(note)
+                    with st.expander("Docstring"):
+                        st.text(r["docstring"])
+
+
+with tab_check:
+    st.subheader("Code checker")
+    st.caption("Paste a Python snippet and pick a pandas version. DocPilot parses it with Python's ast module (the code is never run) and flags calls that were removed or deprecated in that version.")
+    cv = st.selectbox("pandas version", CHECK_VERSIONS, index=len(CHECK_VERSIONS) - 1, key="check_version")
+    sample = (
+        "import pandas as pd\n"
+        "df = pd.DataFrame({'a': [1, 2]})\n"
+        "df = df.append({'a': 3}, ignore_index=True)\n"
+        "for k, v in df.iteritems():\n"
+        "    print(k)\n"
+        "print(df.applymap(str))\n"
+    )
+    code = st.text_area("Python code", value=sample, height=260, key="check_code")
+    if st.button("Check code", type="primary", key="check_btn"):
+        out = check_code(code, cv)
+        if out["error"]:
+            st.error(out["error"])
+        elif not out["findings"]:
+            st.success(f"No removed or deprecated pandas APIs found for pandas {cv} (among the {N_RULES} APIs DocPilot knows).")
+        else:
+            n_rem = sum(f["status"] == "removed" for f in out["findings"])
+            st.write(f"**{len(out['findings'])} finding(s)** for pandas {cv}: {n_rem} removed, {len(out['findings']) - n_rem} deprecated.")
+            for f in out["findings"]:
+                msg = f"Line {f['line']}: {f['message']} (confidence: {f['confidence']})"
+                (st.error if f["status"] == "removed" else st.warning)(msg)
+        st.caption("Limits: checks only the APIs in DocPilot's rules file and uses name-based heuristics for method calls, so it can miss calls on unusual variable names. Medium confidence means the receiver was not clearly a pandas object.")
+
 
 res = Path("results.md")
 if res.exists():

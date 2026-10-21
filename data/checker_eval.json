@@ -1,0 +1,19 @@
+{
+ "snippets": 40,
+ "expected_findings": 31,
+ "exact_match_snippets": 34,
+ "strict": {
+  "tp": 26,
+  "fp": 2,
+  "fn": 5,
+  "precision": 0.929,
+  "recall": 0.839
+ },
+ "name": {
+  "tp": 27,
+  "fp": 1,
+  "fn": 4,
+  "precision": 0.964,
+  "recall": 0.871
+ }
+}

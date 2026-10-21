@@ -1,0 +1,222 @@
+[
+ {
+  "symbol": "DataFrame.append",
+  "status": "removed",
+  "since": "2.0",
+  "replacement": "pd.concat([df, other])",
+  "source": "symbol-diff + whatsnew-manual"
+ },
+ {
+  "symbol": "DataFrame.applymap",
+  "status": "deprecated",
+  "since": "2.1.0",
+  "replacement": "DataFrame.map",
+  "hint": "DataFrame.applymap has been deprecated. Use DataFrame.map instead.",
+  "source": "docstring-directive + manual replacement"
+ },
+ {
+  "symbol": "DataFrame.backfill",
+  "status": "deprecated",
+  "since": "2.0",
+  "replacement": "bfill",
+  "hint": "Series/DataFrame.backfill is deprecated. Use Series/DataFrame.bfill instead.",
+  "source": "docstring-directive + manual replacement"
+ },
+ {
+  "symbol": "DataFrame.bool",
+  "status": "deprecated",
+  "since": "2.1.0",
+  "replacement": "Series.item() or df.iloc[0, 0]",
+  "hint": "bool is deprecated and will be removed in future version of pandas. For ``Series`` use ``pandas.Series.item``.",
+  "source": "docstring-directive + manual replacement"
+ },
+ {
+  "symbol": "DataFrame.first",
+  "status": "deprecated",
+  "since": "2.1",
+  "replacement": "df.loc[:start + offset] (slice by date offset)",
+  "hint": ":meth:`.first` is deprecated and will be removed in a future version. Please create a mask and filter using `.loc` instead.",
+  "source": "docstring-directive + manual replacement"
+ },
+ {
+  "symbol": "DataFrame.iteritems",
+  "status": "removed",
+  "since": "2.0",
+  "replacement": "DataFrame.items",
+  "source": "symbol-diff + whatsnew-manual"
+ },
+ {
+  "symbol": "DataFrame.last",
+  "status": "deprecated",
+  "since": "2.1",
+  "replacement": "df.loc[end - offset:] (slice by date offset)",
+  "hint": ":meth:`.last` is deprecated and will be removed in a future version. Please create a mask and filter using `.loc` instead.",
+  "source": "docstring-directive + manual replacement"
+ },
+ {
+  "symbol": "DataFrame.lookup",
+  "status": "removed",
+  "since": "2.0",
+  "replacement": "DataFrame.melt + indexing, or df.to_numpy()[row_idx, col_idx]",
+  "source": "symbol-diff + whatsnew-manual"
+ },
+ {
+  "symbol": "DataFrame.mad",
+  "status": "removed",
+  "since": "2.0",
+  "replacement": "(df - df.mean()).abs().mean()",
+  "source": "symbol-diff + whatsnew-manual"
+ },
+ {
+  "symbol": "DataFrame.pad",
+  "status": "deprecated",
+  "since": "2.0",
+  "replacement": "ffill",
+  "hint": "Series/DataFrame.pad is deprecated. Use Series/DataFrame.ffill instead.",
+  "source": "docstring-directive + manual replacement"
+ },
+ {
+  "symbol": "DataFrame.slice_shift",
+  "status": "removed",
+  "since": "2.0",
+  "replacement": "DataFrame.shift",
+  "source": "symbol-diff + whatsnew-manual"
+ },
+ {
+  "symbol": "DataFrame.swapaxes",
+  "status": "deprecated",
+  "since": "2.1.0",
+  "replacement": "transpose",
+  "hint": "``swapaxes`` is deprecated and will be removed. Please use ``transpose`` instead.",
+  "source": "docstring-directive + manual replacement"
+ },
+ {
+  "symbol": "DataFrame.to_gbq",
+  "status": "deprecated",
+  "since": "2.2.0",
+  "replacement": "pandas_gbq.to_gbq",
+  "hint": "Please use ``pandas_gbq.to_gbq`` instead.",
+  "source": "docstring-directive"
+ },
+ {
+  "symbol": "DataFrame.tshift",
+  "status": "removed",
+  "since": "2.0",
+  "replacement": "DataFrame.shift",
+  "source": "symbol-diff + whatsnew-manual"
+ },
+ {
+  "symbol": "Series.append",
+  "status": "removed",
+  "since": "2.0",
+  "replacement": "pd.concat([s, other])",
+  "source": "symbol-diff + whatsnew-manual"
+ },
+ {
+  "symbol": "Series.backfill",
+  "status": "deprecated",
+  "since": "2.0",
+  "replacement": "bfill",
+  "hint": "Series/DataFrame.backfill is deprecated. Use Series/DataFrame.bfill instead.",
+  "source": "docstring-directive + manual replacement"
+ },
+ {
+  "symbol": "Series.bool",
+  "status": "deprecated",
+  "since": "2.1.0",
+  "replacement": "Series.item() or df.iloc[0, 0]",
+  "hint": "bool is deprecated and will be removed in future version of pandas. For ``Series`` use ``pandas.Series.item``.",
+  "source": "docstring-directive + manual replacement"
+ },
+ {
+  "symbol": "Series.first",
+  "status": "deprecated",
+  "since": "2.1",
+  "replacement": "df.loc[:start + offset] (slice by date offset)",
+  "hint": ":meth:`.first` is deprecated and will be removed in a future version. Please create a mask and filter using `.loc` instead.",
+  "source": "docstring-directive + manual replacement"
+ },
+ {
+  "symbol": "Series.is_monotonic",
+  "status": "removed",
+  "since": "2.0",
+  "replacement": "Series.is_monotonic_increasing",
+  "source": "symbol-diff + whatsnew-manual"
+ },
+ {
+  "symbol": "Series.iteritems",
+  "status": "removed",
+  "since": "2.0",
+  "replacement": "Series.items",
+  "source": "symbol-diff + whatsnew-manual"
+ },
+ {
+  "symbol": "Series.last",
+  "status": "deprecated",
+  "since": "2.1",
+  "replacement": "df.loc[end - offset:] (slice by date offset)",
+  "hint": ":meth:`.last` is deprecated and will be removed in a future version. Please create a mask and filter using `.loc` instead.",
+  "source": "docstring-directive + manual replacement"
+ },
+ {
+  "symbol": "Series.mad",
+  "status": "removed",
+  "since": "2.0",
+  "replacement": "(s - s.mean()).abs().mean()",
+  "source": "symbol-diff + whatsnew-manual"
+ },
+ {
+  "symbol": "Series.pad",
+  "status": "deprecated",
+  "since": "2.0",
+  "replacement": "ffill",
+  "hint": "Series/DataFrame.pad is deprecated. Use Series/DataFrame.ffill instead.",
+  "source": "docstring-directive + manual replacement"
+ },
+ {
+  "symbol": "Series.ravel",
+  "status": "deprecated",
+  "since": "2.2.0",
+  "replacement": "Series.to_numpy()",
+  "hint": "Series.ravel is deprecated. The underlying array is already 1D, so ravel is not necessary.  Use :meth:`to_numpy` for conversion to a numpy array instead.",
+  "source": "docstring-directive"
+ },
+ {
+  "symbol": "Series.slice_shift",
+  "status": "removed",
+  "since": "2.0",
+  "replacement": "Series.shift",
+  "source": "symbol-diff + whatsnew-manual"
+ },
+ {
+  "symbol": "Series.swapaxes",
+  "status": "deprecated",
+  "since": "2.1.0",
+  "replacement": "transpose",
+  "hint": "``swapaxes`` is deprecated and will be removed. Please use ``transpose`` instead.",
+  "source": "docstring-directive + manual replacement"
+ },
+ {
+  "symbol": "Series.tshift",
+  "status": "removed",
+  "since": "2.0",
+  "replacement": "Series.shift",
+  "source": "symbol-diff + whatsnew-manual"
+ },
+ {
+  "symbol": "Series.view",
+  "status": "deprecated",
+  "since": "2.2.0",
+  "replacement": "Series.astype(dtype) or Series.to_numpy().view(dtype)",
+  "hint": "``Series.view`` is deprecated and will be removed in a future version. Use :meth:`Series.astype` as an alternative to change the dtype.",
+  "source": "docstring-directive"
+ },
+ {
+  "symbol": "pd.read_gbq",
+  "status": "deprecated",
+  "since": "2.2.0",
+  "replacement": "pandas_gbq.read_gbq",
+  "hint": "Please use ``pandas_gbq.read_gbq`` instead.",
+  "source": "docstring-directive"
+ }
+]

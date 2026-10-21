@@ -90,3 +90,26 @@ bge-small fine-tuned with MultipleNegativesRankingLoss on 1132 synthetic (questi
 | fine-tuned bge-small | hybrid | 90.1% | 98.3% | 0.0% | 58.3% | 83.3% |
 
 Caveats: training questions are synthetic templates over docstring first lines (the same source as the benchmark, so the benchmark is easier than real queries); NumPy ufunc docstrings start with a signature, which adds noisy pairs; the natural set is small.
+
+
+## P1: Code checker (static, AST-based)
+
+Parses a pasted Python snippet with Python's `ast` module (the code is never executed) and flags calls to pandas APIs that were removed or deprecated in the chosen version (1.5, 2.0 or 2.2), with the replacement and the version where it changed.
+
+Rules (`data/api_rules.json`, 29 rules): 12 removed APIs found by diffing the symbol JSONs of 1.5 and 2.0, and 17 deprecated APIs parsed from `.. deprecated::` docstring directives (symbol-level only; parameter-level deprecations are ignored). Replacements for removed APIs were added by hand from the pandas 2.0 whatsnew and are marked as manual in the file. Some deprecated replacements were also fixed by hand.
+
+Evaluation on a hand-written set of 40 snippets (31 expected findings), `data/checker_testset.json`, script `scripts/eval_checker.py`:
+
+| Scoring | TP | FP | FN | Precision | Recall |
+|---|---|---|---|---|---|
+| Strict (line and full symbol, e.g. `Series.mad` is not `DataFrame.mad`) | 26 | 2 | 5 | 92.9% | 83.9% |
+| Name-level (line and method name) | 27 | 1 | 4 | 96.4% | 87.1% |
+
+Snippets matched exactly: 34/40. 20 unit tests in `tests/test_checker.py` pass.
+
+Failures (reported as measured):
+- 1 false alarm: `iteritems` is flagged by name, so a plain Python 2 `dict.iteritems()` is flagged (medium confidence).
+- 1 wrong label: `s2.mad()` on a Series obtained from `s.append(...)` was reported as `DataFrame.mad` instead of `Series.mad`.
+- 4 misses: `self.df` attributes, `from pandas import read_gbq`, a DataFrame returned from a user function, and a `groupby` loop variable. The checker tracks only simple assignments from `pd.*` calls and variable names like `df`, `ser`.
+
+Limitations: the test set was written by the same person who built the checker, so it is not independent and the numbers are likely optimistic. It checks only the 29 APIs in the rules file (only symbols in DocPilot's index), not every pandas change. Detection is name-based with heuristics, not type inference.

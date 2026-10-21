@@ -1,0 +1,393 @@
+[
+ {
+  "id": 1,
+  "version": "2.2",
+  "code": "import pandas as pd\ndf = pd.DataFrame({\"a\": [1]})\ndf = df.append({\"a\": 2}, ignore_index=True)\n",
+  "expected": [
+   [
+    3,
+    "DataFrame.append"
+   ]
+  ]
+ },
+ {
+  "id": 2,
+  "version": "1.5",
+  "code": "import pandas as pd\ndf = pd.DataFrame({\"a\": [1]})\ndf = df.append({\"a\": 2}, ignore_index=True)\n",
+  "expected": []
+ },
+ {
+  "id": 3,
+  "version": "2.0",
+  "code": "import pandas as pd\ns = pd.Series([1, 2])\nfor i, v in s.iteritems():\n    print(i, v)\n",
+  "expected": [
+   [
+    3,
+    "Series.iteritems"
+   ]
+  ]
+ },
+ {
+  "id": 4,
+  "version": "2.2",
+  "code": "import pandas as pd\ndf = pd.read_csv(\"x.csv\")\nprint(df.mad())\n",
+  "expected": [
+   [
+    3,
+    "DataFrame.mad"
+   ]
+  ]
+ },
+ {
+  "id": 5,
+  "version": "2.2",
+  "code": "import pandas as pd\ndf = pd.read_csv(\"x.csv\")\nx = df.lookup(rows, cols)\n",
+  "expected": [
+   [
+    3,
+    "DataFrame.lookup"
+   ]
+  ]
+ },
+ {
+  "id": 6,
+  "version": "2.0",
+  "code": "import pandas as pd\ndf = pd.read_csv(\"x.csv\")\nshifted = df.tshift(1)\n",
+  "expected": [
+   [
+    3,
+    "DataFrame.tshift"
+   ]
+  ]
+ },
+ {
+  "id": 7,
+  "version": "2.2",
+  "code": "import pandas as pd\nser = pd.Series([1, 2, 3])\nout = ser.slice_shift(1)\n",
+  "expected": [
+   [
+    3,
+    "Series.slice_shift"
+   ]
+  ]
+ },
+ {
+  "id": 8,
+  "version": "2.2",
+  "code": "import pandas as pd\ns = pd.Series([1, 2, 3])\nif s.is_monotonic:\n    print(\"sorted\")\n",
+  "expected": [
+   [
+    3,
+    "Series.is_monotonic"
+   ]
+  ]
+ },
+ {
+  "id": 9,
+  "version": "2.2",
+  "code": "import pandas as pd\ndf = pd.read_csv(\"x.csv\")\ndf = df.applymap(lambda x: x * 2)\n",
+  "expected": [
+   [
+    3,
+    "DataFrame.applymap"
+   ]
+  ]
+ },
+ {
+  "id": 10,
+  "version": "2.0",
+  "code": "import pandas as pd\ndf = pd.read_csv(\"x.csv\")\ndf = df.applymap(lambda x: x * 2)\n",
+  "expected": []
+ },
+ {
+  "id": 11,
+  "version": "2.2",
+  "code": "import pandas as pd\ndf = pd.read_csv(\"x.csv\")\ndf = df.backfill()\n",
+  "expected": [
+   [
+    3,
+    "DataFrame.backfill"
+   ]
+  ]
+ },
+ {
+  "id": 12,
+  "version": "2.2",
+  "code": "import pandas as pd\ns = pd.Series([1, None])\ns = s.pad()\n",
+  "expected": [
+   [
+    3,
+    "Series.pad"
+   ]
+  ]
+ },
+ {
+  "id": 13,
+  "version": "2.2",
+  "code": "import pandas as pd\ndf = pd.read_csv(\"x.csv\")\nt = df.swapaxes(0, 1)\n",
+  "expected": [
+   [
+    3,
+    "DataFrame.swapaxes"
+   ]
+  ]
+ },
+ {
+  "id": 14,
+  "version": "2.2",
+  "code": "import pandas as pd\ns = pd.Series([True])\nif s.bool():\n    print(\"yes\")\n",
+  "expected": [
+   [
+    3,
+    "Series.bool"
+   ]
+  ]
+ },
+ {
+  "id": 15,
+  "version": "2.2",
+  "code": "import pandas as pd\ndf = pd.read_csv(\"x.csv\", index_col=0, parse_dates=True)\nhead = df.first(\"3D\")\n",
+  "expected": [
+   [
+    3,
+    "DataFrame.first"
+   ]
+  ]
+ },
+ {
+  "id": 16,
+  "version": "2.2",
+  "code": "import pandas as pd\ndf = pd.read_csv(\"x.csv\", index_col=0, parse_dates=True)\ntail = df.last(\"1W\")\n",
+  "expected": [
+   [
+    3,
+    "DataFrame.last"
+   ]
+  ]
+ },
+ {
+  "id": 17,
+  "version": "2.2",
+  "code": "import pandas as pd\ndf = pd.read_gbq(\"SELECT 1\", project_id=\"p\")\n",
+  "expected": [
+   [
+    2,
+    "pd.read_gbq"
+   ]
+  ]
+ },
+ {
+  "id": 18,
+  "version": "2.2",
+  "code": "import pandas as pd\ndf = pd.read_csv(\"x.csv\")\ndf.to_gbq(\"ds.tbl\", project_id=\"p\")\n",
+  "expected": [
+   [
+    3,
+    "DataFrame.to_gbq"
+   ]
+  ]
+ },
+ {
+  "id": 19,
+  "version": "2.2",
+  "code": "import pandas as pd\ns = pd.Series([1, 2])\na = s.ravel()\n",
+  "expected": [
+   [
+    3,
+    "Series.ravel"
+   ]
+  ]
+ },
+ {
+  "id": 20,
+  "version": "2.2",
+  "code": "import pandas as pd\ns = pd.Series([1, 2])\nv = s.view(\"int64\")\n",
+  "expected": [
+   [
+    3,
+    "Series.view"
+   ]
+  ]
+ },
+ {
+  "id": 21,
+  "version": "2.2",
+  "code": "import pandas as pd\nrows = []\nfor i in range(3):\n    rows.append({\"a\": i})\ndf = pd.DataFrame(rows)\n",
+  "expected": []
+ },
+ {
+  "id": 22,
+  "version": "2.2",
+  "code": "import numpy as np\na = np.array([[1, 2], [3, 4]])\nb = a.ravel()\nc = a.view(np.int8)\nd = a.swapaxes(0, 1)\n",
+  "expected": []
+ },
+ {
+  "id": 23,
+  "version": "2.2",
+  "code": "import pandas as pd\nd = {\"a\": 1}\nfor k, v in d.items():\n    print(k, v)\ndf = pd.DataFrame([d])\nfor k, v in df.items():\n    print(k)\n",
+  "expected": []
+ },
+ {
+  "id": 24,
+  "version": "2.2",
+  "code": "import pandas as pd\ndf = pd.DataFrame({\"a\": [1]})\ndf = pd.concat([df, pd.DataFrame({\"a\": [2]})], ignore_index=True)\ndf = df.map(str)\ndf = df.bfill()\n",
+  "expected": []
+ },
+ {
+  "id": 25,
+  "version": "2.2",
+  "code": "class Queue:\n    def first(self):\n        return 1\nq = Queue()\nprint(q.first())\n",
+  "expected": []
+ },
+ {
+  "id": 26,
+  "version": "2.2",
+  "code": "d = {\"a\": 1}\nfor k, v in d.iteritems():\n    print(k, v)\n",
+  "expected": []
+ },
+ {
+  "id": 27,
+  "version": "1.5",
+  "code": "import pandas as pd\ndf = pd.read_csv(\"x.csv\")\nfor k, v in df.iteritems():\n    print(k)\n",
+  "expected": []
+ },
+ {
+  "id": 28,
+  "version": "2.2",
+  "code": "import pandas as pd\n# df.append is removed, use concat\nmsg = \"do not call df.append(x)\"\ndf = pd.DataFrame()\n",
+  "expected": []
+ },
+ {
+  "id": 29,
+  "version": "2.2",
+  "code": "df.append(\n",
+  "expected": []
+ },
+ {
+  "id": 30,
+  "version": "2.2",
+  "code": "import pandas as pd\nclass Loader:\n    def __init__(self):\n        self.df = pd.read_csv(\"x.csv\")\n    def add(self, row):\n        self.df = self.df.append(row, ignore_index=True)\n",
+  "expected": [
+   [
+    6,
+    "DataFrame.append"
+   ]
+  ]
+ },
+ {
+  "id": 31,
+  "version": "2.2",
+  "code": "from pandas import read_gbq\ndf = read_gbq(\"SELECT 1\")\n",
+  "expected": [
+   [
+    2,
+    "pd.read_gbq"
+   ]
+  ]
+ },
+ {
+  "id": 32,
+  "version": "2.2",
+  "code": "import pandas as pd\ndata = pd.read_csv(\"x.csv\")\ndata = data.append({\"a\": 1}, ignore_index=True)\n",
+  "expected": [
+   [
+    3,
+    "DataFrame.append"
+   ]
+  ]
+ },
+ {
+  "id": 33,
+  "version": "2.2",
+  "code": "import pandas as pd\ndef load():\n    return pd.read_csv(\"x.csv\")\nframe = load()\nframe = frame.append({\"a\": 1}, ignore_index=True)\n",
+  "expected": [
+   [
+    5,
+    "DataFrame.append"
+   ]
+  ]
+ },
+ {
+  "id": 34,
+  "version": "2.2",
+  "code": "import pandas as pd\ndf = pd.read_csv(\"x.csv\")\nfor name, g in df.groupby(\"k\"):\n    g = g.append({\"a\": 1})\n",
+  "expected": [
+   [
+    4,
+    "DataFrame.append"
+   ]
+  ]
+ },
+ {
+  "id": 35,
+  "version": "2.2",
+  "code": "import pandas as pd\ndf = pd.read_csv(\"x.csv\")\ndf = df.append({\"a\": 1}, ignore_index=True)\nfor k, v in df.iteritems():\n    print(k)\nprint(df.applymap(str))\nprint(df[\"a\"].is_monotonic)\n",
+  "expected": [
+   [
+    3,
+    "DataFrame.append"
+   ],
+   [
+    4,
+    "DataFrame.iteritems"
+   ],
+   [
+    6,
+    "DataFrame.applymap"
+   ],
+   [
+    7,
+    "Series.is_monotonic"
+   ]
+  ]
+ },
+ {
+  "id": 36,
+  "version": "2.2",
+  "code": "import pandas as pd\ndf = pd.read_csv(\"a.csv\").append(pd.read_csv(\"b.csv\"))\n",
+  "expected": [
+   [
+    2,
+    "DataFrame.append"
+   ]
+  ]
+ },
+ {
+  "id": 37,
+  "version": "2.2",
+  "code": "import pandas as pd\ndf = pd.read_csv(\"x.csv\")\nfor i, v in df[\"a\"].iteritems():\n    print(i, v)\n",
+  "expected": [
+   [
+    3,
+    "Series.iteritems"
+   ]
+  ]
+ },
+ {
+  "id": 38,
+  "version": "2.2",
+  "code": "import pandas as pd\nitems = [\"a\", \"b\"]\nfirst = items[0]\ndf = pd.DataFrame({\"a\": items})\nprint(first, df.shape)\n",
+  "expected": []
+ },
+ {
+  "id": 39,
+  "version": "2.0",
+  "code": "import pandas as pd\ns = pd.Series([1, 2])\ns2 = s.append(pd.Series([3]))\nprint(s2.mad())\n",
+  "expected": [
+   [
+    3,
+    "Series.append"
+   ],
+   [
+    4,
+    "Series.mad"
+   ]
+  ]
+ },
+ {
+  "id": 40,
+  "version": "2.0",
+  "code": "import pandas as pd\ndf = pd.read_gbq(\"SELECT 1\")\n",
+  "expected": []
+ }
+]
