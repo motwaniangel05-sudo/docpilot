@@ -135,3 +135,31 @@ Why two numbers: the first scoring compared `trapz` with the stored name `np.tra
 Remaining failures: one real hallucination (cited `DataFrame.map` on a NumPy std question); 3 answers cited chunk numbers (`[1 | ...]`) instead of symbols.
 
 Limitations: 60 questions, one run, temperature 0; questions are built from docstring summaries, so they are easier than real ones; the checker verifies named symbols, not whether the explanation is correct; 18.5% of answers had no citation at all.
+
+## P3: Execution check (pandas answers only)
+
+Code blocks from the saved LLM answers (60 answers) were run on the pandas
+version each answer cited (1.5 on pandas 1.5.3, 2.0 and 2.2 on pandas 2.2.3).
+Each block ran in a temporary folder with a 10 s timeout and small synthetic
+data. Run locally only, never on the deployed app.
+
+| Measure | Result |
+|---|---|
+| Answers with a code block and a citation tag | 33 of 60 (23 had no code block, 6 had no citation tag) |
+| Code blocks that could be run (pandas only) | 16 (NumPy 6 and sklearn 11 not run: no venvs) |
+| Raw: ran without error (ok + warning) | 8 / 16 = 50.0% |
+| Raw: ran with no warning | 6 / 16 = 37.5% |
+| Incomplete snippets (use a variable the answer never creates) | 5 |
+| Self-contained snippets (16 - 5) | 11 |
+| Self-contained: ran after test-data fix | 10 / 11 = 90.9% |
+| Real failures | 1 (a non-ASCII hyphen inside a date string in a tz_convert example) |
+
+Notes and limits:
+- 2 `shift(freq=...)` snippets failed only because the sandbox index was a plain
+  number index. They passed when re-run on a date index. This fix was chosen
+  after seeing the failures, so the 90.9% is an adjusted number. The raw 50%
+  is the unadjusted one.
+- "Ran without error" means the code runs. It does not prove the output is correct.
+- 2 of the 8 passing runs gave a deprecation warning (Series.append, Series.slice_shift),
+  which is correct for pandas 1.5.
+- Small sample (16 blocks). Treat the rates as rough, not precise.

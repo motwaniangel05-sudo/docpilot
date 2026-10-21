@@ -143,3 +143,17 @@ Search results now come with a short LLM answer written only from the top 3 retr
 
 - Faithfulness (60-question sample, 54 answered): 53/54 = 98.1% normalized; 92.6% when chunk-number citations also count as errors; 55.6% with the first, strict name matching (which wrongly flagged short vs prefixed names). Details in `results.md`.
 - Limits: tuned scoring on the same sample, small sample, 1 real hallucination found.
+
+## Execution check (P3)
+
+DocPilot can run the code in its saved answers on the pandas version the answer
+cites, to see if the code really works there. Of 16 runnable pandas snippets,
+8 ran without error (50% raw). 5 were incomplete examples with undefined
+variables; of the 11 self-contained ones, 10 ran after fixing the test data
+(90.9%, adjusted after the fact). Details and limits are in `results.md`.
+
+Running code is off by default. It only runs on your own machine with
+`DOCPILOT_ALLOW_EXEC=1` and is not a security boundary. The deployed app shows
+the saved results from `data/exec_results.json` and never executes code.
+
+    DOCPILOT_ALLOW_EXEC=1 PYTHONPATH=. python scripts/run_exec.py

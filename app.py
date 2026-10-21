@@ -180,3 +180,26 @@ if res.exists():
     if png.exists():
         with st.expander("Risk-coverage curve (abstention)"):
             st.image(str(png))
+
+exec_file = Path("data/exec_results.json")
+if exec_file.exists():
+    with st.expander("Execution check: did the answers' code actually run? (saved results)"):
+        ex = json.loads(exec_file.read_text())
+        cats = ex.get("categories", {})
+        st.write(
+            f"{ex['n']} pandas code blocks were run on the pandas version each answer cited. "
+            "These are saved results from a local run. This app never runs code."
+        )
+        st.write(
+            f"Ran with no warning: {cats.get('ran_ok', 0)} | "
+            f"Ran with a deprecation warning: {cats.get('ran_warning', 0)} | "
+            f"Incomplete example (undefined variable): {cats.get('incomplete_snippet', 0)} | "
+            f"Needed a date index in my test data: {cats.get('needs_date_index_ok', 0)} | "
+            f"Real error: {cats.get('real_error_nonascii_char', 0) + cats.get('real_error', 0)}"
+        )
+        st.table([
+            {"pandas": r["version"], "API": r["symbol"],
+             "result": r.get("category", r["status"]), "message": r["message"][:70]}
+            for r in ex["results"]
+        ])
+        st.caption("Raw rate: 8 of 16 ran without error. Adjusted after seeing the failures: 10 of 11 self-contained snippets. Small sample. 'Ran' does not prove the output is correct.")

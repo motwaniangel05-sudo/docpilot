@@ -1,0 +1,147 @@
+{
+ "n": 16,
+ "counts": {
+  "ok": 6,
+  "error": 8,
+  "warning": 2
+ },
+ "results": [
+  {
+   "idx": "0",
+   "version": "1.5",
+   "symbol": "DataFrame.applymap",
+   "status": "ok",
+   "message": "",
+   "category": "ran_ok"
+  },
+  {
+   "idx": "2",
+   "version": "1.5",
+   "symbol": "Series.mask",
+   "status": "error",
+   "message": "NameError: name 'cond' is not defined. Did you mean: 'round'?",
+   "category": "incomplete_snippet"
+  },
+  {
+   "idx": "3",
+   "version": "2.0",
+   "symbol": "DataFrame.shift",
+   "status": "error",
+   "message": "ValueError: Freq was not set in the index hence cannot be inferred",
+   "category": "needs_date_index_ok",
+   "retest_with_date_index": "ok"
+  },
+  {
+   "idx": "4",
+   "version": "2.2",
+   "symbol": "DataFrame.shift",
+   "status": "error",
+   "message": "AttributeError: 'RangeIndex' object has no attribute 'freq'",
+   "category": "needs_date_index_ok",
+   "retest_with_date_index": "ok"
+  },
+  {
+   "idx": "6",
+   "version": "1.5",
+   "symbol": "Series.is_monotonic_increasing",
+   "status": "ok",
+   "message": "",
+   "category": "ran_ok"
+  },
+  {
+   "idx": "9",
+   "version": "1.5",
+   "symbol": "Series.mad",
+   "status": "error",
+   "message": "NameError: name 'my_series' is not defined",
+   "category": "incomplete_snippet"
+  },
+  {
+   "idx": "10",
+   "version": "2.0",
+   "symbol": "Series.ewm",
+   "status": "ok",
+   "message": "",
+   "category": "ran_ok"
+  },
+  {
+   "idx": "11",
+   "version": "1.5",
+   "symbol": "Series.append",
+   "status": "warning",
+   "message": "FutureWarning: The series.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.",
+   "category": "ran_warning"
+  },
+  {
+   "idx": "12",
+   "version": "1.5",
+   "symbol": "Series.slice_shift",
+   "status": "warning",
+   "message": "FutureWarning: The 'slice_shift' method is deprecated and will be removed in a future version. You can use DataFrame/Series.shift instead.",
+   "category": "ran_warning"
+  },
+  {
+   "idx": "13",
+   "version": "2.2",
+   "symbol": "merge_ordered",
+   "status": "error",
+   "message": "NameError: name 'df1' is not defined. Did you mean: 'df'?",
+   "category": "incomplete_snippet"
+  },
+  {
+   "idx": "14",
+   "version": "2.0",
+   "symbol": "Series.tz_convert",
+   "status": "error",
+   "message": "pandas._libs.tslibs.parsing.DateParseError: Unknown datetime string format, unable to parse: 2018\u201109\u201115 01:30:00+02:00, at position 0",
+   "category": "real_error_nonascii_char"
+  },
+  {
+   "idx": "15",
+   "version": "1.5",
+   "symbol": "DataFrame.lookup",
+   "status": "error",
+   "message": "NameError: name 'row_labels' is not defined",
+   "category": "incomplete_snippet"
+  },
+  {
+   "idx": "16",
+   "version": "2.2",
+   "symbol": "Series.mul",
+   "status": "ok",
+   "message": "",
+   "category": "ran_ok"
+  },
+  {
+   "idx": "18",
+   "version": "2.2",
+   "symbol": "Series.case_when",
+   "status": "ok",
+   "message": "",
+   "category": "ran_ok"
+  },
+  {
+   "idx": "19",
+   "version": "2.0",
+   "symbol": "DataFrame.ge",
+   "status": "error",
+   "message": "NameError: name 'other' is not defined. Did you mean: 'iter'?",
+   "category": "incomplete_snippet"
+  },
+  {
+   "idx": "35",
+   "version": "2.2",
+   "symbol": "DataFrame.map",
+   "status": "ok",
+   "message": "",
+   "category": "ran_ok"
+  }
+ ],
+ "categories": {
+  "ran_ok": 6,
+  "incomplete_snippet": 5,
+  "needs_date_index_ok": 2,
+  "ran_warning": 2,
+  "real_error_nonascii_char": 1
+ }
+}
