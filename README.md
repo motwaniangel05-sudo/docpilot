@@ -157,3 +157,15 @@ Running code is off by default. It only runs on your own machine with
 the saved results from `data/exec_results.json` and never executes code.
 
     DOCPILOT_ALLOW_EXEC=1 PYTHONPATH=. python scripts/run_exec.py
+
+## Test on AI-generated questions (pandas 1.5 and 2.2)
+
+I tested search on 38 usable questions (19 for pandas 1.5, 19 for pandas 2.2). **ChatGPT wrote the questions and the expected-API labels. They are not from real users.** The `source_url` column was never verified and is not used.
+
+- **Recall@5:** 26.3% without the reranker (what the live app uses), 31.6% with it.
+- **Why it is low:** the index has no page for 26 of the 38 expected APIs. About 16 of those are not API pages at all (frequency aliases, "pandas 3.0 migration"). The rest are API names the index lacks, such as `Index.*`, `GroupBy.apply` and `ExcelWriter`.
+- **When the API is in the index:** it was found in the top 5 for 12 of 12 questions with the reranker, and 10 of 12 without it.
+- **Label check:** I looked up 10 labeled APIs. All 10 are present in pandas 1.5.3 and missing in 2.2.3. Only 1.5 questions were checked, and 2.0 and the 2.2 labels were not.
+- **Not tested:** no LLM answers and no code execution in this test.
+
+Details: see `results.md`.

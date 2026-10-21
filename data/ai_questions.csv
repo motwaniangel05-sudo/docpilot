@@ -1,0 +1,51 @@
+id,question,pandas_version,expected_api,source,url_unverified,usable
+PANDAS-001,Which deprecated pandas 1.x APIs were scheduled for removal in pandas 2.0?,,Multiple deprecated APIs,chatgpt,https://github.com/pandas-dev/pandas/issues/30228,no
+PANDAS-002,Which APIs deprecated in pandas 2.x were scheduled for removal in pandas 3.0?,,Multiple deprecated APIs,chatgpt,https://github.com/pandas-dev/pandas/issues/50578,no
+PANDAS-003,"How should code be updated after Int64Index, UInt64Index, and Float64Index were removed?",1.5,Int64Index / UInt64Index / Float64Index,chatgpt,https://pandas.pydata.org/docs/whatsnew/v2.0.0.html,yes
+PANDAS-004,What should replace the removed pandas.core.indexes.numeric module in code that imports it directly?,1.5,pandas.core.indexes.numeric,chatgpt,https://pandas.pydata.org/docs/whatsnew/v2.0.0.html,yes
+PANDAS-005,Why can a pickle created with pandas 1.5 fail to load under pandas 2.0 with ModuleNotFoundError for pandas.core.indexes.numeric?,1.5,Pickle compatibility / internal index module,chatgpt,https://github.com/pandas-dev/pandas/issues/53300,yes
+PANDAS-006,What replaces the removed DataFrame.append() and Series.append() methods?,1.5,DataFrame.append / Series.append,chatgpt,https://pandas.pydata.org/docs/whatsnew/v2.0.0.html,yes
+PANDAS-007,How should code be updated after the deprecated DataFrame.iteritems() and Series.iteritems() methods were removed?,1.5,iteritems,chatgpt,https://pandas.pydata.org/docs/whatsnew/v2.0.0.html,yes
+PANDAS-008,What should replace the deprecated Index.is_monotonic() method?,1.5,Index.is_monotonic,chatgpt,https://pandas.pydata.org/docs/whatsnew/v2.0.0.html,yes
+PANDAS-009,How should resample() code change after the base and loffset arguments were removed?,1.5,"resample(base, loffset)",chatgpt,https://pandas.pydata.org/docs/whatsnew/v2.0.0.html,yes
+PANDAS-010,What replaces the removed DataFrame/Series.mad() method?,1.5,mad(),chatgpt,https://pandas.pydata.org/docs/whatsnew/v2.0.0.html,yes
+PANDAS-011,How should code change after the deprecated DataFrame/Series.tshift() method was removed?,1.5,tshift(),chatgpt,https://pandas.pydata.org/docs/whatsnew/v2.0.0.html,yes
+PANDAS-012,What replaces the removed use_inf_as_null option?,1.5,mode.use_inf_as_null,chatgpt,https://pandas.pydata.org/docs/whatsnew/v2.0.0.html,yes
+PANDAS-013,How does Series.str.replace() change when regex is omitted?,1.5,Series.str.replace(regex=...),chatgpt,https://pandas.pydata.org/docs/whatsnew/v2.0.0.html,yes
+PANDAS-014,How should callers update code that passes positional arguments where pandas now requires keyword arguments?,1.5,Positional arguments for selected APIs,chatgpt,https://pandas.pydata.org/docs/whatsnew/v2.0.0.html,yes
+PANDAS-015,What should replace the removed pandas.io.json.json_normalize alias?,1.5,pandas.io.json.json_normalize,chatgpt,https://pandas.pydata.org/docs/whatsnew/v2.0.0.html,yes
+PANDAS-016,How should code update calls to the removed Categorical.to_dense() method?,1.5,Categorical.to_dense(),chatgpt,https://pandas.pydata.org/docs/whatsnew/v2.0.0.html,yes
+PANDAS-017,What is the migration path after the deprecated ExcelWriter save() method was removed?,1.5,ExcelWriter.save(),chatgpt,https://pandas.pydata.org/docs/whatsnew/v2.0.0.html,yes
+PANDAS-018,How should code handle changed comparisons between Timestamp and datetime.date?,1.5,Timestamp/date comparisons,chatgpt,https://pandas.pydata.org/docs/whatsnew/v2.0.0.html,yes
+PANDAS-019,What happens to Index.ravel() after its return behavior changed?,1.5,Index.ravel(),chatgpt,https://pandas.pydata.org/docs/whatsnew/v2.0.0.html,yes
+PANDAS-020,How should downstream code adapt to stricter dtype behavior and changed numeric_only defaults in reductions?,1.5,numeric_only defaults / reductions,chatgpt,https://pandas.pydata.org/docs/whatsnew/v2.0.0.html,yes
+PANDAS-021,How should code respond to the deprecation of silent downcasting in setitem-like operations?,2.2,Silent dtype downcasting,chatgpt,https://pandas.pydata.org/docs/whatsnew/v2.1.0.html,yes
+PANDAS-022,What should replace deprecated fillna(method=...) usage on Series or DataFrame?,2.2,fillna(method=...),chatgpt,https://pandas.pydata.org/docs/whatsnew/v2.1.0.html,yes
+PANDAS-023,How should code update to_datetime() calls that use deprecated infer_datetime_format?,2.2,to_datetime(infer_datetime_format),chatgpt,https://pandas.pydata.org/docs/whatsnew/v2.1.0.html,yes
+PANDAS-024,What should replace deprecated DataFrame.applymap()?,2.2,DataFrame.applymap(),chatgpt,https://pandas.pydata.org/docs/whatsnew/v2.1.0.html,yes
+PANDAS-025,How should code change when using deprecated Series.view() for dtype reinterpretation?,2.2,Series.view(),chatgpt,https://pandas.pydata.org/docs/whatsnew/v2.1.0.html,yes
+PANDAS-026,How should inplace operations on a Series selected from a DataFrame be rewritten under Copy-on-Write?,2.2,Chained/inplace mutation of selected Series,chatgpt,https://pandas.pydata.org/docs/whatsnew/v2.2.0.html,yes
+PANDAS-027,"Why does Series.replace(..., inplace=True) on a categorical column emit a deprecation warning, and what is the recommended rewrite?",2.2,inplace on selected Series / categorical data,chatgpt,https://github.com/pandas-dev/pandas/issues/57104,yes
+PANDAS-028,What should replace deprecated DataFrameGroupBy.apply() behavior that includes grouping columns?,2.2,GroupBy.apply(include_groups),chatgpt,https://pandas.pydata.org/docs/whatsnew/v2.2.0.html,yes
+PANDAS-029,"How should code handle the deprecation of the downcast keyword in fillna(), replace(), and related methods?",2.2,downcast keyword,chatgpt,https://pandas.pydata.org/docs/whatsnew/v2.2.0.html,yes
+PANDAS-030,What is the migration path for deprecated errors='ignore' in to_numeric()?,2.2,to_numeric(errors='ignore'),chatgpt,https://pandas.pydata.org/docs/whatsnew/v2.2.0.html,yes
+PANDAS-031,How should code change after the deprecation of the argument to Series/DataFrame.idxmin() and idxmax() for all-NA cases?,2.2,idxmin / idxmax NA behavior,chatgpt,https://pandas.pydata.org/docs/whatsnew/v2.2.0.html,yes
+PANDAS-032,How should a project prepare for pandas 3.0 breaking changes before upgrading?,2.2,Migration to pandas 3.0,chatgpt,https://pandas.pydata.org/docs/whatsnew/v2.3.0.html,yes
+PANDAS-033,Why are string columns inferred as a dedicated str dtype rather than object by default in pandas 3.0?,2.2,Default string dtype inference,chatgpt,https://pandas.pydata.org/docs/whatsnew/v3.0.0.html,yes
+PANDAS-034,Why does chained assignment no longer update the original DataFrame in pandas 3.0?,,Chained assignment / Copy-on-Write,chatgpt,https://pandas.pydata.org/docs/whatsnew/v3.0.0.html,no
+PANDAS-035,"Can the copy= keyword still be relied on in methods such as reindex(), astype(), and merge()?",,copy= keyword,chatgpt,https://pandas.pydata.org/docs/whatsnew/v3.0.0.html,no
+PANDAS-036,What replaces the deprecated Timestamp.utcnow() method?,,Timestamp.utcnow(),chatgpt,https://pandas.pydata.org/docs/whatsnew/v3.0.0.html,no
+PANDAS-037,What replaces the deprecated Timestamp.utcfromtimestamp() method?,,Timestamp.utcfromtimestamp(),chatgpt,https://pandas.pydata.org/docs/whatsnew/v3.0.0.html,no
+PANDAS-038,Which month-end frequency alias should replace 'M' in date_range() and related code?,2.2,Frequency alias M,chatgpt,https://pandas.pydata.org/docs/whatsnew/v3.0.0.html,yes
+PANDAS-039,Which quarter-end alias should replace 'Q' in date_range() and resampling code?,2.2,Frequency alias Q,chatgpt,https://pandas.pydata.org/docs/whatsnew/v3.0.0.html,yes
+PANDAS-040,Which year-end alias should replace 'Y' in date_range() and resampling code?,2.2,Frequency alias Y,chatgpt,https://pandas.pydata.org/docs/whatsnew/v3.0.0.html,yes
+PANDAS-041,Which business month-end alias should replace 'BM'?,2.2,Frequency alias BM,chatgpt,https://pandas.pydata.org/docs/whatsnew/v3.0.0.html,yes
+PANDAS-042,Which business quarter-end alias should replace 'BQ'?,2.2,Frequency alias BQ,chatgpt,https://pandas.pydata.org/docs/whatsnew/v3.0.0.html,yes
+PANDAS-043,Which business year-end alias should replace 'BY'?,2.2,Frequency alias BY,chatgpt,https://pandas.pydata.org/docs/whatsnew/v3.0.0.html,yes
+PANDAS-044,How should code adapt to pandas 3.0 timezone objects defaulting to zoneinfo instead of pytz?,,Timezone backend defaults,chatgpt,https://pandas.pydata.org/docs/whatsnew/v3.0.0.html,no
+PANDAS-045,Why might code that expects pytz timezone objects behave differently after pandas 3.0.3?,,Timezone objects from IO methods,chatgpt,https://pandas.pydata.org/docs/whatsnew/v3.0.3.html,no
+PANDAS-046,What should replace reliance on deprecated pandas.core.internals APIs?,,pandas.core.internals private APIs,chatgpt,https://pandas.pydata.org/docs/whatsnew/v3.0.0.html,no
+PANDAS-047,How should code handle construction of categoricals with values absent from the declared categories?,,Categorical values outside categories,chatgpt,https://pandas.pydata.org/docs/whatsnew/v3.0.0.html,no
+PANDAS-048,"Why did pandas users need to pin NumPy below 2.0 with older pandas releases, and which version combinations are compatible?",,pandas/NumPy compatibility,chatgpt,https://github.com/pandas-dev/pandas/issues/55519,no
+PANDAS-049,How should a change be classified when it may break downstream code but is described as a bug fix?,,Backwards-incompatible API change classification,chatgpt,https://github.com/pandas-dev/pandas/issues/34801,no
+PANDAS-050,Which pandas 2.0 removals and behavior changes should downstream type stubs and users account for?,1.5,pandas 2.0 compatibility tracking,chatgpt,https://github.com/pandas-dev/pandas/issues/624,yes

@@ -203,3 +203,34 @@ if exec_file.exists():
             for r in ex["results"]
         ])
         st.caption("Raw rate: 8 of 16 ran without error. Adjusted after seeing the failures: 10 of 11 self-contained snippets. Small sample. 'Ran' does not prove the output is correct.")
+
+ai_file = Path("data/ai_results.json")
+if ai_file.exists():
+    with st.expander("Test on AI-generated questions (saved results)"):
+        ai = json.loads(ai_file.read_text())
+        s = ai["summary"]
+        rs = ai["results"]
+        st.warning(
+            "ChatGPT wrote these questions and the expected-API labels. They are not from real users. "
+            "The labels are only partly checked (10 of 50, all from pandas 1.5 questions)."
+        )
+        st.write(
+            f"{s['n']} usable questions (19 for pandas 1.5, 19 for pandas 2.2). "
+            "These are saved results from a local run. This app never runs code for this test."
+        )
+        st.write(
+            f"Recall@5 without the reranker (what this app uses): {s['recall5_symbol_fast_pct']}% | "
+            f"with the reranker: {s['recall5_symbol_rerank_pct']}%"
+        )
+        st.write(
+            "Why it is low: 26 of 38 expected APIs have no page in the index "
+            "(about 16 are not API pages at all, such as frequency aliases). "
+            "When the API is in the index, it was found 12 of 12 times with the reranker."
+        )
+        st.table([
+            {"id": r["id"], "pandas": r["version"], "expected": r["expected_api"][:45],
+             "found (no reranker)": "yes" if r["recall5_symbol_fast"] else "no",
+             "found (reranker)": "yes" if r["recall5_symbol_rerank"] else "no"}
+            for r in rs
+        ])
+        st.caption("Small sample, AI-generated, labels not fully verified. 'Not found' mostly means the index has no such page, not that ranking failed.")

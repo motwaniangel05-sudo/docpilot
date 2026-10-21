@@ -1,0 +1,1266 @@
+[
+ {
+  "id": "PANDAS-003",
+  "question": "How should code be updated after Int64Index, UInt64Index, and Float64Index were removed?",
+  "version": "1.5",
+  "expected_api": "Int64Index / UInt64Index / Float64Index",
+  "parts": [
+   "int64index",
+   "uint64index",
+   "float64index"
+  ],
+  "top5_fast": [
+   "DataFrame.replace",
+   "Series.replace",
+   "DataFrame.update",
+   "Series.truncate",
+   "DataFrame.truncate"
+  ],
+  "top5_rerank": [
+   "Series.diff",
+   "Series.dropna",
+   "Series.update",
+   "pd.to_numeric",
+   "DataFrame.diff"
+  ],
+  "recall5_symbol_fast": false,
+  "recall5_text_fast": false,
+  "recall5_symbol_rerank": false,
+  "recall5_text_rerank": false,
+  "has_rule": false,
+  "flagged_for_version": false,
+  "kind": "not_in_index",
+  "in_index_at_version": false,
+  "in_index_any_version": false,
+  "flagged_at_2_2": false
+ },
+ {
+  "id": "PANDAS-004",
+  "question": "What should replace the removed pandas.core.indexes.numeric module in code that imports it directly?",
+  "version": "1.5",
+  "expected_api": "pandas.core.indexes.numeric",
+  "parts": [
+   "core.indexes.numeric"
+  ],
+  "top5_fast": [
+   "DataFrame.replace",
+   "DataFrame.where",
+   "Series.replace",
+   "Series.where",
+   "DataFrame.mask"
+  ],
+  "top5_rerank": [
+   "DataFrame.to_sql",
+   "Series.to_sql",
+   "DataFrame.mask",
+   "Series.mask",
+   "Series.where"
+  ],
+  "recall5_symbol_fast": false,
+  "recall5_text_fast": false,
+  "recall5_symbol_rerank": false,
+  "recall5_text_rerank": false,
+  "has_rule": false,
+  "flagged_for_version": false,
+  "kind": "not_in_index",
+  "in_index_at_version": false,
+  "in_index_any_version": false,
+  "flagged_at_2_2": false
+ },
+ {
+  "id": "PANDAS-005",
+  "question": "Why can a pickle created with pandas 1.5 fail to load under pandas 2.0 with ModuleNotFoundError for pandas.core.indexes.numeric?",
+  "version": "1.5",
+  "expected_api": "Pickle compatibility / internal index module",
+  "parts": [
+   "pickle compatibility",
+   "internal index module"
+  ],
+  "top5_fast": [
+   "pd.read_pickle",
+   "pd.read_hdf",
+   "DataFrame.take",
+   "Series.take",
+   "DataFrame.itertuples"
+  ],
+  "top5_rerank": [
+   "DataFrame.to_gbq",
+   "pd.read_pickle",
+   "pd.read_hdf",
+   "DataFrame.itertuples",
+   "DataFrame.product"
+  ],
+  "recall5_symbol_fast": false,
+  "recall5_text_fast": false,
+  "recall5_symbol_rerank": false,
+  "recall5_text_rerank": false,
+  "has_rule": false,
+  "flagged_for_version": false,
+  "kind": "not_in_index",
+  "in_index_at_version": false,
+  "in_index_any_version": false,
+  "flagged_at_2_2": false
+ },
+ {
+  "id": "PANDAS-006",
+  "question": "What replaces the removed DataFrame.append() and Series.append() methods?",
+  "version": "1.5",
+  "expected_api": "DataFrame.append / Series.append",
+  "parts": [
+   "dataframe.append",
+   "series.append"
+  ],
+  "top5_fast": [
+   "DataFrame.append",
+   "Series.append",
+   "Series.replace",
+   "DataFrame.replace",
+   "DataFrame.set_index"
+  ],
+  "top5_rerank": [
+   "Series.to_sql",
+   "DataFrame.to_sql",
+   "DataFrame.replace",
+   "DataFrame.append",
+   "Series.rename"
+  ],
+  "recall5_symbol_fast": true,
+  "recall5_text_fast": true,
+  "recall5_symbol_rerank": true,
+  "recall5_text_rerank": true,
+  "has_rule": true,
+  "flagged_for_version": false,
+  "kind": "found",
+  "in_index_at_version": true,
+  "in_index_any_version": true,
+  "flagged_at_2_2": true
+ },
+ {
+  "id": "PANDAS-007",
+  "question": "How should code be updated after the deprecated DataFrame.iteritems() and Series.iteritems() methods were removed?",
+  "version": "1.5",
+  "expected_api": "iteritems",
+  "parts": [
+   "iteritems"
+  ],
+  "top5_fast": [
+   "DataFrame.iteritems",
+   "Series.iteritems",
+   "DataFrame.update",
+   "DataFrame.where",
+   "DataFrame.mask"
+  ],
+  "top5_rerank": [
+   "Series.iteritems",
+   "DataFrame.iteritems",
+   "DataFrame.update",
+   "Series.take",
+   "DataFrame.append"
+  ],
+  "recall5_symbol_fast": true,
+  "recall5_text_fast": true,
+  "recall5_symbol_rerank": true,
+  "recall5_text_rerank": true,
+  "has_rule": true,
+  "flagged_for_version": false,
+  "kind": "found",
+  "in_index_at_version": true,
+  "in_index_any_version": true,
+  "flagged_at_2_2": true
+ },
+ {
+  "id": "PANDAS-008",
+  "question": "What should replace the deprecated Index.is_monotonic() method?",
+  "version": "1.5",
+  "expected_api": "Index.is_monotonic",
+  "parts": [
+   "index.is_monotonic"
+  ],
+  "top5_fast": [
+   "Series.is_monotonic",
+   "Series.min",
+   "DataFrame.min",
+   "Series.max",
+   "DataFrame.max"
+  ],
+  "top5_rerank": [
+   "Series.is_monotonic",
+   "Series.is_monotonic_decreasing",
+   "Series.is_monotonic_increasing",
+   "DataFrame.to_sql",
+   "Series.mask"
+  ],
+  "recall5_symbol_fast": false,
+  "recall5_text_fast": false,
+  "recall5_symbol_rerank": false,
+  "recall5_text_rerank": false,
+  "has_rule": true,
+  "flagged_for_version": false,
+  "kind": "not_in_index",
+  "in_index_at_version": false,
+  "in_index_any_version": false,
+  "flagged_at_2_2": true
+ },
+ {
+  "id": "PANDAS-009",
+  "question": "How should resample() code change after the base and loffset arguments were removed?",
+  "version": "1.5",
+  "expected_api": "resample(base, loffset)",
+  "parts": [
+   "resample",
+   "loffset"
+  ],
+  "top5_fast": [
+   "Series.resample",
+   "DataFrame.resample",
+   "DataFrame.mask",
+   "Series.mask",
+   "Series.where"
+  ],
+  "top5_rerank": [
+   "DataFrame.resample",
+   "Series.resample",
+   "DataFrame.asfreq",
+   "Series.asfreq",
+   "Series.where"
+  ],
+  "recall5_symbol_fast": true,
+  "recall5_text_fast": true,
+  "recall5_symbol_rerank": true,
+  "recall5_text_rerank": true,
+  "has_rule": false,
+  "flagged_for_version": false,
+  "kind": "found",
+  "in_index_at_version": true,
+  "in_index_any_version": true,
+  "flagged_at_2_2": false
+ },
+ {
+  "id": "PANDAS-010",
+  "question": "What replaces the removed DataFrame/Series.mad() method?",
+  "version": "1.5",
+  "expected_api": "mad()",
+  "parts": [
+   "mad"
+  ],
+  "top5_fast": [
+   "DataFrame.mad",
+   "Series.mad",
+   "Series.droplevel",
+   "DataFrame.droplevel",
+   "Series.truncate"
+  ],
+  "top5_rerank": [
+   "DataFrame.replace",
+   "Series.drop",
+   "DataFrame.where",
+   "DataFrame.interpolate",
+   "DataFrame.mad"
+  ],
+  "recall5_symbol_fast": true,
+  "recall5_text_fast": true,
+  "recall5_symbol_rerank": true,
+  "recall5_text_rerank": true,
+  "has_rule": true,
+  "flagged_for_version": false,
+  "kind": "found",
+  "in_index_at_version": true,
+  "in_index_any_version": true,
+  "flagged_at_2_2": true
+ },
+ {
+  "id": "PANDAS-011",
+  "question": "How should code change after the deprecated DataFrame/Series.tshift() method was removed?",
+  "version": "1.5",
+  "expected_api": "tshift()",
+  "parts": [
+   "tshift"
+  ],
+  "top5_fast": [
+   "DataFrame.mask",
+   "Series.mask",
+   "DataFrame.where",
+   "Series.where",
+   "DataFrame.tshift"
+  ],
+  "top5_rerank": [
+   "DataFrame.tshift",
+   "Series.tshift",
+   "Series.slice_shift",
+   "DataFrame.slice_shift",
+   "DataFrame.shift"
+  ],
+  "recall5_symbol_fast": true,
+  "recall5_text_fast": true,
+  "recall5_symbol_rerank": true,
+  "recall5_text_rerank": true,
+  "has_rule": true,
+  "flagged_for_version": false,
+  "kind": "found",
+  "in_index_at_version": true,
+  "in_index_any_version": true,
+  "flagged_at_2_2": true
+ },
+ {
+  "id": "PANDAS-012",
+  "question": "What replaces the removed use_inf_as_null option?",
+  "version": "1.5",
+  "expected_api": "mode.use_inf_as_null",
+  "parts": [
+   "mode.use_inf_as_null"
+  ],
+  "top5_fast": [
+   "Series.replace",
+   "DataFrame.replace",
+   "Series.droplevel",
+   "DataFrame.droplevel",
+   "Series.where"
+  ],
+  "top5_rerank": [
+   "Series.is_monotonic",
+   "DataFrame.drop",
+   "Series.drop",
+   "DataFrame.where",
+   "DataFrame.drop_duplicates"
+  ],
+  "recall5_symbol_fast": false,
+  "recall5_text_fast": false,
+  "recall5_symbol_rerank": false,
+  "recall5_text_rerank": false,
+  "has_rule": false,
+  "flagged_for_version": false,
+  "kind": "not_in_index",
+  "in_index_at_version": false,
+  "in_index_any_version": false,
+  "flagged_at_2_2": false
+ },
+ {
+  "id": "PANDAS-013",
+  "question": "How does Series.str.replace() change when regex is omitted?",
+  "version": "1.5",
+  "expected_api": "Series.str.replace(regex=...)",
+  "parts": [
+   "series.str.replace"
+  ],
+  "top5_fast": [
+   "Series.replace",
+   "DataFrame.replace",
+   "Series.mask",
+   "Series.where",
+   "DataFrame.mask"
+  ],
+  "top5_rerank": [
+   "Series.replace",
+   "DataFrame.replace",
+   "Series.where",
+   "Series.filter",
+   "DataFrame.filter"
+  ],
+  "recall5_symbol_fast": false,
+  "recall5_text_fast": false,
+  "recall5_symbol_rerank": false,
+  "recall5_text_rerank": false,
+  "has_rule": false,
+  "flagged_for_version": false,
+  "kind": "not_in_index",
+  "in_index_at_version": false,
+  "in_index_any_version": false,
+  "flagged_at_2_2": false
+ },
+ {
+  "id": "PANDAS-014",
+  "question": "How should callers update code that passes positional arguments where pandas now requires keyword arguments?",
+  "version": "1.5",
+  "expected_api": "Positional arguments for selected APIs",
+  "parts": [
+   "positional arguments for selected apis"
+  ],
+  "top5_fast": [
+   "DataFrame.pipe",
+   "Series.pipe",
+   "DataFrame.take",
+   "DataFrame.update",
+   "Series.take"
+  ],
+  "top5_rerank": [
+   "Series.pipe",
+   "DataFrame.pipe",
+   "Series.transform",
+   "Series.aggregate",
+   "Series.agg"
+  ],
+  "recall5_symbol_fast": false,
+  "recall5_text_fast": false,
+  "recall5_symbol_rerank": false,
+  "recall5_text_rerank": false,
+  "has_rule": false,
+  "flagged_for_version": false,
+  "kind": "not_in_index",
+  "in_index_at_version": false,
+  "in_index_any_version": false,
+  "flagged_at_2_2": false
+ },
+ {
+  "id": "PANDAS-015",
+  "question": "What should replace the removed pandas.io.json.json_normalize alias?",
+  "version": "1.5",
+  "expected_api": "pandas.io.json.json_normalize",
+  "parts": [
+   "io.json.json_normalize"
+  ],
+  "top5_fast": [
+   "pd.json_normalize",
+   "DataFrame.where",
+   "DataFrame.mask",
+   "Series.where",
+   "Series.mask"
+  ],
+  "top5_rerank": [
+   "pd.json_normalize",
+   "DataFrame.to_sql",
+   "Series.to_sql",
+   "DataFrame.to_gbq",
+   "Series.where"
+  ],
+  "recall5_symbol_fast": false,
+  "recall5_text_fast": false,
+  "recall5_symbol_rerank": false,
+  "recall5_text_rerank": false,
+  "has_rule": false,
+  "flagged_for_version": false,
+  "kind": "not_in_index",
+  "in_index_at_version": false,
+  "in_index_any_version": false,
+  "flagged_at_2_2": false
+ },
+ {
+  "id": "PANDAS-016",
+  "question": "How should code update calls to the removed Categorical.to_dense() method?",
+  "version": "1.5",
+  "expected_api": "Categorical.to_dense()",
+  "parts": [
+   "categorical.to_dense"
+  ],
+  "top5_fast": [
+   "pd.factorize",
+   "Series.factorize",
+   "pd.get_dummies",
+   "pd.from_dummies",
+   "DataFrame.replace"
+  ],
+  "top5_rerank": [
+   "DataFrame.update",
+   "Series.unique",
+   "Series.factorize",
+   "pd.factorize",
+   "DataFrame.rank"
+  ],
+  "recall5_symbol_fast": false,
+  "recall5_text_fast": false,
+  "recall5_symbol_rerank": false,
+  "recall5_text_rerank": false,
+  "has_rule": false,
+  "flagged_for_version": false,
+  "kind": "not_in_index",
+  "in_index_at_version": false,
+  "in_index_any_version": false,
+  "flagged_at_2_2": false
+ },
+ {
+  "id": "PANDAS-017",
+  "question": "What is the migration path after the deprecated ExcelWriter save() method was removed?",
+  "version": "1.5",
+  "expected_api": "ExcelWriter.save()",
+  "parts": [
+   "excelwriter.save"
+  ],
+  "top5_fast": [
+   "DataFrame.to_excel",
+   "Series.to_excel",
+   "DataFrame.to_parquet",
+   "DataFrame.to_orc",
+   "pd.read_xml"
+  ],
+  "top5_rerank": [
+   "Series.to_excel",
+   "DataFrame.to_excel",
+   "Series.is_monotonic",
+   "pd.read_xml",
+   "pd.factorize"
+  ],
+  "recall5_symbol_fast": false,
+  "recall5_text_fast": false,
+  "recall5_symbol_rerank": false,
+  "recall5_text_rerank": false,
+  "has_rule": false,
+  "flagged_for_version": false,
+  "kind": "not_in_index",
+  "in_index_at_version": false,
+  "in_index_any_version": false,
+  "flagged_at_2_2": false
+ },
+ {
+  "id": "PANDAS-018",
+  "question": "How should code handle changed comparisons between Timestamp and datetime.date?",
+  "version": "1.5",
+  "expected_api": "Timestamp/date comparisons",
+  "parts": [
+   "timestamp",
+   "date comparisons"
+  ],
+  "top5_fast": [
+   "DataFrame.between_time",
+   "Series.between_time",
+   "pd.to_datetime",
+   "DataFrame.at_time",
+   "Series.at_time"
+  ],
+  "top5_rerank": [
+   "Series.resample",
+   "Series.to_timestamp",
+   "DataFrame.resample",
+   "DataFrame.to_timestamp",
+   "Series.at_time"
+  ],
+  "recall5_symbol_fast": false,
+  "recall5_text_fast": false,
+  "recall5_symbol_rerank": true,
+  "recall5_text_rerank": true,
+  "has_rule": false,
+  "flagged_for_version": false,
+  "kind": "found",
+  "in_index_at_version": true,
+  "in_index_any_version": true,
+  "flagged_at_2_2": false
+ },
+ {
+  "id": "PANDAS-019",
+  "question": "What happens to Index.ravel() after its return behavior changed?",
+  "version": "1.5",
+  "expected_api": "Index.ravel()",
+  "parts": [
+   "index.ravel"
+  ],
+  "top5_fast": [
+   "Series.ravel",
+   "Series.reindex_like",
+   "DataFrame.reindex_like",
+   "Series.reindex",
+   "DataFrame.set_index"
+  ],
+  "top5_rerank": [
+   "Series.ravel",
+   "DataFrame.swaplevel",
+   "DataFrame.aggregate",
+   "DataFrame.reindex_like",
+   "DataFrame.agg"
+  ],
+  "recall5_symbol_fast": false,
+  "recall5_text_fast": false,
+  "recall5_symbol_rerank": false,
+  "recall5_text_rerank": false,
+  "has_rule": true,
+  "flagged_for_version": false,
+  "kind": "not_in_index",
+  "in_index_at_version": false,
+  "in_index_any_version": false,
+  "flagged_at_2_2": false
+ },
+ {
+  "id": "PANDAS-020",
+  "question": "How should downstream code adapt to stricter dtype behavior and changed numeric_only defaults in reductions?",
+  "version": "1.5",
+  "expected_api": "numeric_only defaults / reductions",
+  "parts": [
+   "numeric_only defaults",
+   "reductions"
+  ],
+  "top5_fast": [
+   "DataFrame.std",
+   "DataFrame.sem",
+   "Series.sem",
+   "Series.std",
+   "pd.to_numeric"
+  ],
+  "top5_rerank": [
+   "Series.var",
+   "DataFrame.std",
+   "Series.sem",
+   "Series.std",
+   "DataFrame.var"
+  ],
+  "recall5_symbol_fast": false,
+  "recall5_text_fast": false,
+  "recall5_symbol_rerank": false,
+  "recall5_text_rerank": false,
+  "has_rule": false,
+  "flagged_for_version": false,
+  "kind": "not_in_index",
+  "in_index_at_version": false,
+  "in_index_any_version": false,
+  "flagged_at_2_2": false
+ },
+ {
+  "id": "PANDAS-021",
+  "question": "How should code respond to the deprecation of silent downcasting in setitem-like operations?",
+  "version": "2.2",
+  "expected_api": "Silent dtype downcasting",
+  "parts": [
+   "silent dtype downcasting"
+  ],
+  "top5_fast": [
+   "pd.to_numeric",
+   "pd.eval",
+   "DataFrame.ffill",
+   "DataFrame.join",
+   "DataFrame.bfill"
+  ],
+  "top5_rerank": [
+   "pd.to_numeric",
+   "Series.ffill",
+   "Series.interpolate",
+   "Series.bfill",
+   "Series.fillna"
+  ],
+  "recall5_symbol_fast": false,
+  "recall5_text_fast": false,
+  "recall5_symbol_rerank": false,
+  "recall5_text_rerank": false,
+  "has_rule": false,
+  "flagged_for_version": false,
+  "kind": "not_in_index",
+  "in_index_at_version": false,
+  "in_index_any_version": false,
+  "flagged_at_2_2": false
+ },
+ {
+  "id": "PANDAS-022",
+  "question": "What should replace deprecated fillna(method=...) usage on Series or DataFrame?",
+  "version": "2.2",
+  "expected_api": "fillna(method=...)",
+  "parts": [
+   "fillna"
+  ],
+  "top5_fast": [
+   "Series.fillna",
+   "DataFrame.fillna",
+   "Series.dropna",
+   "Series.mask",
+   "DataFrame.applymap"
+  ],
+  "top5_rerank": [
+   "DataFrame.fillna",
+   "DataFrame.pct_change",
+   "Series.fillna",
+   "Series.pct_change",
+   "DataFrame.replace"
+  ],
+  "recall5_symbol_fast": true,
+  "recall5_text_fast": true,
+  "recall5_symbol_rerank": true,
+  "recall5_text_rerank": true,
+  "has_rule": false,
+  "flagged_for_version": false,
+  "kind": "found",
+  "in_index_at_version": true,
+  "in_index_any_version": true,
+  "flagged_at_2_2": false
+ },
+ {
+  "id": "PANDAS-023",
+  "question": "How should code update to_datetime() calls that use deprecated infer_datetime_format?",
+  "version": "2.2",
+  "expected_api": "to_datetime(infer_datetime_format)",
+  "parts": [
+   "to_datetime"
+  ],
+  "top5_fast": [
+   "pd.to_datetime",
+   "DataFrame.convert_dtypes",
+   "Series.convert_dtypes",
+   "DataFrame.infer_objects",
+   "Series.infer_objects"
+  ],
+  "top5_rerank": [
+   "pd.to_datetime",
+   "DataFrame.resample",
+   "Series.last",
+   "DataFrame.convert_dtypes",
+   "DataFrame.last"
+  ],
+  "recall5_symbol_fast": true,
+  "recall5_text_fast": true,
+  "recall5_symbol_rerank": true,
+  "recall5_text_rerank": true,
+  "has_rule": false,
+  "flagged_for_version": false,
+  "kind": "found",
+  "in_index_at_version": true,
+  "in_index_any_version": true,
+  "flagged_at_2_2": false
+ },
+ {
+  "id": "PANDAS-024",
+  "question": "What should replace deprecated DataFrame.applymap()?",
+  "version": "2.2",
+  "expected_api": "DataFrame.applymap()",
+  "parts": [
+   "dataframe.applymap"
+  ],
+  "top5_fast": [
+   "DataFrame.applymap",
+   "DataFrame.map",
+   "DataFrame.mask",
+   "DataFrame.replace",
+   "DataFrame.where"
+  ],
+  "top5_rerank": [
+   "DataFrame.applymap",
+   "DataFrame.map",
+   "Series.apply",
+   "DataFrame.pad",
+   "DataFrame.replace"
+  ],
+  "recall5_symbol_fast": true,
+  "recall5_text_fast": true,
+  "recall5_symbol_rerank": true,
+  "recall5_text_rerank": true,
+  "has_rule": true,
+  "flagged_for_version": true,
+  "kind": "found",
+  "in_index_at_version": true,
+  "in_index_any_version": true,
+  "flagged_at_2_2": true
+ },
+ {
+  "id": "PANDAS-025",
+  "question": "How should code change when using deprecated Series.view() for dtype reinterpretation?",
+  "version": "2.2",
+  "expected_api": "Series.view()",
+  "parts": [
+   "series.view"
+  ],
+  "top5_fast": [
+   "Series.view",
+   "Series.to_numpy",
+   "Series.bool",
+   "Series.sem",
+   "Series.last"
+  ],
+  "top5_rerank": [
+   "Series.view",
+   "pd.to_numeric",
+   "Series.dtypes",
+   "Series.dtype",
+   "Series.apply"
+  ],
+  "recall5_symbol_fast": true,
+  "recall5_text_fast": true,
+  "recall5_symbol_rerank": true,
+  "recall5_text_rerank": true,
+  "has_rule": true,
+  "flagged_for_version": false,
+  "kind": "found",
+  "in_index_at_version": true,
+  "in_index_any_version": true,
+  "flagged_at_2_2": false
+ },
+ {
+  "id": "PANDAS-026",
+  "question": "How should inplace operations on a Series selected from a DataFrame be rewritten under Copy-on-Write?",
+  "version": "2.2",
+  "expected_api": "Chained/inplace mutation of selected Series",
+  "parts": [
+   "chained",
+   "inplace mutation of selected series"
+  ],
+  "top5_fast": [
+   "Series.rename",
+   "DataFrame.rename_axis",
+   "Series.set_flags",
+   "Series.infer_objects",
+   "Series.rename_axis"
+  ],
+  "top5_rerank": [
+   "DataFrame.rename_axis",
+   "DataFrame.rename",
+   "Series.rename_axis",
+   "Series.rename",
+   "DataFrame.where"
+  ],
+  "recall5_symbol_fast": false,
+  "recall5_text_fast": false,
+  "recall5_symbol_rerank": false,
+  "recall5_text_rerank": false,
+  "has_rule": false,
+  "flagged_for_version": false,
+  "kind": "not_in_index",
+  "in_index_at_version": false,
+  "in_index_any_version": false,
+  "flagged_at_2_2": false
+ },
+ {
+  "id": "PANDAS-027",
+  "question": "Why does Series.replace(..., inplace=True) on a categorical column emit a deprecation warning, and what is the recommended rewrite?",
+  "version": "2.2",
+  "expected_api": "inplace on selected Series / categorical data",
+  "parts": [
+   "inplace on selected series",
+   "categorical data"
+  ],
+  "top5_fast": [
+   "Series.reset_index",
+   "Series.mask",
+   "DataFrame.mask",
+   "Series.replace",
+   "Series.where"
+  ],
+  "top5_rerank": [
+   "Series.replace",
+   "Series.where",
+   "Series.reset_index",
+   "DataFrame.where",
+   "Series.mask"
+  ],
+  "recall5_symbol_fast": false,
+  "recall5_text_fast": false,
+  "recall5_symbol_rerank": false,
+  "recall5_text_rerank": false,
+  "has_rule": false,
+  "flagged_for_version": false,
+  "kind": "not_in_index",
+  "in_index_at_version": false,
+  "in_index_any_version": false,
+  "flagged_at_2_2": false
+ },
+ {
+  "id": "PANDAS-028",
+  "question": "What should replace deprecated DataFrameGroupBy.apply() behavior that includes grouping columns?",
+  "version": "2.2",
+  "expected_api": "GroupBy.apply(include_groups)",
+  "parts": [
+   "groupby.apply"
+  ],
+  "top5_fast": [
+   "DataFrame.applymap",
+   "DataFrame.map",
+   "Series.apply",
+   "DataFrame.groupby",
+   "DataFrame.transform"
+  ],
+  "top5_rerank": [
+   "DataFrame.groupby",
+   "DataFrame.applymap",
+   "Series.groupby",
+   "DataFrame.map",
+   "DataFrame.sem"
+  ],
+  "recall5_symbol_fast": false,
+  "recall5_text_fast": false,
+  "recall5_symbol_rerank": false,
+  "recall5_text_rerank": false,
+  "has_rule": false,
+  "flagged_for_version": false,
+  "kind": "not_in_index",
+  "in_index_at_version": false,
+  "in_index_any_version": false,
+  "flagged_at_2_2": false
+ },
+ {
+  "id": "PANDAS-029",
+  "question": "How should code handle the deprecation of the downcast keyword in fillna(), replace(), and related methods?",
+  "version": "2.2",
+  "expected_api": "downcast keyword",
+  "parts": [
+   "downcast keyword"
+  ],
+  "top5_fast": [
+   "Series.fillna",
+   "DataFrame.fillna",
+   "Series.replace",
+   "DataFrame.replace",
+   "Series.dropna"
+  ],
+  "top5_rerank": [
+   "Series.pad",
+   "Series.fillna",
+   "Series.backfill",
+   "DataFrame.fillna",
+   "pd.to_numeric"
+  ],
+  "recall5_symbol_fast": false,
+  "recall5_text_fast": false,
+  "recall5_symbol_rerank": false,
+  "recall5_text_rerank": false,
+  "has_rule": false,
+  "flagged_for_version": false,
+  "kind": "not_in_index",
+  "in_index_at_version": false,
+  "in_index_any_version": false,
+  "flagged_at_2_2": false
+ },
+ {
+  "id": "PANDAS-030",
+  "question": "What is the migration path for deprecated errors='ignore' in to_numeric()?",
+  "version": "2.2",
+  "expected_api": "to_numeric(errors='ignore')",
+  "parts": [
+   "to_numeric"
+  ],
+  "top5_fast": [
+   "pd.to_numeric",
+   "pd.read_xml",
+   "DataFrame.update",
+   "pd.read_json",
+   "pd.json_normalize"
+  ],
+  "top5_rerank": [
+   "pd.to_numeric",
+   "DataFrame.astype",
+   "Series.astype",
+   "DataFrame.rename",
+   "DataFrame.drop"
+  ],
+  "recall5_symbol_fast": true,
+  "recall5_text_fast": true,
+  "recall5_symbol_rerank": true,
+  "recall5_text_rerank": true,
+  "has_rule": false,
+  "flagged_for_version": false,
+  "kind": "found",
+  "in_index_at_version": true,
+  "in_index_any_version": true,
+  "flagged_at_2_2": false
+ },
+ {
+  "id": "PANDAS-031",
+  "question": "How should code change after the deprecation of the argument to Series/DataFrame.idxmin() and idxmax() for all-NA cases?",
+  "version": "2.2",
+  "expected_api": "idxmin / idxmax NA behavior",
+  "parts": [
+   "idxmin",
+   "idxmax na behavior"
+  ],
+  "top5_fast": [
+   "DataFrame.prod",
+   "DataFrame.product",
+   "Series.idxmax",
+   "Series.prod",
+   "DataFrame.idxmax"
+  ],
+  "top5_rerank": [
+   "DataFrame.min",
+   "Series.min",
+   "DataFrame.max",
+   "Series.idxmin",
+   "DataFrame.product"
+  ],
+  "recall5_symbol_fast": false,
+  "recall5_text_fast": true,
+  "recall5_symbol_rerank": true,
+  "recall5_text_rerank": true,
+  "has_rule": false,
+  "flagged_for_version": false,
+  "kind": "found",
+  "in_index_at_version": true,
+  "in_index_any_version": true,
+  "flagged_at_2_2": false
+ },
+ {
+  "id": "PANDAS-032",
+  "question": "How should a project prepare for pandas 3.0 breaking changes before upgrading?",
+  "version": "2.2",
+  "expected_api": "Migration to pandas 3.0",
+  "parts": [
+   "migration to pandas 3.0"
+  ],
+  "top5_fast": [
+   "DataFrame.update",
+   "DataFrame.pct_change",
+   "DataFrame.to_timestamp",
+   "DataFrame.set_axis",
+   "Series.set_axis"
+  ],
+  "top5_rerank": [
+   "DataFrame.astype",
+   "Series.astype",
+   "DataFrame.reindex",
+   "DataFrame.tz_localize",
+   "Series.truncate"
+  ],
+  "recall5_symbol_fast": false,
+  "recall5_text_fast": false,
+  "recall5_symbol_rerank": false,
+  "recall5_text_rerank": false,
+  "has_rule": false,
+  "flagged_for_version": false,
+  "kind": "not_in_index",
+  "in_index_at_version": false,
+  "in_index_any_version": false,
+  "flagged_at_2_2": false
+ },
+ {
+  "id": "PANDAS-033",
+  "question": "Why are string columns inferred as a dedicated str dtype rather than object by default in pandas 3.0?",
+  "version": "2.2",
+  "expected_api": "Default string dtype inference",
+  "parts": [
+   "default string dtype inference"
+  ],
+  "top5_fast": [
+   "pd.get_dummies",
+   "DataFrame.infer_objects",
+   "Series.infer_objects",
+   "DataFrame.query",
+   "DataFrame.astype"
+  ],
+  "top5_rerank": [
+   "DataFrame.infer_objects",
+   "Series.infer_objects",
+   "DataFrame.astype",
+   "Series.astype",
+   "pd.read_fwf"
+  ],
+  "recall5_symbol_fast": false,
+  "recall5_text_fast": false,
+  "recall5_symbol_rerank": false,
+  "recall5_text_rerank": false,
+  "has_rule": false,
+  "flagged_for_version": false,
+  "kind": "not_in_index",
+  "in_index_at_version": false,
+  "in_index_any_version": false,
+  "flagged_at_2_2": false
+ },
+ {
+  "id": "PANDAS-038",
+  "question": "Which month-end frequency alias should replace 'M' in date_range() and related code?",
+  "version": "2.2",
+  "expected_api": "Frequency alias M",
+  "parts": [
+   "frequency alias m"
+  ],
+  "top5_fast": [
+   "pd.date_range",
+   "pd.period_range",
+   "pd.timedelta_range",
+   "pd.bdate_range",
+   "Series.asfreq"
+  ],
+  "top5_rerank": [
+   "pd.period_range",
+   "pd.date_range",
+   "DataFrame.to_period",
+   "pd.bdate_range",
+   "pd.interval_range"
+  ],
+  "recall5_symbol_fast": false,
+  "recall5_text_fast": false,
+  "recall5_symbol_rerank": false,
+  "recall5_text_rerank": false,
+  "has_rule": false,
+  "flagged_for_version": false,
+  "kind": "not_in_index",
+  "in_index_at_version": false,
+  "in_index_any_version": false,
+  "flagged_at_2_2": false
+ },
+ {
+  "id": "PANDAS-039",
+  "question": "Which quarter-end alias should replace 'Q' in date_range() and resampling code?",
+  "version": "2.2",
+  "expected_api": "Frequency alias Q",
+  "parts": [
+   "frequency alias q"
+  ],
+  "top5_fast": [
+   "DataFrame.resample",
+   "Series.resample",
+   "pd.date_range",
+   "Series.asfreq",
+   "pd.period_range"
+  ],
+  "top5_rerank": [
+   "pd.date_range",
+   "pd.period_range",
+   "pd.bdate_range",
+   "Series.resample",
+   "DataFrame.resample"
+  ],
+  "recall5_symbol_fast": false,
+  "recall5_text_fast": false,
+  "recall5_symbol_rerank": false,
+  "recall5_text_rerank": false,
+  "has_rule": false,
+  "flagged_for_version": false,
+  "kind": "not_in_index",
+  "in_index_at_version": false,
+  "in_index_any_version": false,
+  "flagged_at_2_2": false
+ },
+ {
+  "id": "PANDAS-040",
+  "question": "Which year-end alias should replace 'Y' in date_range() and resampling code?",
+  "version": "2.2",
+  "expected_api": "Frequency alias Y",
+  "parts": [
+   "frequency alias y"
+  ],
+  "top5_fast": [
+   "DataFrame.resample",
+   "Series.resample",
+   "Series.replace",
+   "pd.date_range",
+   "DataFrame.replace"
+  ],
+  "top5_rerank": [
+   "pd.date_range",
+   "Series.replace",
+   "DataFrame.replace",
+   "pd.period_range",
+   "pd.bdate_range"
+  ],
+  "recall5_symbol_fast": false,
+  "recall5_text_fast": false,
+  "recall5_symbol_rerank": false,
+  "recall5_text_rerank": false,
+  "has_rule": false,
+  "flagged_for_version": false,
+  "kind": "not_in_index",
+  "in_index_at_version": false,
+  "in_index_any_version": false,
+  "flagged_at_2_2": false
+ },
+ {
+  "id": "PANDAS-041",
+  "question": "Which business month-end alias should replace 'BM'?",
+  "version": "2.2",
+  "expected_api": "Frequency alias BM",
+  "parts": [
+   "frequency alias bm"
+  ],
+  "top5_fast": [
+   "pd.bdate_range",
+   "Series.replace",
+   "pd.period_range",
+   "DataFrame.replace",
+   "DataFrame.set_index"
+  ],
+  "top5_rerank": [
+   "pd.period_range",
+   "pd.date_range",
+   "pd.bdate_range",
+   "pd.interval_range",
+   "Series.isnull"
+  ],
+  "recall5_symbol_fast": false,
+  "recall5_text_fast": false,
+  "recall5_symbol_rerank": false,
+  "recall5_text_rerank": false,
+  "has_rule": false,
+  "flagged_for_version": false,
+  "kind": "not_in_index",
+  "in_index_at_version": false,
+  "in_index_any_version": false,
+  "flagged_at_2_2": false
+ },
+ {
+  "id": "PANDAS-042",
+  "question": "Which business quarter-end alias should replace 'BQ'?",
+  "version": "2.2",
+  "expected_api": "Frequency alias BQ",
+  "parts": [
+   "frequency alias bq"
+  ],
+  "top5_fast": [
+   "pd.bdate_range",
+   "Series.replace",
+   "DataFrame.replace",
+   "DataFrame.isnull",
+   "Series.asfreq"
+  ],
+  "top5_rerank": [
+   "pd.period_range",
+   "pd.bdate_range",
+   "pd.interval_range",
+   "Series.keys",
+   "DataFrame.to_gbq"
+  ],
+  "recall5_symbol_fast": false,
+  "recall5_text_fast": false,
+  "recall5_symbol_rerank": false,
+  "recall5_text_rerank": false,
+  "has_rule": false,
+  "flagged_for_version": false,
+  "kind": "not_in_index",
+  "in_index_at_version": false,
+  "in_index_any_version": false,
+  "flagged_at_2_2": false
+ },
+ {
+  "id": "PANDAS-043",
+  "question": "Which business year-end alias should replace 'BY'?",
+  "version": "2.2",
+  "expected_api": "Frequency alias BY",
+  "parts": [
+   "frequency alias by"
+  ],
+  "top5_fast": [
+   "pd.bdate_range",
+   "Series.replace",
+   "DataFrame.replace",
+   "pd.period_range",
+   "Series.keys"
+  ],
+  "top5_rerank": [
+   "pd.period_range",
+   "pd.bdate_range",
+   "Series.keys",
+   "pd.interval_range",
+   "DataFrame.isnull"
+  ],
+  "recall5_symbol_fast": false,
+  "recall5_text_fast": false,
+  "recall5_symbol_rerank": false,
+  "recall5_text_rerank": false,
+  "has_rule": false,
+  "flagged_for_version": false,
+  "kind": "not_in_index",
+  "in_index_at_version": false,
+  "in_index_any_version": false,
+  "flagged_at_2_2": false
+ },
+ {
+  "id": "PANDAS-050",
+  "question": "Which pandas 2.0 removals and behavior changes should downstream type stubs and users account for?",
+  "version": "1.5",
+  "expected_api": "pandas 2.0 compatibility tracking",
+  "parts": [
+   "pandas 2.0 compatibility tracking"
+  ],
+  "top5_fast": [
+   "DataFrame.mask",
+   "DataFrame.where",
+   "DataFrame.astype",
+   "Series.where",
+   "Series.mask"
+  ],
+  "top5_rerank": [
+   "Series.copy",
+   "DataFrame.copy",
+   "Series.mask",
+   "DataFrame.where",
+   "Series.astype"
+  ],
+  "recall5_symbol_fast": false,
+  "recall5_text_fast": false,
+  "recall5_symbol_rerank": false,
+  "recall5_text_rerank": false,
+  "has_rule": false,
+  "flagged_for_version": false,
+  "kind": "not_in_index",
+  "in_index_at_version": false,
+  "in_index_any_version": false,
+  "flagged_at_2_2": false
+ }
+]
