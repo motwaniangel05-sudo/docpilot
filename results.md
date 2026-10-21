@@ -113,3 +113,25 @@ Failures (reported as measured):
 - 4 misses: `self.df` attributes, `from pandas import read_gbq`, a DataFrame returned from a user function, and a `groupby` loop variable. The checker tracks only simple assignments from `pd.*` calls and variable names like `df`, `ser`.
 
 Limitations: the test set was written by the same person who built the checker, so it is not independent and the numbers are likely optimistic. It checks only the 29 APIs in the rules file (only symbols in DocPilot's index), not every pandas change. Detection is name-based with heuristics, not type inference.
+
+
+## P2: Cited answers (Groq gpt-oss-20b, retrieved chunks only)
+
+The app writes a short answer from the top 3 retrieved chunks (version-filtered, no reranker) and cites each symbol as `[Symbol | library version]`. If the key is missing or the API fails, the app falls back to a one-line extractive answer with a citation.
+
+Faithfulness script: `scripts/eval_faithfulness.py` (generation, cached) and `scripts/rescore_faithfulness.py` (scoring). Sample: 60 questions from the 150-question multi-library benchmark (20 per library, up to 6 traps each, seed 42). 6 answers said "Cannot confirm", leaving 54 answered. An answer is faithful if every cited symbol was retrieved and valid at the chosen version, and every other API it names was among the retrieved chunks.
+
+| Metric | Value |
+|---|---|
+| First scoring, exact name match (unnormalized) | 30/54 = 55.6% |
+| Normalized (short names match prefixed symbols, generic names ignored) | 53/54 = 98.1% |
+| Normalized, and no chunk-number citation format errors | 50/54 = 92.6% |
+| Trap questions answered / faithful | 11 / 11 |
+| By library (faithful/answered) | pandas 18/18, numpy 18/19, sklearn 17/17 |
+| Answers with at least one citation | 81.5% |
+
+Why two numbers: the first scoring compared `trapz` with the stored name `np.trapz`, and `AgglomerativeClustering` with `sklearn.cluster.AgglomerativeClustering`, so it flagged correct answers. I fixed the matcher after seeing this. The ignored generic names (DataFrame, Index, Series, a, array, axis, b, df, dx, factorize, gt, join, mean, n, seed, size, std, sum, x, y) were chosen by me after viewing the violations, so the normalized rate is tuned on the same sample.
+
+Remaining failures: one real hallucination (cited `DataFrame.map` on a NumPy std question); 3 answers cited chunk numbers (`[1 | ...]`) instead of symbols.
+
+Limitations: 60 questions, one run, temperature 0; questions are built from docstring summaries, so they are easier than real ones; the checker verifies named symbols, not whether the explanation is correct; 18.5% of answers had no citation at all.

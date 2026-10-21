@@ -6,3 +6,4 @@ __pycache__/
 logs/
 index_backup/
 models/
+.streamlit/secrets.toml

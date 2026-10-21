@@ -135,3 +135,11 @@ New tab in the app: paste a Python snippet, choose pandas 1.5, 2.0 or 2.2, and D
 - Tests: `pytest tests/test_checker.py` (20 tests).
 - Evaluation (`python scripts/eval_checker.py`, 40 hand-written snippets): strict precision 92.9% / recall 83.9%; name-level precision 96.4% / recall 87.1%.
 - Known limits: misses `self.df`, `from pandas import ...` and values returned from functions; flags `iteritems` on plain dicts. The test set is self-written, so treat the numbers as an upper bound.
+
+
+## Cited answers (P2)
+
+Search results now come with a short LLM answer written only from the top 3 retrieved chunks, with `[Symbol | library version]` citations. The key is read from the Streamlit secret `GROQ_API_KEY` (never in the repo); without it the app shows an extractive one-line answer and keeps working.
+
+- Faithfulness (60-question sample, 54 answered): 53/54 = 98.1% normalized; 92.6% when chunk-number citations also count as errors; 55.6% with the first, strict name matching (which wrongly flagged short vs prefixed names). Details in `results.md`.
+- Limits: tuned scoring on the same sample, small sample, 1 real hallucination found.

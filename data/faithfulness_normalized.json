@@ -1,0 +1,50 @@
+{
+ "answered": 54,
+ "faithful_normalized": 53,
+ "faithfulness_rate_normalized": 0.981,
+ "faithful_and_no_format_error": 50,
+ "rate_incl_format_errors": 0.926,
+ "unnormalized_original": {
+  "faithful": 30,
+  "answered": 54,
+  "rate": 0.556
+ },
+ "trap_answered": 11,
+ "trap_faithful": 11,
+ "by_lib": {
+  "pandas": [
+   18,
+   18
+  ],
+  "numpy": [
+   18,
+   19
+  ],
+  "sklearn": [
+   17,
+   17
+  ]
+ },
+ "generic_names_ignored": [
+  "DataFrame",
+  "Index",
+  "Series",
+  "a",
+  "array",
+  "axis",
+  "b",
+  "df",
+  "dx",
+  "factorize",
+  "gt",
+  "join",
+  "mean",
+  "n",
+  "seed",
+  "size",
+  "std",
+  "sum",
+  "x",
+  "y"
+ ]
+}

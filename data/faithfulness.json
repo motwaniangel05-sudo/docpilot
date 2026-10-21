@@ -1,0 +1,12 @@
+{
+ "sampled": 60,
+ "llm_answers": 60,
+ "fallback_not_counted": 0,
+ "abstained": 6,
+ "answered": 54,
+ "faithful": 30,
+ "faithfulness_rate": 0.556,
+ "with_citation_rate": 0.815,
+ "trap_answered": 11,
+ "trap_faithful": 9
+}
