@@ -109,6 +109,54 @@ def _looks_pandas(recv, known, pd_names):
     return r in known or r in pd_names or bool(NAME_HINT.match(r))
 
 
+_CHAIN_SKIP = {"groupby", "resample", "rolling", "expanding", "ewm"}
+
+
+def _chain_attrs(node):
+    out = []
+    while True:
+        if isinstance(node, ast.Call):
+            node = node.func
+        elif isinstance(node, ast.Attribute):
+            out.append(node.attr)
+            node = node.value
+        elif isinstance(node, ast.Subscript):
+            node = node.value
+        else:
+            break
+    return set(out)
+
+
+def _assign_index(tree):
+    idx = {}
+    for n in ast.walk(tree):
+        if isinstance(n, ast.Assign):
+            for t in n.targets:
+                if isinstance(t, ast.Name):
+                    idx.setdefault(t.id, []).append((n.lineno, n.value))
+    for v in idx.values():
+        v.sort(key=lambda x: x[0])
+    return idx
+
+
+_PLAIN = (ast.List, ast.Dict, ast.Set, ast.ListComp, ast.DictComp, ast.SetComp, ast.Constant, ast.Tuple)
+
+
+def _ambiguous_ok(recv, lineno, assigns, pd_names, known):
+    """For names like append/first/ravel: is the receiver clearly pandas at this line?"""
+    if _chain_attrs(recv) & (_CHAIN_SKIP | NOT_PANDAS_RESULT):
+        return False
+    if isinstance(recv, ast.Name):
+        prior = [v for ln, v in assigns.get(recv.id, []) if ln < lineno]
+        if prior:
+            v = prior[-1]
+            if isinstance(v, _PLAIN) or (_chain_attrs(v) & _CHAIN_SKIP):
+                return False
+            r = _root(v)
+            return r is not None and (r in pd_names or r in known)
+    return True
+
+
 def check_code(code, version, rules=None):
     """Return {"error": str|None, "findings": [...]}. Never executes the code."""
     if version not in SUPPORTED:
@@ -121,6 +169,7 @@ def check_code(code, version, rules=None):
     pd_names = _aliases(tree)
     known = _known_pandas(tree, pd_names)
     series = _series_names(tree, pd_names, known)
+    assigns = _assign_index(tree)
     findings = []
     for n in ast.walk(tree):
         if not isinstance(n, ast.Attribute):
@@ -141,6 +190,8 @@ def check_code(code, version, rules=None):
             else:
                 conf = "high" if pandas_like else "medium"
         if rule is None or conf is None:
+            continue
+        if n.attr in AMBIGUOUS and not _ambiguous_ok(n.value, n.lineno, assigns, pd_names, known):
             continue
         if vkey(version) < vkey(rule["since"]):
             continue

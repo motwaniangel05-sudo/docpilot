@@ -1,0 +1,415 @@
+{
+ "xarray": {
+  "commit": "989e6ff",
+  "files_scanned": 245,
+  "files_mentioning_pandas": 111,
+  "skipped": 0,
+  "breaking_total": 18,
+  "removed": 11,
+  "deprecated": 7,
+  "syntax_errors": 43,
+  "top_symbols": [
+   [
+    "DataFrame.append",
+    6
+   ],
+   [
+    "DataFrame.pad",
+    5
+   ],
+   [
+    "Series.append",
+    3
+   ],
+   [
+    "Series.is_monotonic",
+    2
+   ],
+   [
+    "DataFrame.first",
+    1
+   ]
+  ],
+  "sample": [
+   {
+    "file": "xarray/coding/frequencies.py",
+    "line": 119,
+    "symbol": "Series.is_monotonic",
+    "status": "removed",
+    "since": "2.0",
+    "fix": "Series.is_monotonic_increasing",
+    "confidence": "medium"
+   },
+   {
+    "file": "xarray/coding/frequencies.py",
+    "line": 136,
+    "symbol": "Series.is_monotonic",
+    "status": "removed",
+    "since": "2.0",
+    "fix": "Series.is_monotonic_increasing",
+    "confidence": "medium"
+   },
+   {
+    "file": "xarray/core/dataset.py",
+    "line": 7761,
+    "symbol": "Series.append",
+    "status": "removed",
+    "since": "2.0",
+    "fix": "pd.concat([s, other])",
+    "confidence": "medium"
+   },
+   {
+    "file": "xarray/groupers.py",
+    "line": 568,
+    "symbol": "DataFrame.first",
+    "status": "deprecated",
+    "since": "2.1",
+    "fix": "df.loc[:start + offset] (slice by date offset)",
+    "confidence": "high"
+   },
+   {
+    "file": "xarray/groupers.py",
+    "line": 780,
+    "symbol": "Series.append",
+    "status": "removed",
+    "since": "2.0",
+    "fix": "pd.concat([s, other])",
+    "confidence": "high"
+   },
+   {
+    "file": "xarray/groupers.py",
+    "line": 787,
+    "symbol": "Series.append",
+    "status": "removed",
+    "since": "2.0",
+    "fix": "pd.concat([s, other])",
+    "confidence": "high"
+   },
+   {
+    "file": "xarray/tests/test_accessor_dt.py",
+    "line": 241,
+    "symbol": "DataFrame.append",
+    "status": "removed",
+    "since": "2.0",
+    "fix": "pd.concat([df, other])",
+    "confidence": "high"
+   },
+   {
+    "file": "xarray/tests/test_coding_times.py",
+    "line": 1120,
+    "symbol": "DataFrame.append",
+    "status": "removed",
+    "since": "2.0",
+    "fix": "pd.concat([df, other])",
+    "confidence": "high"
+   },
+   {
+    "file": "xarray/tests/test_coding_times.py",
+    "line": 1133,
+    "symbol": "DataFrame.append",
+    "status": "removed",
+    "since": "2.0",
+    "fix": "pd.concat([df, other])",
+    "confidence": "high"
+   },
+   {
+    "file": "xarray/tests/test_dataarray.py",
+    "line": 4964,
+    "symbol": "DataFrame.pad",
+    "status": "deprecated",
+    "since": "2.0",
+    "fix": "ffill",
+    "confidence": "high"
+   },
+   {
+    "file": "xarray/tests/test_dataarray.py",
+    "line": 4967,
+    "symbol": "DataFrame.pad",
+    "status": "deprecated",
+    "since": "2.0",
+    "fix": "ffill",
+    "confidence": "high"
+   },
+   {
+    "file": "xarray/tests/test_dataarray.py",
+    "line": 8278,
+    "symbol": "Series.ravel",
+    "status": "deprecated",
+    "since": "2.2.0",
+    "fix": "Series.to_numpy()",
+    "confidence": "high"
+   }
+  ]
+ },
+ "statsmodels": {
+  "commit": "30df665",
+  "files_scanned": 1250,
+  "files_mentioning_pandas": 496,
+  "skipped": 0,
+  "breaking_total": 64,
+  "removed": 45,
+  "deprecated": 19,
+  "syntax_errors": 0,
+  "top_symbols": [
+   [
+    "DataFrame.mad",
+    21
+   ],
+   [
+    "DataFrame.append",
+    16
+   ],
+   [
+    "DataFrame.applymap",
+    16
+   ],
+   [
+    "Series.append",
+    8
+   ],
+   [
+    "DataFrame.last",
+    2
+   ]
+  ],
+  "sample": [
+   {
+    "file": "archive/examples/ex_random_panel.py",
+    "line": 165,
+    "symbol": "DataFrame.append",
+    "status": "removed",
+    "since": "2.0",
+    "fix": "pd.concat([df, other])",
+    "confidence": "high"
+   },
+   {
+    "file": "archive/examples/ex_random_panel.py",
+    "line": 167,
+    "symbol": "DataFrame.append",
+    "status": "removed",
+    "since": "2.0",
+    "fix": "pd.concat([df, other])",
+    "confidence": "high"
+   },
+   {
+    "file": "archive/examples/ex_random_panel.py",
+    "line": 169,
+    "symbol": "DataFrame.append",
+    "status": "removed",
+    "since": "2.0",
+    "fix": "pd.concat([df, other])",
+    "confidence": "high"
+   },
+   {
+    "file": "archive/examples/thirdparty/try_interchange.py",
+    "line": 55,
+    "symbol": "Series.ravel",
+    "status": "deprecated",
+    "since": "2.2.0",
+    "fix": "Series.to_numpy()",
+    "confidence": "high"
+   },
+   {
+    "file": "archive/sysreg.py",
+    "line": 121,
+    "symbol": "DataFrame.append",
+    "status": "removed",
+    "since": "2.0",
+    "fix": "pd.concat([df, other])",
+    "confidence": "medium"
+   },
+   {
+    "file": "archive/sysreg.py",
+    "line": 122,
+    "symbol": "DataFrame.append",
+    "status": "removed",
+    "since": "2.0",
+    "fix": "pd.concat([df, other])",
+    "confidence": "medium"
+   },
+   {
+    "file": "examples/python/autoregressions.py",
+    "line": 172,
+    "symbol": "DataFrame.last",
+    "status": "deprecated",
+    "since": "2.1",
+    "fix": "df.loc[end - offset:] (slice by date offset)",
+    "confidence": "high"
+   },
+   {
+    "file": "examples/python/gee_score_test_simulation.py",
+    "line": 179,
+    "symbol": "DataFrame.append",
+    "status": "removed",
+    "since": "2.0",
+    "fix": "pd.concat([df, other])",
+    "confidence": "high"
+   },
+   {
+    "file": "examples/python/gee_score_test_simulation.py",
+    "line": 207,
+    "symbol": "DataFrame.append",
+    "status": "removed",
+    "since": "2.0",
+    "fix": "pd.concat([df, other])",
+    "confidence": "high"
+   },
+   {
+    "file": "examples/python/robust_models_1.py",
+    "line": 187,
+    "symbol": "DataFrame.mad",
+    "status": "removed",
+    "since": "2.0",
+    "fix": "(df - df.mean()).abs().mean()",
+    "confidence": "medium"
+   },
+   {
+    "file": "examples/python/robust_models_1.py",
+    "line": 261,
+    "symbol": "DataFrame.mad",
+    "status": "removed",
+    "since": "2.0",
+    "fix": "(df - df.mean()).abs().mean()",
+    "confidence": "medium"
+   },
+   {
+    "file": "examples/python/robust_models_1.py",
+    "line": 264,
+    "symbol": "DataFrame.mad",
+    "status": "removed",
+    "since": "2.0",
+    "fix": "(df - df.mean()).abs().mean()",
+    "confidence": "medium"
+   }
+  ]
+ },
+ "scikit-learn": {
+  "commit": "718eedb",
+  "files_scanned": 1038,
+  "files_mentioning_pandas": 186,
+  "skipped": 0,
+  "breaking_total": 11,
+  "removed": 9,
+  "deprecated": 2,
+  "syntax_errors": 0,
+  "top_symbols": [
+   [
+    "DataFrame.append",
+    4
+   ],
+   [
+    "Series.append",
+    4
+   ],
+   [
+    "Series.ravel",
+    2
+   ],
+   [
+    "DataFrame.iteritems",
+    1
+   ]
+  ],
+  "sample": [
+   {
+    "file": "benchmarks/bench_pca_solvers.py",
+    "line": 81,
+    "symbol": "DataFrame.append",
+    "status": "removed",
+    "since": "2.0",
+    "fix": "pd.concat([df, other])",
+    "confidence": "high"
+   },
+   {
+    "file": "benchmarks/bench_saga.py",
+    "line": 240,
+    "symbol": "DataFrame.append",
+    "status": "removed",
+    "since": "2.0",
+    "fix": "pd.concat([df, other])",
+    "confidence": "high"
+   },
+   {
+    "file": "examples/linear_model/plot_ridge_coeffs.py",
+    "line": 109,
+    "symbol": "DataFrame.append",
+    "status": "removed",
+    "since": "2.0",
+    "fix": "pd.concat([df, other])",
+    "confidence": "high"
+   },
+   {
+    "file": "examples/linear_model/plot_tweedie_regression_insurance_claims.py",
+    "line": 192,
+    "symbol": "Series.append",
+    "status": "removed",
+    "since": "2.0",
+    "fix": "pd.concat([s, other])",
+    "confidence": "high"
+   },
+   {
+    "file": "examples/linear_model/plot_tweedie_regression_insurance_claims.py",
+    "line": 602,
+    "symbol": "Series.append",
+    "status": "removed",
+    "since": "2.0",
+    "fix": "pd.concat([s, other])",
+    "confidence": "high"
+   },
+   {
+    "file": "examples/model_selection/plot_likelihood_ratios.py",
+    "line": 259,
+    "symbol": "Series.append",
+    "status": "removed",
+    "since": "2.0",
+    "fix": "pd.concat([s, other])",
+    "confidence": "high"
+   },
+   {
+    "file": "examples/model_selection/plot_likelihood_ratios.py",
+    "line": 260,
+    "symbol": "Series.append",
+    "status": "removed",
+    "since": "2.0",
+    "fix": "pd.concat([s, other])",
+    "confidence": "high"
+   },
+   {
+    "file": "sklearn/datasets/_arff_parser.py",
+    "line": 201,
+    "symbol": "DataFrame.append",
+    "status": "removed",
+    "since": "2.0",
+    "fix": "pd.concat([df, other])",
+    "confidence": "medium"
+   },
+   {
+    "file": "sklearn/ensemble/_hist_gradient_boosting/tests/test_gradient_boosting.py",
+    "line": 664,
+    "symbol": "Series.ravel",
+    "status": "deprecated",
+    "since": "2.2.0",
+    "fix": "Series.to_numpy()",
+    "confidence": "high"
+   },
+   {
+    "file": "sklearn/ensemble/_hist_gradient_boosting/tests/test_gradient_boosting.py",
+    "line": 665,
+    "symbol": "Series.ravel",
+    "status": "deprecated",
+    "since": "2.2.0",
+    "fix": "Series.to_numpy()",
+    "confidence": "high"
+   },
+   {
+    "file": "sklearn/feature_extraction/_hash.py",
+    "line": 18,
+    "symbol": "DataFrame.iteritems",
+    "status": "removed",
+    "since": "2.0",
+    "fix": "DataFrame.items",
+    "confidence": "medium"
+   }
+  ]
+ }
+}

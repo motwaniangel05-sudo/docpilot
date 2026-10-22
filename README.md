@@ -190,3 +190,27 @@ Details: see `results.md`.
 - **Code blocks were run locally only.** Running without error does not prove an answer is correct.
 
 Details and failure analysis: see `results.md`.
+
+## Upgrade report (pandas 1.5 to 2.2)
+
+Upload a `.py` file or a `.zip` in the **Upgrade report** tab. DocPilot parses every `.py` file with `ast` (nothing is run or saved) and lists calls that break between two pandas versions, with file, line and fix. Only **high-confidence** findings count as breaking. Medium-confidence ones (receiver not clearly pandas) are listed apart as "check by hand". Limits are 500 files, 20 MB, and zip paths are checked.
+
+**Test on 3 open-source repos (current HEAD, scanned 1.5 to 2.2).** These are modern codebases, not pandas 1.x projects, so most were probably already migrated.
+
+| Repo (commit) | Files | High (counted) | Low (apart) |
+|---|---|---|---|
+| xarray (989e6ff) | 245 | 5 | 2 |
+| statsmodels (30df665) | 1250 | 21 | 21 |
+| scikit-learn (718eedb) | 1038 | 2 | 1 |
+
+**I read all 52 findings by hand** (one source line each, so types are not verified):
+- **High (28):** 18 likely real, 8 false positives, 2 unclear. Precision 18 of 28 (64.3%), counting unclear as wrong. 15 of the 18 are `applymap` calls in statsmodels, and one of those (`news.py:932`) may be on a Series.
+- **Low (24):** all 24 were false positives (statsmodels' own `mad` functions, an object's own `is_monotonic`, a `hasattr`-guarded `iteritems`). This is why they are not counted.
+- **Remaining false positives:** `Index.append`, `defaultdict(list)` items, and a results object's `.append`. The checker cannot tell these from DataFrames by name.
+- **Recall was not measured on real repos.**
+
+**What changed along the way:** the first scan had 93 findings, and a 35-finding sample was only 8.6% real. The cause was that a name which was a list early in a file and a DataFrame later counted as pandas everywhere. I made the ambiguous-method check order-aware and rescanned. xarray also had 43 files unparsable on Python 3.11 because they use 3.12 syntax, so the final scan ran on 3.12.
+
+**P1 re-checked after the change:** strict precision 92.9% and recall 83.9% on the 40 hand-written snippets, unchanged. Those snippets rarely use list names like pandas objects, so this does not show the repo problem is solved. 34 tests pass.
+
+Details: `results.md`. Raw scans: `data/repo_scan_before_fix.json`, `data/repo_scan_after_fix.json`, `data/repo_scan_final.json`.

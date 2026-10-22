@@ -1,0 +1,274 @@
+{
+ "xarray": {
+  "commit": "989e6ff",
+  "files_scanned": 245,
+  "files_mentioning_pandas": 111,
+  "skipped": 0,
+  "breaking_total": 7,
+  "removed": 7,
+  "deprecated": 0,
+  "syntax_errors": 0,
+  "top_symbols": [
+   [
+    "DataFrame.append",
+    3
+   ],
+   [
+    "Series.is_monotonic",
+    2
+   ],
+   [
+    "Series.append",
+    2
+   ]
+  ],
+  "sample": [
+   {
+    "file": "xarray/coding/frequencies.py",
+    "line": 119,
+    "symbol": "Series.is_monotonic",
+    "status": "removed",
+    "since": "2.0",
+    "fix": "Series.is_monotonic_increasing",
+    "confidence": "medium"
+   },
+   {
+    "file": "xarray/coding/frequencies.py",
+    "line": 136,
+    "symbol": "Series.is_monotonic",
+    "status": "removed",
+    "since": "2.0",
+    "fix": "Series.is_monotonic_increasing",
+    "confidence": "medium"
+   },
+   {
+    "file": "xarray/groupers.py",
+    "line": 780,
+    "symbol": "Series.append",
+    "status": "removed",
+    "since": "2.0",
+    "fix": "pd.concat([s, other])",
+    "confidence": "high"
+   },
+   {
+    "file": "xarray/groupers.py",
+    "line": 787,
+    "symbol": "Series.append",
+    "status": "removed",
+    "since": "2.0",
+    "fix": "pd.concat([s, other])",
+    "confidence": "high"
+   },
+   {
+    "file": "xarray/tests/test_coding_times.py",
+    "line": 1120,
+    "symbol": "DataFrame.append",
+    "status": "removed",
+    "since": "2.0",
+    "fix": "pd.concat([df, other])",
+    "confidence": "high"
+   },
+   {
+    "file": "xarray/tests/test_dataset.py",
+    "line": 140,
+    "symbol": "DataFrame.append",
+    "status": "removed",
+    "since": "2.0",
+    "fix": "pd.concat([df, other])",
+    "confidence": "high"
+   },
+   {
+    "file": "xarray/tests/test_utils.py",
+    "line": 35,
+    "symbol": "DataFrame.append",
+    "status": "removed",
+    "since": "2.0",
+    "fix": "pd.concat([df, other])",
+    "confidence": "high"
+   }
+  ]
+ },
+ "statsmodels": {
+  "commit": "30df665",
+  "files_scanned": 1250,
+  "files_mentioning_pandas": 496,
+  "skipped": 0,
+  "breaking_total": 42,
+  "removed": 26,
+  "deprecated": 16,
+  "syntax_errors": 0,
+  "top_symbols": [
+   [
+    "DataFrame.mad",
+    21
+   ],
+   [
+    "DataFrame.applymap",
+    16
+   ],
+   [
+    "DataFrame.append",
+    5
+   ]
+  ],
+  "sample": [
+   {
+    "file": "archive/examples/ex_random_panel.py",
+    "line": 165,
+    "symbol": "DataFrame.append",
+    "status": "removed",
+    "since": "2.0",
+    "fix": "pd.concat([df, other])",
+    "confidence": "high"
+   },
+   {
+    "file": "archive/examples/ex_random_panel.py",
+    "line": 167,
+    "symbol": "DataFrame.append",
+    "status": "removed",
+    "since": "2.0",
+    "fix": "pd.concat([df, other])",
+    "confidence": "high"
+   },
+   {
+    "file": "archive/examples/ex_random_panel.py",
+    "line": 169,
+    "symbol": "DataFrame.append",
+    "status": "removed",
+    "since": "2.0",
+    "fix": "pd.concat([df, other])",
+    "confidence": "high"
+   },
+   {
+    "file": "examples/python/gee_score_test_simulation.py",
+    "line": 207,
+    "symbol": "DataFrame.append",
+    "status": "removed",
+    "since": "2.0",
+    "fix": "pd.concat([df, other])",
+    "confidence": "high"
+   },
+   {
+    "file": "examples/python/robust_models_1.py",
+    "line": 187,
+    "symbol": "DataFrame.mad",
+    "status": "removed",
+    "since": "2.0",
+    "fix": "(df - df.mean()).abs().mean()",
+    "confidence": "medium"
+   },
+   {
+    "file": "examples/python/robust_models_1.py",
+    "line": 261,
+    "symbol": "DataFrame.mad",
+    "status": "removed",
+    "since": "2.0",
+    "fix": "(df - df.mean()).abs().mean()",
+    "confidence": "medium"
+   },
+   {
+    "file": "examples/python/robust_models_1.py",
+    "line": 264,
+    "symbol": "DataFrame.mad",
+    "status": "removed",
+    "since": "2.0",
+    "fix": "(df - df.mean()).abs().mean()",
+    "confidence": "medium"
+   },
+   {
+    "file": "examples/python/robust_models_1.py",
+    "line": 267,
+    "symbol": "DataFrame.mad",
+    "status": "removed",
+    "since": "2.0",
+    "fix": "(df - df.mean()).abs().mean()",
+    "confidence": "medium"
+   },
+   {
+    "file": "statsmodels/iolib/summary2.py",
+    "line": 844,
+    "symbol": "DataFrame.applymap",
+    "status": "deprecated",
+    "since": "2.1.0",
+    "fix": "DataFrame.map",
+    "confidence": "high"
+   },
+   {
+    "file": "statsmodels/multivariate/factor.py",
+    "line": 1067,
+    "symbol": "DataFrame.applymap",
+    "status": "deprecated",
+    "since": "2.1.0",
+    "fix": "DataFrame.map",
+    "confidence": "high"
+   },
+   {
+    "file": "statsmodels/robust/robust_linear_model.py",
+    "line": 214,
+    "symbol": "DataFrame.mad",
+    "status": "removed",
+    "since": "2.0",
+    "fix": "(df - df.mean()).abs().mean()",
+    "confidence": "medium"
+   },
+   {
+    "file": "statsmodels/robust/tests/test_covariance.py",
+    "line": 800,
+    "symbol": "DataFrame.mad",
+    "status": "removed",
+    "since": "2.0",
+    "fix": "(df - df.mean()).abs().mean()",
+    "confidence": "medium"
+   }
+  ]
+ },
+ "scikit-learn": {
+  "commit": "718eedb",
+  "files_scanned": 1038,
+  "files_mentioning_pandas": 186,
+  "skipped": 0,
+  "breaking_total": 3,
+  "removed": 3,
+  "deprecated": 0,
+  "syntax_errors": 0,
+  "top_symbols": [
+   [
+    "Series.append",
+    2
+   ],
+   [
+    "DataFrame.iteritems",
+    1
+   ]
+  ],
+  "sample": [
+   {
+    "file": "examples/model_selection/plot_likelihood_ratios.py",
+    "line": 259,
+    "symbol": "Series.append",
+    "status": "removed",
+    "since": "2.0",
+    "fix": "pd.concat([s, other])",
+    "confidence": "high"
+   },
+   {
+    "file": "examples/model_selection/plot_likelihood_ratios.py",
+    "line": 260,
+    "symbol": "Series.append",
+    "status": "removed",
+    "since": "2.0",
+    "fix": "pd.concat([s, other])",
+    "confidence": "high"
+   },
+   {
+    "file": "sklearn/feature_extraction/_hash.py",
+    "line": 18,
+    "symbol": "DataFrame.iteritems",
+    "status": "removed",
+    "since": "2.0",
+    "fix": "DataFrame.items",
+    "confidence": "medium"
+   }
+  ]
+ }
+}

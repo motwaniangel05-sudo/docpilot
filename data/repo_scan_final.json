@@ -1,0 +1,287 @@
+{
+ "xarray": {
+  "commit": "989e6ff",
+  "files_scanned": 245,
+  "syntax_errors": 0,
+  "breaking_high": 5,
+  "removed": 5,
+  "deprecated": 0,
+  "low_confidence": 2,
+  "findings": [
+   {
+    "file": "xarray/groupers.py",
+    "line": 780,
+    "symbol": "Series.append",
+    "status": "removed",
+    "since": "2.0",
+    "fix": "pd.concat([s, other])",
+    "confidence": "high"
+   },
+   {
+    "file": "xarray/groupers.py",
+    "line": 787,
+    "symbol": "Series.append",
+    "status": "removed",
+    "since": "2.0",
+    "fix": "pd.concat([s, other])",
+    "confidence": "high"
+   },
+   {
+    "file": "xarray/tests/test_coding_times.py",
+    "line": 1120,
+    "symbol": "DataFrame.append",
+    "status": "removed",
+    "since": "2.0",
+    "fix": "pd.concat([df, other])",
+    "confidence": "high"
+   },
+   {
+    "file": "xarray/tests/test_dataset.py",
+    "line": 140,
+    "symbol": "DataFrame.append",
+    "status": "removed",
+    "since": "2.0",
+    "fix": "pd.concat([df, other])",
+    "confidence": "high"
+   },
+   {
+    "file": "xarray/tests/test_utils.py",
+    "line": 35,
+    "symbol": "DataFrame.append",
+    "status": "removed",
+    "since": "2.0",
+    "fix": "pd.concat([df, other])",
+    "confidence": "high"
+   }
+  ]
+ },
+ "statsmodels": {
+  "commit": "30df665",
+  "files_scanned": 1250,
+  "syntax_errors": 0,
+  "breaking_high": 21,
+  "removed": 5,
+  "deprecated": 16,
+  "low_confidence": 21,
+  "findings": [
+   {
+    "file": "archive/examples/ex_random_panel.py",
+    "line": 165,
+    "symbol": "DataFrame.append",
+    "status": "removed",
+    "since": "2.0",
+    "fix": "pd.concat([df, other])",
+    "confidence": "high"
+   },
+   {
+    "file": "archive/examples/ex_random_panel.py",
+    "line": 167,
+    "symbol": "DataFrame.append",
+    "status": "removed",
+    "since": "2.0",
+    "fix": "pd.concat([df, other])",
+    "confidence": "high"
+   },
+   {
+    "file": "archive/examples/ex_random_panel.py",
+    "line": 169,
+    "symbol": "DataFrame.append",
+    "status": "removed",
+    "since": "2.0",
+    "fix": "pd.concat([df, other])",
+    "confidence": "high"
+   },
+   {
+    "file": "examples/python/gee_score_test_simulation.py",
+    "line": 207,
+    "symbol": "DataFrame.append",
+    "status": "removed",
+    "since": "2.0",
+    "fix": "pd.concat([df, other])",
+    "confidence": "high"
+   },
+   {
+    "file": "statsmodels/iolib/summary2.py",
+    "line": 844,
+    "symbol": "DataFrame.applymap",
+    "status": "deprecated",
+    "since": "2.1.0",
+    "fix": "DataFrame.map",
+    "confidence": "high"
+   },
+   {
+    "file": "statsmodels/multivariate/factor.py",
+    "line": 1067,
+    "symbol": "DataFrame.applymap",
+    "status": "deprecated",
+    "since": "2.1.0",
+    "fix": "DataFrame.map",
+    "confidence": "high"
+   },
+   {
+    "file": "statsmodels/tsa/statespace/dynamic_factor_mq.py",
+    "line": 1775,
+    "symbol": "DataFrame.applymap",
+    "status": "deprecated",
+    "since": "2.1.0",
+    "fix": "DataFrame.map",
+    "confidence": "high"
+   },
+   {
+    "file": "statsmodels/tsa/statespace/dynamic_factor_mq.py",
+    "line": 4339,
+    "symbol": "DataFrame.applymap",
+    "status": "deprecated",
+    "since": "2.1.0",
+    "fix": "DataFrame.map",
+    "confidence": "high"
+   },
+   {
+    "file": "statsmodels/tsa/statespace/dynamic_factor_mq.py",
+    "line": 4356,
+    "symbol": "DataFrame.applymap",
+    "status": "deprecated",
+    "since": "2.1.0",
+    "fix": "DataFrame.map",
+    "confidence": "high"
+   },
+   {
+    "file": "statsmodels/tsa/statespace/dynamic_factor_mq.py",
+    "line": 4410,
+    "symbol": "DataFrame.applymap",
+    "status": "deprecated",
+    "since": "2.1.0",
+    "fix": "DataFrame.map",
+    "confidence": "high"
+   },
+   {
+    "file": "statsmodels/tsa/statespace/dynamic_factor_mq.py",
+    "line": 4425,
+    "symbol": "DataFrame.applymap",
+    "status": "deprecated",
+    "since": "2.1.0",
+    "fix": "DataFrame.map",
+    "confidence": "high"
+   },
+   {
+    "file": "statsmodels/tsa/statespace/mlemodel.py",
+    "line": 4734,
+    "symbol": "DataFrame.append",
+    "status": "removed",
+    "since": "2.0",
+    "fix": "pd.concat([df, other])",
+    "confidence": "high"
+   },
+   {
+    "file": "statsmodels/tsa/statespace/mlemodel.py",
+    "line": 5629,
+    "symbol": "DataFrame.applymap",
+    "status": "deprecated",
+    "since": "2.1.0",
+    "fix": "DataFrame.map",
+    "confidence": "high"
+   },
+   {
+    "file": "statsmodels/tsa/statespace/news.py",
+    "line": 926,
+    "symbol": "DataFrame.applymap",
+    "status": "deprecated",
+    "since": "2.1.0",
+    "fix": "DataFrame.map",
+    "confidence": "high"
+   },
+   {
+    "file": "statsmodels/tsa/statespace/news.py",
+    "line": 932,
+    "symbol": "DataFrame.applymap",
+    "status": "deprecated",
+    "since": "2.1.0",
+    "fix": "DataFrame.map",
+    "confidence": "high"
+   },
+   {
+    "file": "statsmodels/tsa/statespace/news.py",
+    "line": 942,
+    "symbol": "DataFrame.applymap",
+    "status": "deprecated",
+    "since": "2.1.0",
+    "fix": "DataFrame.map",
+    "confidence": "high"
+   },
+   {
+    "file": "statsmodels/tsa/statespace/news.py",
+    "line": 943,
+    "symbol": "DataFrame.applymap",
+    "status": "deprecated",
+    "since": "2.1.0",
+    "fix": "DataFrame.map",
+    "confidence": "high"
+   },
+   {
+    "file": "statsmodels/tsa/statespace/news.py",
+    "line": 1284,
+    "symbol": "DataFrame.applymap",
+    "status": "deprecated",
+    "since": "2.1.0",
+    "fix": "DataFrame.map",
+    "confidence": "high"
+   },
+   {
+    "file": "statsmodels/tsa/statespace/news.py",
+    "line": 1285,
+    "symbol": "DataFrame.applymap",
+    "status": "deprecated",
+    "since": "2.1.0",
+    "fix": "DataFrame.map",
+    "confidence": "high"
+   },
+   {
+    "file": "statsmodels/tsa/statespace/news.py",
+    "line": 1342,
+    "symbol": "DataFrame.applymap",
+    "status": "deprecated",
+    "since": "2.1.0",
+    "fix": "DataFrame.map",
+    "confidence": "high"
+   },
+   {
+    "file": "statsmodels/tsa/statespace/news.py",
+    "line": 1343,
+    "symbol": "DataFrame.applymap",
+    "status": "deprecated",
+    "since": "2.1.0",
+    "fix": "DataFrame.map",
+    "confidence": "high"
+   }
+  ]
+ },
+ "scikit-learn": {
+  "commit": "718eedb",
+  "files_scanned": 1038,
+  "syntax_errors": 0,
+  "breaking_high": 2,
+  "removed": 2,
+  "deprecated": 0,
+  "low_confidence": 1,
+  "findings": [
+   {
+    "file": "examples/model_selection/plot_likelihood_ratios.py",
+    "line": 259,
+    "symbol": "Series.append",
+    "status": "removed",
+    "since": "2.0",
+    "fix": "pd.concat([s, other])",
+    "confidence": "high"
+   },
+   {
+    "file": "examples/model_selection/plot_likelihood_ratios.py",
+    "line": 260,
+    "symbol": "Series.append",
+    "status": "removed",
+    "since": "2.0",
+    "fix": "pd.concat([s, other])",
+    "confidence": "high"
+   }
+  ]
+ }
+}

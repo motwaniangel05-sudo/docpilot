@@ -231,3 +231,22 @@ Notes and limits:
 - 9 wrong plain answers is a lower bound, because I read only errored and flagged answers.
 - Full DocPilot is about 13 times slower than plain at the median. I did not test why.
 - Running without error does not prove the answer is correct.
+
+## P5: upgrade report on 3 open-source repos (pandas 1.5 to 2.2)
+
+Current HEAD of xarray, statsmodels and scikit-learn, not pandas 1.x projects. I read every finding by hand from one source line each, so types are not verified.
+
+| Scan | xarray | statsmodels | scikit-learn |
+|---|---|---|---|
+| First scan (Python 3.11, 43 xarray files unparsed) | 18 | 64 | 11 |
+| After order-aware rule (Python 3.12) | 7 | 42 | 3 |
+| Final: high confidence counted as breaking | 5 | 21 | 2 |
+| Final: low confidence listed apart | 2 | 21 | 1 |
+
+- First 35-finding sample: 3 real (8.6%).
+- All 52 findings after the rule: 18 likely real, 32 false positives, 2 unclear.
+- High confidence only (28): 18 real, 8 false, 2 unclear. Precision 64.3%, unclear counted as wrong.
+- Low confidence (24): all false positives.
+- Remaining false positives: `Index.append`, `defaultdict(list)` items, a results object's `.append`.
+- Not measured: recall on real repos. `news.py:932` may call `applymap` on a Series.
+- P1 on the 40 snippets after the checker change: strict precision 92.9%, recall 83.9%, same as before.

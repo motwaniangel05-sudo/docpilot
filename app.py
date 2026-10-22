@@ -76,7 +76,7 @@ with st.sidebar:
 st.title("🐼 DocPilot")
 st.caption("Version-aware API assistant for pandas, NumPy and scikit-learn. Notes like REMOVED or CHANGED are computed by comparing the real API of each version, not by an LLM.")
 
-tab_search, tab_check = st.tabs(["Search docs", "Code checker"])
+tab_search, tab_check, tab_upgrade = st.tabs(["Search docs", "Code checker", "Upgrade report"])
 
 with tab_search:
     st.write("Try an example:")
@@ -278,3 +278,59 @@ if sys_file.exists() and fx_file.exists() and raw_file.exists():
         )
         st.caption("Adjusted = test data changed after seeing failures. 'Ran' does not prove the answer is correct. "
                    "9 wrong plain answers is a lower bound.")
+
+with tab_upgrade:
+    import csv as _csv
+    import io as _io
+    import zipfile as _zipfile
+    from docpilot.upgrade import load_zip, scan_files
+
+    st.subheader("Upgrade report")
+    st.caption("Upload one .py file or a .zip of a project. DocPilot parses every .py file with Python's ast module and lists the calls that break between your two pandas versions. Your code is never run and never saved.")
+    c1, c2 = st.columns(2)
+    up_from = c1.selectbox("Upgrade from pandas", CHECK_VERSIONS, index=0, key="up_from")
+    up_to = c2.selectbox("Upgrade to pandas", CHECK_VERSIONS, index=len(CHECK_VERSIONS) - 1, key="up_to")
+    up_file = st.file_uploader("Upload a .py file or a .zip", type=["py", "zip"], key="up_file")
+    if st.button("Run upgrade report", type="primary", key="up_btn"):
+        if up_file is None:
+            st.error("Upload a file first.")
+        else:
+            try:
+                raw = up_file.getvalue()
+                if len(raw) > 20 * 1024 * 1024:
+                    raise ValueError("File is over 20 MB.")
+                if up_file.name.lower().endswith(".zip"):
+                    files, warns = load_zip(raw)
+                else:
+                    files, warns = {Path(up_file.name).name: raw}, []
+                if not files:
+                    raise ValueError("No .py files found in the upload.")
+                rep = scan_files(files, up_from, up_to)
+            except (ValueError, _zipfile.BadZipFile) as e:
+                st.error(f"Could not run the report: {e}")
+            else:
+                st.write(
+                    f"**{rep['breaking_total']} breaking call(s)** from pandas {up_from} to {up_to} "
+                    f"in {rep['files_scanned']} file(s): {rep['breaking_removed']} removed, "
+                    f"{rep['breaking_deprecated']} deprecated."
+                )
+                if rep["top_symbols"]:
+                    st.write("Most common: " + ", ".join(f"{s} ({n})" for s, n in rep["top_symbols"]))
+                if rep["breaking"]:
+                    st.table(rep["breaking"])
+                    buf = _io.StringIO()
+                    w = _csv.DictWriter(buf, fieldnames=list(rep["breaking"][0].keys()))
+                    w.writeheader()
+                    w.writerows(rep["breaking"])
+                    st.download_button("Download report (CSV)", buf.getvalue(), "upgrade_report.csv", "text/csv")
+                else:
+                    st.success("No breaking calls found among the APIs DocPilot knows.")
+                if rep["low_confidence"]:
+                    st.info(f"{len(rep['low_confidence'])} more call(s) have low confidence (receiver not clearly pandas) and are not counted above. Check them by hand.")
+                if rep["already_in_from"]:
+                    st.info(f"{len(rep['already_in_from'])} more call(s) were already removed or deprecated in pandas {up_from}.")
+                if rep["syntax_errors"]:
+                    st.warning("Could not parse: " + "; ".join(f"{e['file']} ({e['error']})" for e in rep["syntax_errors"]))
+                if warns:
+                    st.caption("Skipped: " + ", ".join(warns[:10]))
+        st.caption("Limits: checks only the APIs in DocPilot's rules file, uses name-based heuristics, and cannot see calls built dynamically. Medium confidence means the receiver was not clearly a pandas object.")
