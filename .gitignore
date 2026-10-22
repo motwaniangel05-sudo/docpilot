@@ -7,3 +7,4 @@ logs/
 index_backup/
 models/
 .streamlit/secrets.toml
+pr_report.txt

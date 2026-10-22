@@ -1,0 +1,69 @@
+name: docpilot-check
+
+on:
+  pull_request:
+    paths:
+      - "**.py"
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      PANDAS_TARGET: "2.2"
+      BASE_REF: ${{ github.base_ref }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Check changed Python files
+        id: check
+        run: bash scripts/pr_check.sh "origin/${BASE_REF}...HEAD" "$PANDAS_TARGET"
+
+      - name: Post or update PR comment
+        uses: actions/github-script@v7
+        env:
+          STATUS: ${{ steps.check.outputs.status }}
+          FILES: ${{ steps.check.outputs.files }}
+          COUNT: ${{ steps.check.outputs.count }}
+        with:
+          script: |
+            const fs = require('fs');
+            const marker = '<!-- docpilot-check -->';
+            let report = fs.existsSync('pr_report.txt') ? fs.readFileSync('pr_report.txt', 'utf8').trim() : '';
+            if (report.length > 60000) { report = report.slice(0, 60000) + '\n... (truncated)'; }
+            const indented = report.split('\n').map(l => '    ' + l).join('\n');
+            let body = marker + '\n### DocPilot pandas check (target pandas ' + process.env.PANDAS_TARGET + ')\n\n';
+            if (process.env.STATUS === '1') {
+              body += 'Found ' + process.env.COUNT + ' breaking call(s) in ' + process.env.FILES + ' changed file(s):\n\n' + indented + '\n\n';
+            } else {
+              body += 'No breaking calls found in ' + process.env.FILES + ' changed .py file(s).\n\n';
+              if (report) { body += indented + '\n\n'; }
+            }
+            body += 'Static check only: nothing is run. It is name-based, so it can miss calls or flag non-pandas objects. Only high-confidence findings count.';
+            try {
+              const { data: comments } = await github.rest.issues.listComments({
+                ...context.repo, issue_number: context.issue.number, per_page: 100
+              });
+              const old = comments.find(c => c.body.includes(marker));
+              if (old) {
+                await github.rest.issues.updateComment({ ...context.repo, comment_id: old.id, body });
+              } else {
+                await github.rest.issues.createComment({ ...context.repo, issue_number: context.issue.number, body });
+              }
+            } catch (e) {
+              core.warning('Could not post the comment (forks get a read-only token): ' + e.message);
+            }
+
+      - name: Fail if breaking calls were found
+        if: steps.check.outputs.status == '1'
+        run: exit 1
