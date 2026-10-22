@@ -214,3 +214,17 @@ Upload a `.py` file or a `.zip` in the **Upgrade report** tab. DocPilot parses e
 **P1 re-checked after the change:** strict precision 92.9% and recall 83.9% on the 40 hand-written snippets, unchanged. Those snippets rarely use list names like pandas objects, so this does not show the repo problem is solved. 34 tests pass.
 
 Details: `results.md`. Raw scans: `data/repo_scan_before_fix.json`, `data/repo_scan_after_fix.json`, `data/repo_scan_final.json`.
+
+## Command line: docpilot check
+
+Check a file or a folder from the terminal. Nothing is run: files are only parsed with `ast`.
+
+    python -m docpilot check path/to/file.py --pandas 2.2
+    python -m docpilot check path/to/project --pandas 2.2
+
+- `--pandas` is the target version (1.5, 2.0 or 2.2).
+- Only **high-confidence** findings count as breaking. Low-confidence ones print as "check by hand" and do not change the exit code.
+- Exit codes: `1` if breaking calls are found, `0` if none, `2` on bad input (missing path, no `.py` files, bad version).
+- It uses only the standard library, so it needs no install and no torch.
+- Same limits as the upgrade report: name-based checks, so it can miss calls and can flag non-pandas objects (see the P5 section). It checks the target version only, not a from/to range.
+- 8 tests cover the exit codes and folder scanning (42 tests in total).
