@@ -228,3 +228,16 @@ Check a file or a folder from the terminal. Nothing is run: files are only parse
 - It uses only the standard library, so it needs no install and no torch.
 - Same limits as the upgrade report: name-based checks, so it can miss calls and can flag non-pandas objects (see the P5 section). It checks the target version only, not a from/to range.
 - 8 tests cover the exit codes and folder scanning (42 tests in total).
+
+## GitHub Action: check pull requests
+
+The workflow `.github/workflows/docpilot-check.yml` runs on pull requests that change `.py` files.
+
+- It checks only the changed `.py` files, skipping the `scripts/` folder. Nothing is run, and files are only parsed with `ast`.
+- The target is pandas 2.2. To change it, edit `PANDAS_TARGET` in the workflow file.
+- It posts one comment on the pull request and updates that comment on later pushes.
+- It fails the check if high-confidence breaking calls are found.
+- It installs only Python, with no torch, so it finishes in about a minute.
+- **Tested on one real pull request** with one planted `DataFrame.append` call, and it reported that call correctly. It was not tested on forks, large pull requests, or other pandas versions.
+- On fork pull requests GitHub gives a read-only token, so the comment step would only log a warning and the check result would still apply.
+- Same limits as the CLI: name-based checks, so it can miss calls and can flag non-pandas objects (see the P5 section).
