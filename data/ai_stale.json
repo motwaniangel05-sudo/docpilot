@@ -1,0 +1,20 @@
+{
+ "plain": {
+  "answers": 38,
+  "with_code": 37,
+  "flagged_stale": 1,
+  "unparsable_blocks": 0,
+  "flagged_ids": [
+   "PANDAS-025"
+  ]
+ },
+ "full": {
+  "answers": 38,
+  "with_code": 12,
+  "flagged_stale": 1,
+  "unparsable_blocks": 0,
+  "flagged_ids": [
+   "PANDAS-011"
+  ]
+ }
+}

@@ -169,3 +169,24 @@ I tested search on 38 usable questions (19 for pandas 1.5, 19 for pandas 2.2). *
 - **Not tested:** no LLM answers and no code execution in this test.
 
 Details: see `results.md`.
+
+## Three-system comparison (AI-generated questions)
+
+**ChatGPT wrote the 38 questions and their expected-API labels. They are not from real users, and the labels are only partly checked.** One Groq model (`openai/gpt-oss-20b`) was used for all systems. The sample is small.
+
+| | Plain LLM | Retrieval only | Full DocPilot |
+|---|---|---|---|
+| Questions answered | 38 of 38 | 38 of 38 | 14 of 38 (24 abstained) |
+| Code blocks run (pandas 2.2) | 38 | none | 13 |
+| Ran without error, raw / adjusted* | 47.4% / 52.6% | not applicable | 38.5% / 53.8% |
+| Median / p95 latency (s) | 1.15 / 2.8 | 0.09 / 0.16 | 14.79 / 18.02 |
+| Answers I judged wrong by reading | at least 9 | not applicable | 0 found (only a few read) |
+
+*Adjusted = I added columns and a date index to the test data after seeing failures. It fixed 3 blocks.
+
+- **Stale-answer rate did not separate the systems.** The checker flagged 2 answers. Both showed the removed API as a "before" example, so both are 0 after reading them.
+- **The real difference is abstention.** Full DocPilot declined 24 questions, matching the 26 whose API is missing from the index. Plain answered everything, and at least 9 of its answers were wrong. This is a lower bound, since I read only errored and flagged answers.
+- **Full DocPilot is about 13 times slower** at the median. I did not test why.
+- **Code blocks were run locally only.** Running without error does not prove an answer is correct.
+
+Details and failure analysis: see `results.md`.

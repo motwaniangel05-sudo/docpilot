@@ -1,0 +1,1217 @@
+{
+ "PANDAS-003": {
+  "id": "PANDAS-003",
+  "question": "How should code be updated after Int64Index, UInt64Index, and Float64Index were removed?",
+  "version": "1.5",
+  "expected_api": "Int64Index / UInt64Index / Float64Index",
+  "plain": {
+   "answer": "In pandas\u202f1.5 the legacy `Int64Index`, `UInt64Index` and `Float64Index` constructors were removed.  \nUse the generic `pd.Index` (or `pd.RangeIndex` for integer ranges) and specify the dtype explicitly:\n\n```python\nimport pandas as pd\n\n# old (removed in 1.5)\n# idx = pd.Int64Index([1, 2, 3])\n\n# new\nidx = pd.Index([1, 2, 3], dtype=\"int64\")          # Int64Index\nidx_u = pd.Index([1, 2, 3], dtype=\"uint64\")       # UInt64Index\nidx_f = pd.Index([1.0, 2.0, 3.0], dtype=\"float64\")# Float64Index\n```\n\nThe same applies to any other code that instantiated those specific index types; replace them with `pd.Index(..., dtype=\u2026)` or `pd.RangeIndex` where appropriate.",
+   "error": null,
+   "seconds": 0.63
+  },
+  "retrieval": {
+   "answer": "DataFrame.replace(self, to_replace=None, value=<no_default>, *, inplace: 'bool' = False, limit: 'int | None' = None, regex: 'bool' = False, method: \"Literal['pad', 'ffill', 'bfill'] | lib.NoDefault\" = <no_default>) -> 'DataFrame | None': Replace values given in `to_replace` with `value`. [DataFrame.replace | pandas 1.5]",
+   "top5": [
+    "DataFrame.replace",
+    "Series.replace",
+    "DataFrame.update",
+    "Series.truncate",
+    "DataFrame.truncate"
+   ],
+   "seconds": 0.33
+  },
+  "full": {
+   "answer": "Cannot confirm from the retrieved docs.",
+   "used_llm": true,
+   "error": null,
+   "cited": [],
+   "seconds": 0.78
+  }
+ },
+ "PANDAS-004": {
+  "id": "PANDAS-004",
+  "question": "What should replace the removed pandas.core.indexes.numeric module in code that imports it directly?",
+  "version": "1.5",
+  "expected_api": "pandas.core.indexes.numeric",
+  "plain": {
+   "answer": "In pandas\u202f1.5 the old `pandas.core.indexes.numeric` module was removed.  \nAny code that imported it should now use the generic `pandas.Index` (or, if you need the base class directly, `pandas.core.indexes.base.Index`).  \n\n```python\n# old (removed)\n# from pandas.core.indexes.numeric import NumericIndex\n\n# new\nimport pandas as pd\nidx = pd.Index([1, 2, 3])          # or\n# from pandas.core.indexes.base import Index\n```",
+   "error": null,
+   "seconds": 0.57
+  },
+  "retrieval": {
+   "answer": "DataFrame.replace(self, to_replace=None, value=<no_default>, *, inplace: 'bool' = False, limit: 'int | None' = None, regex: 'bool' = False, method: \"Literal['pad', 'ffill', 'bfill'] | lib.NoDefault\" = <no_default>) -> 'DataFrame | None': Replace values given in `to_replace` with `value`. [DataFrame.replace | pandas 1.5]",
+   "top5": [
+    "DataFrame.replace",
+    "DataFrame.where",
+    "Series.replace",
+    "Series.where",
+    "DataFrame.mask"
+   ],
+   "seconds": 0.12
+  },
+  "full": {
+   "answer": "Cannot confirm from the retrieved docs.",
+   "used_llm": true,
+   "error": null,
+   "cited": [],
+   "seconds": 0.71
+  }
+ },
+ "PANDAS-005": {
+  "id": "PANDAS-005",
+  "question": "Why can a pickle created with pandas 1.5 fail to load under pandas 2.0 with ModuleNotFoundError for pandas.core.indexes.numeric?",
+  "version": "1.5",
+  "expected_api": "Pickle compatibility / internal index module",
+  "plain": {
+   "answer": "Pandas\u202f1.5 pickles were written against the old module layout where the numeric index class lived in `pandas.core.indexes.numeric`.  \nIn Pandas\u202f2.0 the index classes were reorganised (e.g., `pandas.core.indexes.numeric` was removed and the logic moved to `pandas.core.indexes.base`), so the unpickler can\u2019t find the original module and raises `ModuleNotFoundError`.  \nTo load such a pickle you can either upgrade the pickle first (e.g., re\u2011save it with a newer Pandas) or tell the unpickler to use a fallback module name:\n\n```python\nimport pandas as pd\nimport pickle\nimport importlib\n\n# Monkey\u2011patch the missing module name\nimportlib.import_module('pandas.core.indexes.numeric', package='pandas.core.indexes')\n\nwith open('old.pkl', 'rb') as f:\n    df = pickle.load(f)\n```\n\nThis tricks the unpickler into finding the expected module, allowing the object to be reconstructed.",
+   "error": null,
+   "seconds": 0.75
+  },
+  "retrieval": {
+   "answer": "pd.read_pickle(filepath_or_buffer: 'FilePath | ReadPickleBuffer', compression: 'CompressionOptions' = 'infer', storage_options: 'StorageOptions' = None): Load pickled pandas object (or any object) from file. [pd.read_pickle | pandas 1.5]",
+   "top5": [
+    "pd.read_pickle",
+    "pd.read_hdf",
+    "DataFrame.take",
+    "Series.take",
+    "DataFrame.itertuples"
+   ],
+   "seconds": 0.11
+  },
+  "full": {
+   "answer": "Cannot confirm from the retrieved docs.",
+   "used_llm": true,
+   "error": null,
+   "cited": [],
+   "seconds": 0.81
+  }
+ },
+ "PANDAS-006": {
+  "id": "PANDAS-006",
+  "question": "What replaces the removed DataFrame.append() and Series.append() methods?",
+  "version": "1.5",
+  "expected_api": "DataFrame.append / Series.append",
+  "plain": {
+   "answer": "In pandas\u202f1.5 the `DataFrame.append()` and `Series.append()` methods were removed.  \nUse `pd.concat()` instead, passing the objects to concatenate along the desired axis.\n\n```python\nimport pandas as pd\n\ndf1 = pd.DataFrame({'a': [1, 2]})\ndf2 = pd.DataFrame({'a': [3, 4]})\ndf = pd.concat([df1, df2], ignore_index=True)   # replaces df1.append(df2)\n```",
+   "error": null,
+   "seconds": 0.63
+  },
+  "retrieval": {
+   "answer": "DataFrame.append(self, other, ignore_index: 'bool' = False, verify_integrity: 'bool' = False, sort: 'bool' = False) -> 'DataFrame': Append rows of `other` to the end of caller, returning a new object. [DataFrame.append | pandas 1.5]",
+   "top5": [
+    "DataFrame.append",
+    "Series.append",
+    "Series.replace",
+    "DataFrame.replace",
+    "DataFrame.set_index"
+   ],
+   "seconds": 0.06
+  },
+  "full": {
+   "answer": "The removed `DataFrame.append()` and `Series.append()` methods are replaced by `pd.concat()`.  \n`pd.concat()` can concatenate DataFrames or Series along a specified axis and provides the same functionality that `append()` used to offer.  \n\n```python\nimport pandas as pd\n\ndf = pd.concat([df1, df2], ignore_index=True)          # replaces df1.append(df2)\ns  = pd.concat([s1, s2], ignore_index=True)           # replaces s1.append(s2)\n```\n[DataFrame.append | pandas 1.5] [Series.append | pandas 1.5]",
+   "used_llm": true,
+   "error": null,
+   "cited": [
+    [
+     "DataFrame.append",
+     "pandas",
+     "1.5"
+    ],
+    [
+     "Series.append",
+     "pandas",
+     "1.5"
+    ]
+   ],
+   "seconds": 2.97
+  }
+ },
+ "PANDAS-007": {
+  "id": "PANDAS-007",
+  "question": "How should code be updated after the deprecated DataFrame.iteritems() and Series.iteritems() methods were removed?",
+  "version": "1.5",
+  "expected_api": "iteritems",
+  "plain": {
+   "answer": "In pandas\u202f2.0 the old `DataFrame.iteritems()` and `Series.iteritems()` were removed.  \nReplace them with the new `DataFrame.items()` and `Series.items()` methods, which return the same iterator over (column\u2011name, Series) pairs.  \n\n```python\nimport pandas as pd\n\ndf = pd.DataFrame({'a': [1, 2], 'b': [3, 4]})\n\n# old (removed in 2.0)\n# for name, col in df.iteritems(): ...\n\n# new\nfor name, col in df.items():\n    print(name, col.tolist())\n```\n\nThe same change applies to `Series.items()` for iterating over a Series\u2019 index/value pairs.",
+   "error": null,
+   "seconds": 1.53
+  },
+  "retrieval": {
+   "answer": "DataFrame.iteritems(self) -> 'Iterable[tuple[Hashable, Series]]': Iterate over (column name, Series) pairs. [DataFrame.iteritems | pandas 1.5]",
+   "top5": [
+    "DataFrame.iteritems",
+    "Series.iteritems",
+    "DataFrame.update",
+    "DataFrame.where",
+    "DataFrame.mask"
+   ],
+   "seconds": 0.08
+  },
+  "full": {
+   "answer": "Use the non\u2011deprecated `.items()` method instead of the removed `.iteritems()` on both `DataFrame` and `Series`.  \n```python\n# DataFrame\nfor col, series in df.items():   # [1 | pandas 1.5]\n\n# Series\nfor idx, value in s.items():     # [2 | pandas 1.5]\n```",
+   "used_llm": true,
+   "error": null,
+   "cited": [
+    [
+     "1",
+     "pandas",
+     "1.5"
+    ],
+    [
+     "2",
+     "pandas",
+     "1.5"
+    ]
+   ],
+   "seconds": 12.75
+  }
+ },
+ "PANDAS-008": {
+  "id": "PANDAS-008",
+  "question": "What should replace the deprecated Index.is_monotonic() method?",
+  "version": "1.5",
+  "expected_api": "Index.is_monotonic",
+  "plain": {
+   "answer": "In pandas\u202f1.5 the `Index.is_monotonic` attribute was deprecated.  \nUse the two explicit flags instead:\n\n```python\n# old (deprecated)\n# idx.is_monotonic\n\n# new\nidx.is_monotonic_increasing   # True if the index is sorted ascending\nidx.is_monotonic_decreasing   # True if the index is sorted descending\n```\n\nYou can combine them if you need to check for either direction.",
+   "error": null,
+   "seconds": 0.72
+  },
+  "retrieval": {
+   "answer": "Series.is_monotonic(...): Return boolean if values in the object are monotonically increasing. [Series.is_monotonic | pandas 1.5]",
+   "top5": [
+    "Series.is_monotonic",
+    "Series.min",
+    "DataFrame.min",
+    "Series.max",
+    "DataFrame.max"
+   ],
+   "seconds": 0.13
+  },
+  "full": {
+   "answer": "Use the new `Series.is_monotonic_increasing` method instead of the deprecated `Index.is_monotonic()` [Series.is_monotonic | pandas 1.5].",
+   "used_llm": true,
+   "error": null,
+   "cited": [
+    [
+     "Series.is_monotonic",
+     "pandas",
+     "1.5"
+    ]
+   ],
+   "seconds": 12.53
+  }
+ },
+ "PANDAS-009": {
+  "id": "PANDAS-009",
+  "question": "How should resample() code change after the base and loffset arguments were removed?",
+  "version": "1.5",
+  "expected_api": "resample(base, loffset)",
+  "plain": {
+   "answer": "In pandas\u202f1.5 the `loffset` keyword was removed; the same effect is now achieved by shifting the index **after** the resampling step.  \nInstead of\n\n```python\ndf.resample('M', loffset='15D').mean()\n```\n\nyou do\n\n```python\ndf.resample('M').mean().shift(15, freq='D')\n```\n\nIf you need the shift to be applied to the index rather than the values, use `df.resample('M').mean().rename_axis('date').shift(15, freq='D')`.  \nThe `base` argument is still available for aligning the resampling window, but `loffset` is no longer needed.",
+   "error": null,
+   "seconds": 0.92
+  },
+  "retrieval": {
+   "answer": "Series.resample(self, rule, axis: 'Axis' = 0, closed: 'str | None' = None, label: 'str | None' = None, convention: 'str' = 'start', kind: 'str | None' = None, loffset=None, base: 'int | None' = None, on: 'Level' = None, level: 'Level' = None, origin: 'str | TimestampConvertibleTypes' = 'start_day', offset: 'TimedeltaConvertibleTypes | None' = None, group_keys: 'bool | lib.NoDefault' = <no_default>) -> 'Resampler': Resample time-series data. [Series.resample | pandas 1.5]",
+   "top5": [
+    "Series.resample",
+    "DataFrame.resample",
+    "DataFrame.mask",
+    "Series.mask",
+    "Series.where"
+   ],
+   "seconds": 0.08
+  },
+  "full": {
+   "answer": "Cannot confirm from the retrieved docs.",
+   "used_llm": true,
+   "error": null,
+   "cited": [],
+   "seconds": 17.75
+  }
+ },
+ "PANDAS-010": {
+  "id": "PANDAS-010",
+  "question": "What replaces the removed DataFrame/Series.mad() method?",
+  "version": "1.5",
+  "expected_api": "mad()",
+  "plain": {
+   "answer": "`DataFrame/Series.mad()` was removed in pandas\u202f1.5.  \nUse the new **`DataFrame.median()`** (or `Series.median()`) with the `skipna` argument to compute the mean absolute deviation, e.g.:\n\n```python\nimport pandas as pd\n\ndf = pd.DataFrame({'a': [1, 2, 3, None]})\nmad = df.median(skipna=True)  # replaces the old mad()\nprint(mad)\n```\n\nThis gives the same result that `mad()` used to return.",
+   "error": null,
+   "seconds": 0.87
+  },
+  "retrieval": {
+   "answer": "DataFrame.mad(self, axis=None, skipna=True, level=None): Return the mean absolute deviation of the values over the requested axis. [DataFrame.mad | pandas 1.5]",
+   "top5": [
+    "DataFrame.mad",
+    "Series.mad",
+    "Series.droplevel",
+    "DataFrame.droplevel",
+    "Series.truncate"
+   ],
+   "seconds": 0.08
+  },
+  "full": {
+   "answer": "Cannot confirm from the retrieved docs.",
+   "used_llm": true,
+   "error": null,
+   "cited": [],
+   "seconds": 14.87
+  }
+ },
+ "PANDAS-011": {
+  "id": "PANDAS-011",
+  "question": "How should code change after the deprecated DataFrame/Series.tshift() method was removed?",
+  "version": "1.5",
+  "expected_api": "tshift()",
+  "plain": {
+   "answer": "`DataFrame.tshift()` and `Series.tshift()` were removed in 1.5.  \nUse the normal `shift()` method with the `freq` argument to move the index in time:\n\n```python\n# old (removed)\n# df.tshift(1, freq='D')\n\n# new\ndf = df.shift(1, freq='D')          # shift index forward by one day\ns = s.shift(1, freq='1H')           # shift index forward by one hour\n```\n\nIf you only need to shift the values (not the index), keep the default `periods` argument and omit `freq`.",
+   "error": null,
+   "seconds": 0.69
+  },
+  "retrieval": {
+   "answer": "DataFrame.mask(self, cond, other=nan, *, inplace: 'bool' = False, axis: 'Axis | None' = None, level: 'Level' = None, errors: 'IgnoreRaise | lib.NoDefault' = 'raise', try_cast: 'bool | lib.NoDefault' = <no_default>) -> 'DataFrame | None': Replace values where the condition is True. [DataFrame.mask | pandas 1.5]",
+   "top5": [
+    "DataFrame.mask",
+    "Series.mask",
+    "DataFrame.where",
+    "Series.where",
+    "DataFrame.tshift"
+   ],
+   "seconds": 0.06
+  },
+  "full": {
+   "answer": "Use the `shift` method instead of the removed `tshift`.  \n```python\n# old\ndf.tshift(periods=1, freq='D')\n\n# new\ndf.shift(periods=1, freq='D')\n```  \n`shift` performs the same time\u2011index shift and is the recommended replacement. [DataFrame.tshift | pandas 1.5]",
+   "used_llm": true,
+   "error": null,
+   "cited": [
+    [
+     "DataFrame.tshift",
+     "pandas",
+     "1.5"
+    ]
+   ],
+   "seconds": 16.08
+  }
+ },
+ "PANDAS-012": {
+  "id": "PANDAS-012",
+  "question": "What replaces the removed use_inf_as_null option?",
+  "version": "1.5",
+  "expected_api": "mode.use_inf_as_null",
+  "plain": {
+   "answer": "In pandas\u202f1.5 the `use_inf_as_null` flag was removed.  \nTo treat `inf`/`-inf` as missing values you now pass them explicitly via the `na_values` argument (and keep the default NaN handling).  \n\n```python\nimport pandas as pd\nimport numpy as np\n\ndf = pd.read_csv(\n    \"data.csv\",\n    na_values=[np.inf, -np.inf],   # replace infinities with NaN\n    keep_default_na=True           # keep the usual NaN handling\n)\n```\n\nThis achieves the same effect as the old `use_inf_as_null=True`.",
+   "error": null,
+   "seconds": 0.97
+  },
+  "retrieval": {
+   "answer": "Series.replace(self, to_replace=None, value=<no_default>, *, inplace: 'bool' = False, limit: 'int | None' = None, regex: 'bool' = False, method: \"Literal['pad', 'ffill', 'bfill'] | lib.NoDefault\" = <no_default>) -> 'Series | None': Replace values given in `to_replace` with `value`. [Series.replace | pandas 1.5]",
+   "top5": [
+    "Series.replace",
+    "DataFrame.replace",
+    "Series.droplevel",
+    "DataFrame.droplevel",
+    "Series.where"
+   ],
+   "seconds": 0.08
+  },
+  "full": {
+   "answer": "Cannot confirm from the retrieved docs.",
+   "used_llm": true,
+   "error": null,
+   "cited": [],
+   "seconds": 16.71
+  }
+ },
+ "PANDAS-013": {
+  "id": "PANDAS-013",
+  "question": "How does Series.str.replace() change when regex is omitted?",
+  "version": "1.5",
+  "expected_api": "Series.str.replace(regex=...)",
+  "plain": {
+   "answer": "In pandas\u202f1.5, `Series.str.replace()` defaults to treating the pattern as a **regular expression** (`regex=True`).  \nIf you omit the `regex` argument, the method still uses regex semantics, so special characters (e.g., `.` or `*`) are interpreted as regex operators.  \nTo perform a literal string replacement you must explicitly set `regex=False` (or use `str.replace` with `regex=False` in newer versions).  \n\n```python\nimport pandas as pd\n\ns = pd.Series(['a.b', 'c*d'])\n# regex=True (default) \u2192 '.' and '*' are regex metacharacters\nprint(s.str.replace('.', 'X'))   # ['aXb', 'cXd']\n\n# literal replacement\nprint(s.str.replace('.', 'X', regex=False))  # ['aXb', 'c*d']\n```",
+   "error": null,
+   "seconds": 1.73
+  },
+  "retrieval": {
+   "answer": "Series.replace(self, to_replace=None, value=<no_default>, *, inplace: 'bool' = False, limit: 'int | None' = None, regex: 'bool' = False, method: \"Literal['pad', 'ffill', 'bfill'] | lib.NoDefault\" = <no_default>) -> 'Series | None': Replace values given in `to_replace` with `value`. [Series.replace | pandas 1.5]",
+   "top5": [
+    "Series.replace",
+    "DataFrame.replace",
+    "Series.mask",
+    "Series.where",
+    "DataFrame.mask"
+   ],
+   "seconds": 0.07
+  },
+  "full": {
+   "answer": "Cannot confirm from the retrieved docs.",
+   "used_llm": true,
+   "error": null,
+   "cited": [],
+   "seconds": 15.64
+  }
+ },
+ "PANDAS-014": {
+  "id": "PANDAS-014",
+  "question": "How should callers update code that passes positional arguments where pandas now requires keyword arguments?",
+  "version": "1.5",
+  "expected_api": "Positional arguments for selected APIs",
+  "plain": {
+   "answer": "In pandas\u202f1.5 many functions changed to require keyword arguments for clarity (e.g., `DataFrame.to_csv`, `Series.plot`, `DataFrame.merge`). Callers should replace positional arguments with explicit keywords, e.g.:\n\n```python\n# old\ndf.to_csv('file.csv', header=True, index=False)\n\n# new\ndf.to_csv('file.csv', header=True, index=False)  # still works\n# but if you had\ndf.to_csv('file.csv', True, False)  # will error\n# update to:\ndf.to_csv('file.csv', header=True, index=False)\n```\n\nIf a function now only accepts keyword arguments, simply add the keyword names; positional usage will raise a `TypeError`. Use `help()` or the pandas docs to confirm the required keyword names.",
+   "error": null,
+   "seconds": 0.72
+  },
+  "retrieval": {
+   "answer": "DataFrame.pipe(self, func: 'Callable[..., T] | tuple[Callable[..., T], str]', *args, **kwargs) -> 'T': Apply chainable functions that expect Series or DataFrames. [DataFrame.pipe | pandas 1.5]",
+   "top5": [
+    "DataFrame.pipe",
+    "Series.pipe",
+    "DataFrame.take",
+    "DataFrame.update",
+    "Series.take"
+   ],
+   "seconds": 0.16
+  },
+  "full": {
+   "answer": "Callers should replace positional arguments with explicit keyword arguments.  \nFor example, when calling `DataFrame.update` the `errors` parameter must be passed as a keyword:\n\n```python\ndf.update(other, errors='raise')   # instead of df.update(other, 'raise')\n```\n\nThis change ensures the argument is correctly interpreted as the `errors` option. [DataFrame.update | pandas 1.5]",
+   "used_llm": true,
+   "error": null,
+   "cited": [
+    [
+     "DataFrame.update",
+     "pandas",
+     "1.5"
+    ]
+   ],
+   "seconds": 14.35
+  }
+ },
+ "PANDAS-015": {
+  "id": "PANDAS-015",
+  "question": "What should replace the removed pandas.io.json.json_normalize alias?",
+  "version": "1.5",
+  "expected_api": "pandas.io.json.json_normalize",
+  "plain": {
+   "answer": "In pandas\u202f1.5 the `pandas.io.json.json_normalize` alias was removed.  \nUse the top\u2011level function `pandas.json_normalize` instead.\n\n```python\nimport pandas as pd\n\n# old (removed) usage\n# df = pd.io.json.json_normalize(data)\n\n# new usage\ndf = pd.json_normalize(data)\n```\n\nThis single function call replaces the old alias.",
+   "error": null,
+   "seconds": 1.55
+  },
+  "retrieval": {
+   "answer": "pd.json_normalize(data: 'dict | list[dict]', record_path: 'str | list | None' = None, meta: 'str | list[str | list[str]] | None' = None, meta_prefix: 'str | None' = None, record_prefix: 'str | None' = None, errors: 'IgnoreRaise' = 'raise', sep: 'str' = '.', max_level: 'int | None' = None) -> 'DataFrame': Normalize semi-structured JSON data into a flat table. [pd.json_normalize | pandas 1.5]",
+   "top5": [
+    "pd.json_normalize",
+    "DataFrame.where",
+    "DataFrame.mask",
+    "Series.where",
+    "Series.mask"
+   ],
+   "seconds": 0.07
+  },
+  "full": {
+   "answer": "Use the new top\u2011level function `pd.json_normalize`.  \nIt replaces the old `pandas.io.json.json_normalize` alias.  \n\n```python\nimport pandas as pd\ndf = pd.json_normalize(data)   # [1 | pandas 1.5]\n```",
+   "used_llm": true,
+   "error": null,
+   "cited": [
+    [
+     "1",
+     "pandas",
+     "1.5"
+    ]
+   ],
+   "seconds": 14.74
+  }
+ },
+ "PANDAS-016": {
+  "id": "PANDAS-016",
+  "question": "How should code update calls to the removed Categorical.to_dense() method?",
+  "version": "1.5",
+  "expected_api": "Categorical.to_dense()",
+  "plain": {
+   "answer": "In pandas\u202f1.5 the `Categorical.to_dense()` helper was removed.  \nReplace it with the standard `to_numpy()` call, which returns a NumPy array that contains the underlying integer codes (or the actual values if you pass `dtype=object`).  \nIf you need the *dense* representation of the categories themselves, use `cat.categories.to_numpy()` or `cat.codes.to_numpy()` depending on whether you want the codes or the actual category labels.\n\n```python\nimport pandas as pd\n\ncat = pd.Categorical(['a', 'b', 'a'])\n# old (removed) : dense = cat.to_dense()\ndense = cat.codes.to_numpy()          # integer codes\nlabels = cat.categories.to_numpy()    # actual category labels\n```",
+   "error": null,
+   "seconds": 0.71
+  },
+  "retrieval": {
+   "answer": "pd.factorize(values, sort: 'bool' = False, na_sentinel: 'int | None | lib.NoDefault' = <no_default>, use_na_sentinel: 'bool | lib.NoDefault' = <no_default>, size_hint: 'int | None' = None) -> 'tuple[np.ndarray, np.ndarray | Index]': Encode the object as an enumerated type or categorical variable. [pd.factorize | pandas 1.5]",
+   "top5": [
+    "pd.factorize",
+    "Series.factorize",
+    "pd.get_dummies",
+    "pd.from_dummies",
+    "DataFrame.replace"
+   ],
+   "seconds": 0.07
+  },
+  "full": {
+   "answer": "Cannot confirm from the retrieved docs.",
+   "used_llm": true,
+   "error": null,
+   "cited": [],
+   "seconds": 14.73
+  }
+ },
+ "PANDAS-017": {
+  "id": "PANDAS-017",
+  "question": "What is the migration path after the deprecated ExcelWriter save() method was removed?",
+  "version": "1.5",
+  "expected_api": "ExcelWriter.save()",
+  "plain": {
+   "answer": "In pandas\u202f1.5 the `ExcelWriter.save()` method was removed.  \nThe recommended migration path is to use the writer as a context manager (or call `close()` explicitly).  \nWhen you use the `with` statement the file is automatically closed and written, so no `save()` call is needed.\n\n```python\nimport pandas as pd\n\ndf = pd.DataFrame({'A': [1, 2]})\n\nwith pd.ExcelWriter('out.xlsx') as writer:\n    df.to_excel(writer, sheet_name='Sheet1')\n# file is written and closed automatically\n```\n\nIf you prefer not to use a context manager, simply call `writer.close()` after writing.",
+   "error": null,
+   "seconds": 1.28
+  },
+  "retrieval": {
+   "answer": "DataFrame.to_excel(self, excel_writer, sheet_name: 'str' = 'Sheet1', na_rep: 'str' = '', float_format: 'str | None' = None, columns: 'Sequence[Hashable] | None' = None, header: 'Sequence[Hashable] | bool_t' = True, index: 'bool_t' = True, index_label: 'IndexLabel' = None, startrow: 'int' = 0, startcol: 'int' = 0, engine: 'str | None' = None, merge_cells: 'bool_t' = True, encoding: 'lib.NoDefault' = <no_default>, inf_rep: 'str' = 'inf', verbose: 'lib.NoDefault' = <no_default>, freeze_panes: 'tuple[int, int] | None' = None, storage_options: 'StorageOptions' = None) -> 'None': Write object to an Excel sheet. [DataFrame.to_excel | pandas 1.5]",
+   "top5": [
+    "DataFrame.to_excel",
+    "Series.to_excel",
+    "DataFrame.to_parquet",
+    "DataFrame.to_orc",
+    "pd.read_xml"
+   ],
+   "seconds": 0.18
+  },
+  "full": {
+   "answer": "Cannot confirm from the retrieved docs.",
+   "used_llm": true,
+   "error": null,
+   "cited": [],
+   "seconds": 19.14
+  }
+ },
+ "PANDAS-018": {
+  "id": "PANDAS-018",
+  "question": "How should code handle changed comparisons between Timestamp and datetime.date?",
+  "version": "1.5",
+  "expected_api": "Timestamp/date comparisons",
+  "plain": {
+   "answer": "In pandas\u202f1.5 the comparison between a `Timestamp` and a `datetime.date` was made stricter: the comparison now returns **`False`** instead of silently treating the date as the same day.  \nTo keep the original \u201cdate\u2011only\u201d semantics you should explicitly convert one side to the other type before comparing:\n\n```python\nimport pandas as pd\nfrom datetime import date\n\nts = pd.Timestamp('2023-07-15 12:34:56')\nd  = date(2023, 7, 15)\n\n# compare only the date part of the Timestamp\nts.date() == d          # True\n\n# or convert the date to a Timestamp at midnight\npd.Timestamp(d) == ts.normalize()  # True\n```\n\nIf you need to compare the full datetime, convert the `datetime.date` to a `Timestamp` at midnight or use `ts.normalize()` to drop the time component. This explicit conversion avoids the new `False` result and keeps the code clear.",
+   "error": null,
+   "seconds": 0.57
+  },
+  "retrieval": {
+   "answer": "DataFrame.between_time(self: 'NDFrameT', start_time, end_time, include_start: 'bool_t | lib.NoDefault' = <no_default>, include_end: 'bool_t | lib.NoDefault' = <no_default>, inclusive: 'IntervalClosedType | None' = None, axis=None) -> 'NDFrameT': Select values between particular times of the day (e.g., 9:00-9:30 AM). [DataFrame.between_time | pandas 1.5]",
+   "top5": [
+    "DataFrame.between_time",
+    "Series.between_time",
+    "pd.to_datetime",
+    "DataFrame.at_time",
+    "Series.at_time"
+   ],
+   "seconds": 0.12
+  },
+  "full": {
+   "answer": "Cannot confirm from the retrieved docs.",
+   "used_llm": true,
+   "error": null,
+   "cited": [],
+   "seconds": 14.78
+  }
+ },
+ "PANDAS-019": {
+  "id": "PANDAS-019",
+  "question": "What happens to Index.ravel() after its return behavior changed?",
+  "version": "1.5",
+  "expected_api": "Index.ravel()",
+  "plain": {
+   "answer": "In pandas\u202f1.5 the `Index.ravel()` method was updated to return a **view** of the underlying NumPy array instead of a copy.  \nThat means the returned array shares memory with the Index\u2019s data, so mutating the array will change the Index\u2019s underlying values (even though the Index object itself is immutable).  \nThe change was made to improve performance for large indexes, but it also means you must be careful not to modify the returned array inadvertently.  \n\n```python\nidx = pd.Index([1, 2, 3])\narr = idx.ravel()          # view\narr[0] = 99                # mutates idx\u2019s data\nprint(idx)                 # Index([99, 2, 3], dtype=int64)\n```",
+   "error": null,
+   "seconds": 0.53
+  },
+  "retrieval": {
+   "answer": "Series.ravel(self, order: 'str' = 'C') -> 'np.ndarray': Return the flattened underlying data as an ndarray. [Series.ravel | pandas 1.5]",
+   "top5": [
+    "Series.ravel",
+    "Series.reindex_like",
+    "DataFrame.reindex_like",
+    "Series.reindex",
+    "DataFrame.set_index"
+   ],
+   "seconds": 0.15
+  },
+  "full": {
+   "answer": "Cannot confirm from the retrieved docs.",
+   "used_llm": true,
+   "error": null,
+   "cited": [],
+   "seconds": 12.88
+  }
+ },
+ "PANDAS-020": {
+  "id": "PANDAS-020",
+  "question": "How should downstream code adapt to stricter dtype behavior and changed numeric_only defaults in reductions?",
+  "version": "1.5",
+  "expected_api": "numeric_only defaults / reductions",
+  "plain": {
+   "answer": "With pandas\u202f1.5 the library tightened dtype handling in many reduction methods (e.g., `sum`, `mean`, `prod`).  \nDownstream code should explicitly cast or convert columns to the desired numeric dtype before calling these methods, or use `pd.to_numeric(..., errors='coerce')` to avoid implicit casting errors.  \nThe `numeric_only` default has changed to `True` for many group\u2011by and aggregation operations, so code that previously relied on the default `None` (which included non\u2011numeric columns) must now set `numeric_only=False` if non\u2011numeric data should be part of the reduction.  \nFinally, when chaining reductions, be aware that the result may now be a `float64` even if all inputs were integers; use `astype` to restore the original dtype if needed.  \n\n```python\n# Example: sum over a DataFrame with mixed dtypes\ndf = pd.DataFrame({'a': [1, 2], 'b': ['x', 'y']})\ndf['a'] = pd.to_numeric(df['a'], errors='coerce')\ntotal = df['a'].sum()          # works without error\n```",
+   "error": null,
+   "seconds": 1.65
+  },
+  "retrieval": {
+   "answer": "DataFrame.std(self, axis=None, skipna=True, level=None, ddof=1, numeric_only=None, **kwargs): Return sample standard deviation over requested axis. [DataFrame.std | pandas 1.5]",
+   "top5": [
+    "DataFrame.std",
+    "DataFrame.sem",
+    "Series.sem",
+    "Series.std",
+    "pd.to_numeric"
+   ],
+   "seconds": 0.08
+  },
+  "full": {
+   "answer": "Downstream code should explicitly set the `numeric_only` flag when calling reductions to avoid the future default change.  \nFor example, use `df.std(numeric_only=True)` or `df.sem(numeric_only=True)` to keep the current behaviour.  \nIf the code relies on the default `numeric_only=None`, it will need to be updated once pandas 1.5 changes it to `False`.  \nWhen converting data, use `pd.to_numeric(..., downcast='integer')` to enforce a specific dtype and avoid implicit float conversion.  \n\n```python\n# Example adjustment\ndf = pd.DataFrame({'a': ['1', '2', 'three']})\ndf['a'] = pd.to_numeric(df['a'], errors='coerce', downcast='integer')\nstd_val = df['a'].std(numeric_only=True)   # explicit numeric_only\n```",
+   "used_llm": true,
+   "error": null,
+   "cited": [],
+   "seconds": 16.09
+  }
+ },
+ "PANDAS-021": {
+  "id": "PANDAS-021",
+  "question": "How should code respond to the deprecation of silent downcasting in setitem-like operations?",
+  "version": "2.2",
+  "expected_api": "Silent dtype downcasting",
+  "plain": {
+   "answer": "In Pandas\u202f2.2 the \u201csilent down\u2011casting\u201d that used to happen automatically in `__setitem__`, `loc`, `iloc`, etc. has been removed.  \nWhen you assign a value that would normally be coerced to a smaller dtype, Pandas now raises a `TypeError` (or `ValueError` for incompatible types).  \nTo keep the original behaviour you must explicitly cast the value to the desired dtype before assignment, or use `astype` on the target column.  \n\n```python\nimport pandas as pd\n\ndf = pd.DataFrame({'a': pd.Series([1, 2, 3], dtype='int64')})\n# Old silent down\u2011cast (removed in 2.2)\n# df['a'] = [1.0, 2.0, 3.0]          # would silently cast to float\n\n# New explicit cast\ndf['a'] = pd.Series([1.0, 2.0, 3.0], dtype='float64')\n# or\ndf['a'] = df['a'].astype('float64')\n```",
+   "error": null,
+   "seconds": 1.91
+  },
+  "retrieval": {
+   "answer": "pd.to_numeric(arg, errors: 'DateTimeErrorChoices' = 'raise', downcast: \"Literal['integer', 'signed', 'unsigned', 'float'] | None\" = None, dtype_backend: 'DtypeBackend | lib.NoDefault' = <no_default>): Convert argument to a numeric type. [pd.to_numeric | pandas 2.2]",
+   "top5": [
+    "pd.to_numeric",
+    "pd.eval",
+    "DataFrame.ffill",
+    "DataFrame.join",
+    "DataFrame.bfill"
+   ],
+   "seconds": 0.14
+  },
+  "full": {
+   "answer": "Cannot confirm from the retrieved docs.",
+   "used_llm": true,
+   "error": null,
+   "cited": [],
+   "seconds": 17.07
+  }
+ },
+ "PANDAS-022": {
+  "id": "PANDAS-022",
+  "question": "What should replace deprecated fillna(method=...) usage on Series or DataFrame?",
+  "version": "2.2",
+  "expected_api": "fillna(method=...)",
+  "plain": {
+   "answer": "In pandas\u202f2.2 the `fillna(method=\u2026)` keyword was removed.  \nUse the dedicated forward\u2011/back\u2011ward fill methods or `interpolate` instead:\n\n```python\n# forward\u2011fill\ndf = df.ffill()          # or df['col'].ffill()\n\n# backward\u2011fill\ndf = df.bfill()          # or df['col'].bfill()\n\n# interpolation (e.g., linear)\ndf = df.interpolate(method='linear')   # or df['col'].interpolate()\n```\n\nThese replace the old `fillna(method='ffill')`, `fillna(method='bfill')`, or `fillna(method='pad')` calls.",
+   "error": null,
+   "seconds": 1.73
+  },
+  "retrieval": {
+   "answer": "Series.fillna(self, value: 'Hashable | Mapping | Series | DataFrame | None' = None, *, method: 'FillnaOptions | None' = None, axis: 'Axis | None' = None, inplace: 'bool_t' = False, limit: 'int | None' = None, downcast: 'dict | None | lib.NoDefault' = <no_default>) -> 'Self | None': Fill NA/NaN values using the specified method. [Series.fillna | pandas 2.2]",
+   "top5": [
+    "Series.fillna",
+    "DataFrame.fillna",
+    "Series.dropna",
+    "Series.mask",
+    "DataFrame.applymap"
+   ],
+   "seconds": 0.08
+  },
+  "full": {
+   "answer": "Use the forward\u2011 or backward\u2011fill methods instead of the deprecated `method=` argument.  \nFor a `Series` or `DataFrame` you can call `ffill()` or `bfill()` (or `backfill()`/`ffill()` aliases) to propagate the last/next valid value.  \n\n```python\n# replace df.fillna(method='ffill')  \u2192  df.ffill()\n# replace ser.fillna(method='bfill') \u2192  ser.bfill()\n```\n\n[Series.fillna | pandas 2.2] [DataFrame.fillna | pandas 2.2]",
+   "used_llm": true,
+   "error": null,
+   "cited": [
+    [
+     "Series.fillna",
+     "pandas",
+     "2.2"
+    ],
+    [
+     "DataFrame.fillna",
+     "pandas",
+     "2.2"
+    ]
+   ],
+   "seconds": 14.99
+  }
+ },
+ "PANDAS-023": {
+  "id": "PANDAS-023",
+  "question": "How should code update to_datetime() calls that use deprecated infer_datetime_format?",
+  "version": "2.2",
+  "expected_api": "to_datetime(infer_datetime_format)",
+  "plain": {
+   "answer": "In Pandas\u202f2.2 the `infer_datetime_format` keyword was removed.  \nReplace it by either:\n\n1. **Explicitly specify the format** with the `format=` argument (fastest and most reliable).  \n2. **Provide a custom parser** via `date_parser=` if the dates are irregular.\n\n```python\nimport pandas as pd\n\n# 1. Explicit format\ndf['ts'] = pd.to_datetime(df['ts'], format='%Y-%m-%d %H:%M:%S')\n\n# 2. Custom parser (fallback)\ndef parse(x):\n    try:\n        return pd.Timestamp(x)\n    except Exception:\n        return pd.NaT\n\ndf['ts'] = pd.to_datetime(df['ts'], date_parser=parse)\n```\n\nEither approach eliminates the deprecated `infer_datetime_format` usage.",
+   "error": null,
+   "seconds": 1.65
+  },
+  "retrieval": {
+   "answer": "pd.to_datetime(arg: 'DatetimeScalarOrArrayConvertible | DictConvertible', errors: 'DateTimeErrorChoices' = 'raise', dayfirst: 'bool' = False, yearfirst: 'bool' = False, utc: 'bool' = False, format: 'str | None' = None, exact: 'bool | lib.NoDefault' = <no_default>, unit: 'str | None' = None, infer_datetime_format: 'lib.NoDefault | bool' = <no_default>, origin: 'str' = 'unix', cache: 'bool' = True) -> 'DatetimeIndex | Series | DatetimeScalar | NaTType | None': Convert argument to datetime. [pd.to_datetime | pandas 2.2]",
+   "top5": [
+    "pd.to_datetime",
+    "DataFrame.convert_dtypes",
+    "Series.convert_dtypes",
+    "DataFrame.infer_objects",
+    "Series.infer_objects"
+   ],
+   "seconds": 0.07
+  },
+  "full": {
+   "answer": "Cannot confirm from the retrieved docs.",
+   "used_llm": true,
+   "error": null,
+   "cited": [],
+   "seconds": 14.8
+  }
+ },
+ "PANDAS-024": {
+  "id": "PANDAS-024",
+  "question": "What should replace deprecated DataFrame.applymap()?",
+  "version": "2.2",
+  "expected_api": "DataFrame.applymap()",
+  "plain": {
+   "answer": "In pandas\u202f2.2 the element\u2011wise `DataFrame.applymap()` was removed.  \nUse a vectorized operation or `DataFrame.apply()` with a `lambda` that works on each column (or on the whole frame).  \n\n```python\n# old (removed)\n# df.applymap(lambda x: x*2)\n\n# new \u2013 vectorized\ndf = df * 2\n\n# or, if you need a custom function per column\ndf = df.apply(lambda col: col.map(custom_func))\n```\n\nThe key is to avoid `applymap` and rely on broadcasting or `apply`/`map` for column\u2011wise logic.",
+   "error": null,
+   "seconds": 3.17
+  },
+  "retrieval": {
+   "answer": "DataFrame.applymap(self, func: 'PythonFuncType', na_action: 'NaAction | None' = None, **kwargs) -> 'DataFrame': Apply a function to a Dataframe elementwise. [DataFrame.applymap | pandas 2.2]",
+   "top5": [
+    "DataFrame.applymap",
+    "DataFrame.map",
+    "DataFrame.mask",
+    "DataFrame.replace",
+    "DataFrame.where"
+   ],
+   "seconds": 0.07
+  },
+  "full": {
+   "answer": "Use the new **DataFrame.map** method, which replaces the deprecated **DataFrame.applymap**.  \n`df.map(func, na_action='ignore')` applies the scalar function element\u2011wise, just like the old `applymap`.  \n\n```python\nimport pandas as pd\n\ndf = pd.DataFrame([[1, 2.12], [3.356, 4.567]])\ndf.map(lambda x: len(str(x)))   # [DataFrame.map | pandas 2.2]\n```",
+   "used_llm": true,
+   "error": null,
+   "cited": [
+    [
+     "DataFrame.map",
+     "pandas",
+     "2.2"
+    ]
+   ],
+   "seconds": 13.74
+  }
+ },
+ "PANDAS-025": {
+  "id": "PANDAS-025",
+  "question": "How should code change when using deprecated Series.view() for dtype reinterpretation?",
+  "version": "2.2",
+  "expected_api": "Series.view()",
+  "plain": {
+   "answer": "In pandas\u202f2.2 the `Series.view()` method that was used to reinterpret the underlying data as a different dtype has been removed.  \nInstead, cast the series to the desired dtype with `astype()` (or `pd.Series.astype`) or, if you need a raw NumPy view, call `Series.values.view(new_dtype)` directly.  \n\n```python\nimport pandas as pd\ns = pd.Series([1, 2, 3], dtype='int64')\n\n# old (deprecated)\n# s.view('float64')\n\n# new\ns_float = s.astype('float64')          # pandas\u2011level cast\ns_float_np = s.values.view('float64')  # raw NumPy view\n```\n\nThe `astype` approach keeps the Series semantics (index, name, etc.), while the `values.view` route gives you a NumPy array with the new dtype.",
+   "error": null,
+   "seconds": 1.9
+  },
+  "retrieval": {
+   "answer": "Series.view(self, dtype: 'Dtype | None' = None) -> 'Series': Create a new view of the Series. [Series.view | pandas 2.2]",
+   "top5": [
+    "Series.view",
+    "Series.to_numpy",
+    "Series.bool",
+    "Series.sem",
+    "Series.last"
+   ],
+   "seconds": 0.08
+  },
+  "full": {
+   "answer": "Use `Series.astype` instead of the deprecated `Series.view` to change the dtype.  \n```python\ns = pd.Series([1, 2, 3], dtype='int64')\ns_float = s.astype('float64')   # same effect as s.view('float64')\n```\n[Series.view | pandas 2.2] \u2192 [Series.astype | pandas 2.2]",
+   "used_llm": true,
+   "error": null,
+   "cited": [
+    [
+     "Series.view",
+     "pandas",
+     "2.2"
+    ],
+    [
+     "Series.astype",
+     "pandas",
+     "2.2"
+    ]
+   ],
+   "seconds": 12.62
+  }
+ },
+ "PANDAS-026": {
+  "id": "PANDAS-026",
+  "question": "How should inplace operations on a Series selected from a DataFrame be rewritten under Copy-on-Write?",
+  "version": "2.2",
+  "expected_api": "Chained/inplace mutation of selected Series",
+  "plain": {
+   "answer": "In pandas\u202f2.2 the \u201cinplace\u201d flag is removed because it can silently modify a copy of a slice.  \nInstead, always assign the result back to the original column (or use `.loc` for a slice).  \n\n```python\n# old style (inplace=True) \u2013 no longer supported\n# df['col'].replace('a', 'b', inplace=True)\n\n# new style \u2013 explicit assignment\ndf['col'] = df['col'].replace('a', 'b')\n\n# or, for a slice\ndf.loc[:, 'col'] = df.loc[:, 'col'].replace('a', 'b')\n```\n\nThis guarantees that the DataFrame is updated correctly under copy\u2011on\u2011write semantics.",
+   "error": null,
+   "seconds": 2.63
+  },
+  "retrieval": {
+   "answer": "Series.rename(self, index: 'Renamer | Hashable | None' = None, *, axis: 'Axis | None' = None, copy: 'bool | None' = None, inplace: 'bool' = False, level: 'Level | None' = None, errors: 'IgnoreRaise' = 'ignore') -> 'Series | None': Alter Series index labels or name. [Series.rename | pandas 2.2]",
+   "top5": [
+    "Series.rename",
+    "DataFrame.rename_axis",
+    "Series.set_flags",
+    "Series.infer_objects",
+    "Series.rename_axis"
+   ],
+   "seconds": 0.08
+  },
+  "full": {
+   "answer": "In Copy\u2011on\u2011Write pandas, inplace methods on a Series that is a view of a DataFrame should be replaced with an explicit assignment that creates a new Series and re\u2011assigns it to the column. For example, instead of\n\n```python\ndf['col'].rename(index=..., inplace=True)\n```\n\nwrite\n\n```python\ndf['col'] = df['col'].rename(index=...)   # [Series.rename | pandas 2.2]\n```\n\nThis guarantees that the original DataFrame is not mutated in place and that the new Series is a separate object, which is the recommended pattern under Copy\u2011on\u2011Write.",
+   "used_llm": true,
+   "error": null,
+   "cited": [
+    [
+     "Series.rename",
+     "pandas",
+     "2.2"
+    ]
+   ],
+   "seconds": 13.96
+  }
+ },
+ "PANDAS-027": {
+  "id": "PANDAS-027",
+  "question": "Why does Series.replace(..., inplace=True) on a categorical column emit a deprecation warning, and what is the recommended rewrite?",
+  "version": "2.2",
+  "expected_api": "inplace on selected Series / categorical data",
+  "plain": {
+   "answer": "`Series.replace(..., inplace=True)` is being deprecated for categorical dtypes because the operation internally creates a new categorical object and then re\u2011assigns it, which is inefficient and can lead to subtle bugs.  \nThe recommended pattern is to call `replace` (or `cat.rename_categories`) **without** `inplace=True` and assign the result back to the Series (or to the DataFrame column).  \n\n```python\n# old (deprecated)\ns.replace({'a': 'b'}, inplace=True)\n\n# new\ns = s.replace({'a': 'b'})          # or s.cat.rename_categories(...)\n```\n\nThis keeps the code explicit and works for all dtypes, including categorical.",
+   "error": null,
+   "seconds": 0.51
+  },
+  "retrieval": {
+   "answer": "Series.reset_index(self, level: 'IndexLabel | None' = None, *, drop: 'bool' = False, name: 'Level' = <no_default>, inplace: 'bool' = False, allow_duplicates: 'bool' = False) -> 'DataFrame | Series | None': Generate a new DataFrame or Series with the index reset. [Series.reset_index | pandas 2.2]",
+   "top5": [
+    "Series.reset_index",
+    "Series.mask",
+    "DataFrame.mask",
+    "Series.replace",
+    "Series.where"
+   ],
+   "seconds": 0.15
+  },
+  "full": {
+   "answer": "Cannot confirm from the retrieved docs.",
+   "used_llm": true,
+   "error": null,
+   "cited": [],
+   "seconds": 15.0
+  }
+ },
+ "PANDAS-028": {
+  "id": "PANDAS-028",
+  "question": "What should replace deprecated DataFrameGroupBy.apply() behavior that includes grouping columns?",
+  "version": "2.2",
+  "expected_api": "GroupBy.apply(include_groups)",
+  "plain": {
+   "answer": "In pandas\u202f2.2 the old `DataFrameGroupBy.apply()` that automatically added the grouping columns to the result was removed.  \nThe replacement is to call `apply` with `group_keys=False` (so the group labels are **not** inserted automatically) and then add them back yourself, e.g. by resetting the index or by assigning the group keys explicitly.\n\n```python\n# old (deprecated)\n# df.groupby('A').apply(lambda g: g.sum())\n\n# new\nout = df.groupby('A', group_keys=False).apply(lambda g: g.sum())\nout = out.reset_index()          # or out.assign(A=out.index.get_level_values('A'))\n```\n\nThis keeps the grouping columns in the output while avoiding the deprecated behavior.",
+   "error": null,
+   "seconds": 2.15
+  },
+  "retrieval": {
+   "answer": "DataFrame.applymap(self, func: 'PythonFuncType', na_action: 'NaAction | None' = None, **kwargs) -> 'DataFrame': Apply a function to a Dataframe elementwise. [DataFrame.applymap | pandas 2.2]",
+   "top5": [
+    "DataFrame.applymap",
+    "DataFrame.map",
+    "Series.apply",
+    "DataFrame.groupby",
+    "DataFrame.transform"
+   ],
+   "seconds": 0.15
+  },
+  "full": {
+   "answer": "Cannot confirm from the retrieved docs.",
+   "used_llm": true,
+   "error": null,
+   "cited": [],
+   "seconds": 14.17
+  }
+ },
+ "PANDAS-029": {
+  "id": "PANDAS-029",
+  "question": "How should code handle the deprecation of the downcast keyword in fillna(), replace(), and related methods?",
+  "version": "2.2",
+  "expected_api": "downcast keyword",
+  "plain": {
+   "answer": "In pandas\u202f2.2 the `downcast` keyword in `fillna()`, `replace()` and similar methods has been removed.  \nTo keep the same behaviour you should explicitly cast the result to the desired dtype after the call, e.g. with `.astype()` or by passing a `dtype` argument to the method that still supports it.  \nIf you need to preserve the original dtype you can use `pd.to_numeric(..., downcast='integer')` or `pd.to_datetime(..., errors='coerce')` as a replacement.  \nAlways test the output dtype after the change to avoid silent type\u2011conversion bugs.\n\n```python\nimport pandas as pd\n\n# old style (removed in 2.2)\n# df['col'].fillna(0, downcast='integer')\n\n# new style\ndf['col'] = df['col'].fillna(0).astype('int32')\n```",
+   "error": null,
+   "seconds": 0.69
+  },
+  "retrieval": {
+   "answer": "Series.fillna(self, value: 'Hashable | Mapping | Series | DataFrame | None' = None, *, method: 'FillnaOptions | None' = None, axis: 'Axis | None' = None, inplace: 'bool_t' = False, limit: 'int | None' = None, downcast: 'dict | None | lib.NoDefault' = <no_default>) -> 'Self | None': Fill NA/NaN values using the specified method. [Series.fillna | pandas 2.2]",
+   "top5": [
+    "Series.fillna",
+    "DataFrame.fillna",
+    "Series.replace",
+    "DataFrame.replace",
+    "Series.dropna"
+   ],
+   "seconds": 0.15
+  },
+  "full": {
+   "answer": "Cannot confirm from the retrieved docs.",
+   "used_llm": true,
+   "error": null,
+   "cited": [],
+   "seconds": 16.84
+  }
+ },
+ "PANDAS-030": {
+  "id": "PANDAS-030",
+  "question": "What is the migration path for deprecated errors='ignore' in to_numeric()?",
+  "version": "2.2",
+  "expected_api": "to_numeric(errors='ignore')",
+  "plain": {
+   "answer": "In pandas\u202f2.2 the `errors='ignore'` argument of `pd.to_numeric()` has been removed.  \nThe recommended migration is to keep the default `errors='raise'` and handle the exception yourself, or to use `errors='coerce'` and then drop or fill the resulting `NaN`s.  \n\n```python\nimport pandas as pd\n\ns = pd.Series(['1', '2', 'a'])\n\n# old (removed) way\n# s = pd.to_numeric(s, errors='ignore')\n\n# new recommended ways\ntry:\n    s_num = pd.to_numeric(s)          # raises on 'a'\nexcept ValueError:\n    s_num = pd.to_numeric(s, errors='coerce')  # NaN for 'a'\n    s_num = s_num.dropna()            # or s_num.fillna(0)\n```",
+   "error": null,
+   "seconds": 1.85
+  },
+  "retrieval": {
+   "answer": "pd.to_numeric(arg, errors: 'DateTimeErrorChoices' = 'raise', downcast: \"Literal['integer', 'signed', 'unsigned', 'float'] | None\" = None, dtype_backend: 'DtypeBackend | lib.NoDefault' = <no_default>): Convert argument to a numeric type. [pd.to_numeric | pandas 2.2]",
+   "top5": [
+    "pd.to_numeric",
+    "pd.read_xml",
+    "DataFrame.update",
+    "pd.read_json",
+    "pd.json_normalize"
+   ],
+   "seconds": 0.09
+  },
+  "full": {
+   "answer": "The `errors='ignore'` option in `pd.to_numeric()` is deprecated as of pandas\u202f2.2.  \nThe recommended migration is to use the default `errors='raise'` (or `errors='coerce'` if you want NaNs) and explicitly catch parsing exceptions in your code.  \n\n```python\ntry:\n    result = pd.to_numeric(values, errors='raise')  # [pd.to_numeric | pandas 2.2]\nexcept ValueError:\n    # handle or log the error\n    result = pd.Series([np.nan] * len(values))\n```\n\nThis replaces the deprecated `ignore` behavior with explicit error handling.",
+   "used_llm": true,
+   "error": null,
+   "cited": [
+    [
+     "pd.to_numeric",
+     "pandas",
+     "2.2"
+    ]
+   ],
+   "seconds": 19.19
+  }
+ },
+ "PANDAS-031": {
+  "id": "PANDAS-031",
+  "question": "How should code change after the deprecation of the argument to Series/DataFrame.idxmin() and idxmax() for all-NA cases?",
+  "version": "2.2",
+  "expected_api": "idxmin / idxmax NA behavior",
+  "plain": {
+   "answer": "In pandas\u202f2.2 the `skipna` argument of `Series.idxmin()`/`Series.idxmax()` (and the DataFrame equivalents) has been removed.  \nThe functions now **always return `NaN` when the entire column/series is missing** and no warning is issued.  \nIf you need the old \u201craise an error on all\u2011NA\u201d behaviour, you must explicitly check for `NaN` after calling the method or use `Series.idxmin(skipna=False)` in older versions and replace it with a manual check in 2.2.  \n\n```python\nimport pandas as pd\n\ns = pd.Series([None, None, None])\nidx = s.idxmin()          # returns NaN in pandas 2.2\nif pd.isna(idx):\n    raise ValueError(\"All values are NA\")\n```",
+   "error": null,
+   "seconds": 1.83
+  },
+  "retrieval": {
+   "answer": "DataFrame.prod(self, axis: 'Axis | None' = 0, skipna: 'bool' = True, numeric_only: 'bool' = False, min_count: 'int' = 0, **kwargs): Return the product of the values over the requested axis. [DataFrame.prod | pandas 2.2]",
+   "top5": [
+    "DataFrame.prod",
+    "DataFrame.product",
+    "Series.idxmax",
+    "Series.prod",
+    "DataFrame.idxmax"
+   ],
+   "seconds": 0.13
+  },
+  "full": {
+   "answer": "Cannot confirm from the retrieved docs.",
+   "used_llm": true,
+   "error": null,
+   "cited": [],
+   "seconds": 14.06
+  }
+ },
+ "PANDAS-032": {
+  "id": "PANDAS-032",
+  "question": "How should a project prepare for pandas 3.0 breaking changes before upgrading?",
+  "version": "2.2",
+  "expected_api": "Migration to pandas 3.0",
+  "plain": {
+   "answer": "Before upgrading, run the **pandas\u2011compatibility checker** (`pip install pandas\u2011compat`) to scan your code for deprecated APIs that will be removed in 3.0.  \nAdd a temporary `pandas==2.2.*` lockfile and run your full test suite; any failures will surface the breaking changes early.  \nRefactor the flagged usages\u2014prefer the new `pandas.api.extensions` or `pandas.core` interfaces\u2014and update imports accordingly.  \nFinally, update your CI pipeline to build against 3.0 in a separate branch, run the tests again, and merge only after all failures are fixed.  \n\n```python\n# quick compatibility scan\nimport pandas_compat\npandas_compat.check_deprecations()\n```",
+   "error": null,
+   "seconds": 0.67
+  },
+  "retrieval": {
+   "answer": "DataFrame.update(self, other, join: 'UpdateJoin' = 'left', overwrite: 'bool' = True, filter_func=None, errors: 'IgnoreRaise' = 'ignore') -> 'None': Modify in place using non-NA values from another DataFrame. [DataFrame.update | pandas 2.2]",
+   "top5": [
+    "DataFrame.update",
+    "DataFrame.pct_change",
+    "DataFrame.to_timestamp",
+    "DataFrame.set_axis",
+    "Series.set_axis"
+   ],
+   "seconds": 0.09
+  },
+  "full": {
+   "answer": "To prepare for pandas\u202f3.0, review any code that uses the `copy` keyword in methods such as `DataFrame.set_axis`, `Series.set_axis`, `DataFrame.update`, and `DataFrame.to_timestamp` [set_axis | pandas 2.2], [set_axis | pandas 2.2], [update | pandas 2.2], [to_timestamp | pandas 2.2]. In 3.0 the `copy` argument will be ignored and a lazy copy\u2011on\u2011write mechanism will be enabled by default, so adjust logic that relies on explicit copying. Test the affected methods after upgrading to ensure behavior matches expectations.",
+   "used_llm": true,
+   "error": null,
+   "cited": [
+    [
+     "set_axis",
+     "pandas",
+     "2.2"
+    ],
+    [
+     "set_axis",
+     "pandas",
+     "2.2"
+    ],
+    [
+     "update",
+     "pandas",
+     "2.2"
+    ],
+    [
+     "to_timestamp",
+     "pandas",
+     "2.2"
+    ]
+   ],
+   "seconds": 16.09
+  }
+ },
+ "PANDAS-033": {
+  "id": "PANDAS-033",
+  "question": "Why are string columns inferred as a dedicated str dtype rather than object by default in pandas 3.0?",
+  "version": "2.2",
+  "expected_api": "Default string dtype inference",
+  "plain": {
+   "answer": "In pandas\u202f3.0 the default dtype inference was updated so that columns that contain only text are now inferred as the dedicated **`string`** dtype instead of the legacy **`object`** dtype.  \nThe change was made to give string columns a consistent, nullable type that behaves like a real string column (e.g., supports vectorised string methods, has a proper `dtype.kind` of \u201cU\u201d, and can store `pd.NA` without turning the whole column into `object`).  \nUsing `string` also reduces memory overhead for large text columns and improves performance for many string operations.  \n```python\nimport pandas as pd\n\ndf = pd.DataFrame({'a': ['foo', 'bar', None]})\nprint(df.dtypes)          # a    string\nprint(df['a'].dtype)      # string\n```",
+   "error": null,
+   "seconds": 0.92
+  },
+  "retrieval": {
+   "answer": "pd.get_dummies(data, prefix=None, prefix_sep: 'str | Iterable[str] | dict[str, str]' = '_', dummy_na: 'bool' = False, columns=None, sparse: 'bool' = False, drop_first: 'bool' = False, dtype: 'NpDtype | None' = None) -> 'DataFrame': Convert categorical variable into dummy/indicator variables. [pd.get_dummies | pandas 2.2]",
+   "top5": [
+    "pd.get_dummies",
+    "DataFrame.infer_objects",
+    "Series.infer_objects",
+    "DataFrame.query",
+    "DataFrame.astype"
+   ],
+   "seconds": 0.09
+  },
+  "full": {
+   "answer": "Cannot confirm from the retrieved docs.",
+   "used_llm": true,
+   "error": null,
+   "cited": [],
+   "seconds": 13.76
+  }
+ },
+ "PANDAS-038": {
+  "id": "PANDAS-038",
+  "question": "Which month-end frequency alias should replace 'M' in date_range() and related code?",
+  "version": "2.2",
+  "expected_api": "Frequency alias M",
+  "plain": {
+   "answer": "In pandas\u202f2.2 the old alias **`'M'`** (month\u2011end) was removed in favour of the explicit **`'ME'`** alias.  \nUse `'ME'` wherever you previously passed `'M'` to `date_range`, `pd.period_range`, or any frequency\u2011based constructor.\n\n```python\nimport pandas as pd\n\n# old (removed in 2.2)\n# dates = pd.date_range('2024-01-01', periods=12, freq='M')\n\n# new\ndates = pd.date_range('2024-01-01', periods=12, freq='ME')\nprint(dates[-1])  # 2024\u201112\u201131\n```",
+   "error": null,
+   "seconds": 2.8
+  },
+  "retrieval": {
+   "answer": "pd.date_range(start=None, end=None, periods=None, freq=None, tz=None, normalize: 'bool' = False, name: 'Hashable | None' = None, inclusive: 'IntervalClosedType' = 'both', *, unit: 'str | None' = None, **kwargs) -> 'DatetimeIndex': Return a fixed frequency DatetimeIndex. [pd.date_range | pandas 2.2]",
+   "top5": [
+    "pd.date_range",
+    "pd.period_range",
+    "pd.timedelta_range",
+    "pd.bdate_range",
+    "Series.asfreq"
+   ],
+   "seconds": 0.16
+  },
+  "full": {
+   "answer": "The month\u2011end alias is **`'M'`** itself.  \n`pd.date_range(..., freq='M')` generates a DatetimeIndex whose points are the last day of each month.  \nThis is the standard month\u2011end frequency in pandas 2.2.  \n\n```python\nidx = pd.date_range(start='2023-01-01', end='2023-12-31', freq='M')  # month\u2011end dates\n```\n\n[date_range | pandas 2.2]",
+   "used_llm": true,
+   "error": null,
+   "cited": [
+    [
+     "date_range",
+     "pandas",
+     "2.2"
+    ]
+   ],
+   "seconds": 16.32
+  }
+ },
+ "PANDAS-039": {
+  "id": "PANDAS-039",
+  "question": "Which quarter-end alias should replace 'Q' in date_range() and resampling code?",
+  "version": "2.2",
+  "expected_api": "Frequency alias Q",
+  "plain": {
+   "answer": "In Pandas\u202f2.2 the generic \u201cQ\u201d alias was removed; you must specify the quarter\u2011end month explicitly.  \nUse one of the month\u2011specific aliases such as **`'Q-DEC'`** (default), **`'Q-SEP'`**, **`'Q-MAR'`**, or **`'Q-JUN'`**.  \n\n```python\nimport pandas as pd\n\n# Quarter\u2011end dates (default December)\ndates = pd.date_range('2023-01-01', periods=4, freq='Q-DEC')\ndf = pd.DataFrame({'value': range(4)}, index=dates)\n\n# Resample to quarterly frequency\nquarterly = df.resample('Q-DEC').sum()\nprint(quarterly)\n```\n\nReplace `'Q-DEC'` with the appropriate month if your data uses a different quarter\u2011end.",
+   "error": null,
+   "seconds": 0.84
+  },
+  "retrieval": {
+   "answer": "DataFrame.resample(self, rule, axis: 'Axis | lib.NoDefault' = <no_default>, closed: \"Literal['right', 'left'] | None\" = None, label: \"Literal['right', 'left'] | None\" = None, convention: \"Literal['start', 'end', 's', 'e'] | lib.NoDefault\" = <no_default>, kind: \"Literal['timestamp', 'period'] | None | lib.NoDefault\" = <no_default>, on: 'Level | None' = None, level: 'Level | None' = None, origin: 'str | TimestampConvertibleTypes' = 'start_day', offset: 'TimedeltaConvertibleTypes | None' = None, group_keys: 'bool_t' = False) -> 'Resampler': Resample time-series data. [DataFrame.resample | pandas 2.2]",
+   "top5": [
+    "DataFrame.resample",
+    "Series.resample",
+    "pd.date_range",
+    "Series.asfreq",
+    "pd.period_range"
+   ],
+   "seconds": 0.14
+  },
+  "full": {
+   "answer": "Cannot confirm from the retrieved docs.",
+   "used_llm": true,
+   "error": null,
+   "cited": [],
+   "seconds": 18.02
+  }
+ },
+ "PANDAS-040": {
+  "id": "PANDAS-040",
+  "question": "Which year-end alias should replace 'Y' in date_range() and resampling code?",
+  "version": "2.2",
+  "expected_api": "Frequency alias Y",
+  "plain": {
+   "answer": "In pandas\u202f2.2 the old alias **`'Y'`** (year\u2011end) was deprecated in favour of the more explicit **`'YE'`** (or the equivalent **`'A'`** for \u201cannual\u201d).  \nUse `'YE'` (or `'A'`) in both `pd.date_range()` and in resampling:\n\n```python\nimport pandas as pd\n\n# date range ending each year\nrng = pd.date_range('2010-01-01', periods=5, freq='YE')\n\n# resample a time\u2011series to yearly end\nts = pd.Series(range(5), index=rng)\nts_resampled = ts.resample('YE').sum()\n```\n\nThis keeps the code forward\u2011compatible with pandas\u202f2.2 and beyond.",
+   "error": null,
+   "seconds": 1.84
+  },
+  "retrieval": {
+   "answer": "DataFrame.resample(self, rule, axis: 'Axis | lib.NoDefault' = <no_default>, closed: \"Literal['right', 'left'] | None\" = None, label: \"Literal['right', 'left'] | None\" = None, convention: \"Literal['start', 'end', 's', 'e'] | lib.NoDefault\" = <no_default>, kind: \"Literal['timestamp', 'period'] | None | lib.NoDefault\" = <no_default>, on: 'Level | None' = None, level: 'Level | None' = None, origin: 'str | TimestampConvertibleTypes' = 'start_day', offset: 'TimedeltaConvertibleTypes | None' = None, group_keys: 'bool_t' = False) -> 'Resampler': Resample time-series data. [DataFrame.resample | pandas 2.2]",
+   "top5": [
+    "DataFrame.resample",
+    "Series.resample",
+    "Series.replace",
+    "pd.date_range",
+    "DataFrame.replace"
+   ],
+   "seconds": 0.07
+  },
+  "full": {
+   "answer": "Cannot confirm from the retrieved docs.",
+   "used_llm": true,
+   "error": null,
+   "cited": [],
+   "seconds": 17.85
+  }
+ },
+ "PANDAS-041": {
+  "id": "PANDAS-041",
+  "question": "Which business month-end alias should replace 'BM'?",
+  "version": "2.2",
+  "expected_api": "Frequency alias BM",
+  "plain": {
+   "answer": "In pandas\u202f2.2 the alias **`'BM'`** is still the correct shortcut for a business\u2011month\u2011end offset.  \nYou can use it directly in `pd.date_range`, `pd.offsets`, or any date\u2011offset constructor.\n\n```python\nimport pandas as pd\n\n# Business\u2011month\u2011end dates for 2024\ndates = pd.date_range('2024-01-01', periods=12, freq='BM')\nprint(dates)\n```\n\nThis will give you the last business day of each month in 2024.",
+   "error": null,
+   "seconds": 2.14
+  },
+  "retrieval": {
+   "answer": "pd.bdate_range(start=None, end=None, periods: 'int | None' = None, freq: 'Frequency | dt.timedelta' = 'B', tz=None, normalize: 'bool' = True, name: 'Hashable | None' = None, weekmask=None, holidays=None, inclusive: 'IntervalClosedType' = 'both', **kwargs) -> 'DatetimeIndex': Return a fixed frequency DatetimeIndex with business day as the default. [pd.bdate_range | pandas 2.2]",
+   "top5": [
+    "pd.bdate_range",
+    "Series.replace",
+    "pd.period_range",
+    "DataFrame.replace",
+    "DataFrame.set_index"
+   ],
+   "seconds": 0.11
+  },
+  "full": {
+   "answer": "Cannot confirm from the retrieved docs.",
+   "used_llm": true,
+   "error": null,
+   "cited": [],
+   "seconds": 14.79
+  }
+ },
+ "PANDAS-042": {
+  "id": "PANDAS-042",
+  "question": "Which business quarter-end alias should replace 'BQ'?",
+  "version": "2.2",
+  "expected_api": "Frequency alias BQ",
+  "plain": {
+   "answer": "In pandas\u202f2.2 the alias **`'BQ'`** (business\u2011quarter\u2011end) has been removed; you should use the full string **`'business_quarter_end'`** instead.  \n\n```python\nimport pandas as pd\n\n# old (removed) alias\n# pd.to_datetime('2024-03-31', format='BQ')\n\n# new, explicit alias\npd.to_datetime('2024-03-31', format='business_quarter_end')\n```",
+   "error": null,
+   "seconds": 1.23
+  },
+  "retrieval": {
+   "answer": "pd.bdate_range(start=None, end=None, periods: 'int | None' = None, freq: 'Frequency | dt.timedelta' = 'B', tz=None, normalize: 'bool' = True, name: 'Hashable | None' = None, weekmask=None, holidays=None, inclusive: 'IntervalClosedType' = 'both', **kwargs) -> 'DatetimeIndex': Return a fixed frequency DatetimeIndex with business day as the default. [pd.bdate_range | pandas 2.2]",
+   "top5": [
+    "pd.bdate_range",
+    "Series.replace",
+    "DataFrame.replace",
+    "DataFrame.isnull",
+    "Series.asfreq"
+   ],
+   "seconds": 0.07
+  },
+  "full": {
+   "answer": "Cannot confirm from the retrieved docs.",
+   "used_llm": true,
+   "error": null,
+   "cited": [],
+   "seconds": 14.79
+  }
+ },
+ "PANDAS-043": {
+  "id": "PANDAS-043",
+  "question": "Which business year-end alias should replace 'BY'?",
+  "version": "2.2",
+  "expected_api": "Frequency alias BY",
+  "plain": {
+   "answer": "In pandas\u202f2.2 the old `BY` alias for a **business\u2011year\u2011end** frequency was removed.  \nUse the new `B`\u2011based alias `B`\u2011`Y` (i.e., `B` + `Y`) instead, which is interpreted as a business\u2011year\u2011end frequency.  \n\n```python\nimport pandas as pd\n\n# old (removed) alias\n# pd.date_range('2023-01-01', periods=3, freq='BY')\n\n# new alias\npd.date_range('2023-01-01', periods=3, freq='BY')  # still works in 2.2\n# or equivalently\npd.date_range('2023-01-01', periods=3, freq='B-Y')\n```\n\nThe `B-Y` alias is the recommended replacement for `BY`.",
+   "error": null,
+   "seconds": 1.06
+  },
+  "retrieval": {
+   "answer": "pd.bdate_range(start=None, end=None, periods: 'int | None' = None, freq: 'Frequency | dt.timedelta' = 'B', tz=None, normalize: 'bool' = True, name: 'Hashable | None' = None, weekmask=None, holidays=None, inclusive: 'IntervalClosedType' = 'both', **kwargs) -> 'DatetimeIndex': Return a fixed frequency DatetimeIndex with business day as the default. [pd.bdate_range | pandas 2.2]",
+   "top5": [
+    "pd.bdate_range",
+    "Series.replace",
+    "DataFrame.replace",
+    "pd.period_range",
+    "Series.keys"
+   ],
+   "seconds": 0.06
+  },
+  "full": {
+   "answer": "Cannot confirm from the retrieved docs.",
+   "used_llm": true,
+   "error": null,
+   "cited": [],
+   "seconds": 13.02
+  }
+ },
+ "PANDAS-050": {
+  "id": "PANDAS-050",
+  "question": "Which pandas 2.0 removals and behavior changes should downstream type stubs and users account for?",
+  "version": "1.5",
+  "expected_api": "pandas 2.0 compatibility tracking",
+  "plain": {
+   "answer": "**Key pandas\u202f2.0 removals / behavior changes that affect type stubs and downstream code**\n\n| Category | What changed | Why it matters for stubs / users |\n|----------|--------------|----------------------------------|\n| **Deprecated API removal** | `pandas.util.testing` \u2192 removed (use `pandas.testing`). | Stubs must no longer expose `pandas.util.testing`. |\n| **Indexing changes** | `Series.__array__` now returns `np.ndarray` instead of `np.array`\u2011like view; `Series.__array_priority__` changed. | Type hints for array conversion need to reflect `np.ndarray`. |\n| **`DataFrame.apply` default `result_type`** | Default changed from `'expand'` to `'reduce'`. | Stubs should document the new default; code relying on the old default may need explicit `result_type`. |\n| **`DataFrame.to_numpy`** | `dtype` argument now accepts `None` to preserve dtype; `copy` default changed to `False`. | Type stubs should allow `dtype: Optional[np.dtype]`. |\n| **`Series.str` accessor** | `Series.str.contains` no longer accepts `regex=False` for non\u2011string columns. | Stubs should reflect that `regex` is only for string columns. |\n| **`DataFrame.query`** | `parser` argument removed; `engine` default changed to `'pandas'`. | Stubs should drop `parser` and update `engine` default. |\n| **`DataFrame.reindex`** | `method` argument no longer accepts `'nearest'` for non\u2011numeric columns. | Type hints should restrict `method` accordingly. |\n| **`DataFrame.merge`** | `validate` argument now accepts `'one_to_one'`, `'one_to_many'`, `'many_to_one'`, `'many_to_many'`. | Stubs should include these options. |\n| **`DataFrame.set_index`** | `drop` default changed to `True`. | Stubs should document the new default. |\n| **`DataFrame.loc` / `iloc`** | `__setitem__` now raises `ValueError` for mismatched shapes instead of silently broadcasting. | Type stubs should reflect stricter shape requirements. |\n| **`DataFrame.astype`** | `copy` argument removed; always copies. | Stubs should drop `copy`. |\n| **`DataFrame.to_dict`** | `orient` default changed to `'dict'` (was `'dict'` but some callers relied on `'records'`). | Update stubs accordingly. |\n| **`DataFrame.plot`** | `kind` default changed to `'line'`; `subplots` default changed to `False`. | Stubs should reflect new defaults. |\n| **`Series.map`** | `na_action` default changed to `'ignore'`. | Stubs should document this. |\n| **`DataFrame.groupby`** | `observed` default changed to `False`. | Stubs should update default. |\n| **`DataFrame.corr`** | `min_periods` default changed to `1`. | Stubs should reflect new default. |\n| **`DataFrame.drop`** | `errors` default changed to `'raise'`. | Stubs should update default. |\n| **`DataFrame.isin`** | `inplace` argument removed. | Stubs should drop `inplace`. |\n| **`DataFrame.clip`** | `inplace` argument removed. | Stubs should drop `inplace`. |\n| **`DataFrame.replace`** | `inplace` argument removed. | Stubs should drop `inplace`. |\n| **`DataFrame.query`** | `local_dict` argument removed. | Stubs should drop `local_dict`. |\n| **`DataFrame.eval`** | `local_dict` argument removed. | Stubs should drop `local_dict`. |\n| **`DataFrame.to_csv`** | `date_format` argument removed. | Stubs should drop `date_format`. |\n| **`DataFrame.to_excel`** | `date_format` argument removed. | Stubs should drop `date_format`. |\n| **`DataFrame.to_hdf`** | `format` argument removed. | Stubs should drop `format`. |\n| **`DataFrame.to_parquet`** | `engine` default changed to `'auto'`. | Stubs should reflect new default. |\n| **`DataFrame.to_sql`** | `if_exists` default changed to `'fail'`. | Stubs should update default. |\n| **`DataFrame.to_json`** | `date_format` argument removed. | Stubs should drop `date_format`. |\n| **`DataFrame.to_html`** | `border` default changed to `1`. | Stubs should update default. |\n| **`DataFrame.to_clipboard`** | `sep` default changed to `'\\t'`. | Stubs should update default. |\n| **`DataFrame.to_string`** | `line_width` default changed to `80`. | Stubs should update default. |\n| **`DataFrame.to_markdown`** | `tablefmt` default changed to `'github'`. | Stubs should update default. |\n| **`DataFrame.to_dict`** | `into` argument removed. | Stubs should drop `into`. |\n| **`DataFrame.to_records`** | `index` default changed to `False`. | Stubs should update default. |\n| **`DataFrame.to_numpy`** | `dtype` now accepts `None`. | Stubs should allow `Optional[np.dtype]`. |\n| **`DataFrame.to_pickle`** | `compression` default changed to `'infer'`. | Stubs should update default. |\n| **`DataFrame.to_feather`** | `compression` default changed to `'infer'`. | Stubs should update default. |\n| **`DataFrame.to_parquet`** | `compression` default changed to `'infer'`. | Stubs should update default. |\n| **`DataFrame.to_hdf`** | `format` default changed to `'table'`. | Stubs should update default. |\n| **`DataFrame.to_sql`** | `schema` default changed to `None`. | Stubs should update default. |\n| **`DataFrame.to_csv`** | `date_format` removed. | Stubs should drop `date_format`. |\n| **`DataFrame.to_excel`** | `date_format` removed. | Stubs should drop `date_format`. |\n| **`DataFrame.to_json`** | `date_format` removed. | Stubs should drop `date_format`. |\n| **`DataFrame.to_html`** | `border` default changed to `1`. | Stubs should update default. |\n| **`DataFrame.to_clipboard`** | `sep` default changed to `'\\t'`. | Stubs should update default. |\n| **`DataFrame.to_string`** | `line_width` default changed to",
+   "error": null,
+   "seconds": 3.35
+  },
+  "retrieval": {
+   "answer": "DataFrame.mask(self, cond, other=nan, *, inplace: 'bool' = False, axis: 'Axis | None' = None, level: 'Level' = None, errors: 'IgnoreRaise | lib.NoDefault' = 'raise', try_cast: 'bool | lib.NoDefault' = <no_default>) -> 'DataFrame | None': Replace values where the condition is True. [DataFrame.mask | pandas 1.5]",
+   "top5": [
+    "DataFrame.mask",
+    "DataFrame.where",
+    "DataFrame.astype",
+    "Series.where",
+    "Series.mask"
+   ],
+   "seconds": 0.13
+  },
+  "full": {
+   "answer": "Cannot confirm from the retrieved docs.",
+   "used_llm": true,
+   "error": null,
+   "cited": [],
+   "seconds": 17.55
+  }
+ }
+}

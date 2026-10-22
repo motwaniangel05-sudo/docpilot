@@ -234,3 +234,47 @@ if ai_file.exists():
             for r in rs
         ])
         st.caption("Small sample, AI-generated, labels not fully verified. 'Not found' mostly means the index has no such page, not that ranking failed.")
+
+sys_file = Path("data/ai_systems.json")
+fx_file = Path("data/ai_answer_exec_fixed.json")
+raw_file = Path("data/ai_answer_exec.json")
+if sys_file.exists() and fx_file.exists() and raw_file.exists():
+    with st.expander("Three-system comparison on AI-generated questions (saved results)"):
+        import statistics
+        sysd = json.loads(sys_file.read_text())
+        raw_ex = json.loads(raw_file.read_text())
+        fx_ex = json.loads(fx_file.read_text())
+        n_q = len(sysd)
+        n_abst = sum("Cannot confirm" in x["full"]["answer"] for x in sysd.values())
+
+        def lat(k):
+            v = sorted(x[k]["seconds"] for x in sysd.values())
+            return f"{statistics.median(v):.2f} / {v[int(0.95 * len(v)) - 1]:.2f}"
+
+        def okrate(e, k):
+            c = e[k]["counts"]
+            return f"{c.get('ok', 0) + c.get('warning', 0)} of {e[k]['blocks']}"
+
+        st.warning(
+            "ChatGPT wrote these questions and the expected-API labels. They are not from real users. "
+            "Labels are only partly checked. Small sample, one model. Code was run locally, never in this app."
+        )
+        st.table([
+            {"": "Questions answered", "Plain LLM": f"{n_q} of {n_q}", "Retrieval only": f"{n_q} of {n_q}",
+             "Full DocPilot": f"{n_q - n_abst} of {n_q} ({n_abst} abstained)"},
+            {"": "Ran without error, raw", "Plain LLM": okrate(raw_ex, "plain"), "Retrieval only": "not applicable",
+             "Full DocPilot": okrate(raw_ex, "full")},
+            {"": "Ran without error, adjusted", "Plain LLM": okrate(fx_ex, "plain"), "Retrieval only": "not applicable",
+             "Full DocPilot": okrate(fx_ex, "full")},
+            {"": "Median / p95 latency (s)", "Plain LLM": lat("plain"), "Retrieval only": lat("retrieval"),
+             "Full DocPilot": lat("full")},
+            {"": "Answers judged wrong by reading", "Plain LLM": "at least 9", "Retrieval only": "not applicable",
+             "Full DocPilot": "0 found (only a few read)"},
+        ])
+        st.write(
+            "Stale-answer rate did not separate the systems: the checker flagged 2 answers, both were "
+            "'before' examples, so both systems score 0. The real difference is abstention: full DocPilot "
+            "declined questions whose API is not in the index, while the plain model answered all of them."
+        )
+        st.caption("Adjusted = test data changed after seeing failures. 'Ran' does not prove the answer is correct. "
+                   "9 wrong plain answers is a lower bound.")

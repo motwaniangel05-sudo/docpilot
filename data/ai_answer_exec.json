@@ -1,0 +1,381 @@
+{
+ "plain": {
+  "blocks": 38,
+  "counts": {
+   "ok": 15,
+   "real_error": 17,
+   "incomplete_snippet": 3,
+   "warning": 3
+  },
+  "results": [
+   {
+    "id": "PANDAS-003",
+    "block": 0,
+    "status": "ok",
+    "category": "ok",
+    "message": ""
+   },
+   {
+    "id": "PANDAS-004",
+    "block": 0,
+    "status": "ok",
+    "category": "ok",
+    "message": ""
+   },
+   {
+    "id": "PANDAS-005",
+    "block": 0,
+    "status": "error",
+    "category": "real_error",
+    "message": "ModuleNotFoundError: No module named 'pandas.core.indexes.numeric'"
+   },
+   {
+    "id": "PANDAS-006",
+    "block": 0,
+    "status": "ok",
+    "category": "ok",
+    "message": ""
+   },
+   {
+    "id": "PANDAS-007",
+    "block": 0,
+    "status": "ok",
+    "category": "ok",
+    "message": ""
+   },
+   {
+    "id": "PANDAS-008",
+    "block": 0,
+    "status": "error",
+    "category": "incomplete_snippet",
+    "message": "NameError: name 'idx' is not defined. Did you mean: 'id'?"
+   },
+   {
+    "id": "PANDAS-009",
+    "block": 0,
+    "status": "error",
+    "category": "real_error",
+    "message": "TypeError: NDFrame.resample() got an unexpected keyword argument 'loffset'"
+   },
+   {
+    "id": "PANDAS-009",
+    "block": 1,
+    "status": "error",
+    "category": "real_error",
+    "message": "TypeError: Only valid with DatetimeIndex, TimedeltaIndex or PeriodIndex, but got an instance of 'RangeIndex'"
+   },
+   {
+    "id": "PANDAS-010",
+    "block": 0,
+    "status": "ok",
+    "category": "ok",
+    "message": ""
+   },
+   {
+    "id": "PANDAS-011",
+    "block": 0,
+    "status": "error",
+    "category": "real_error",
+    "message": "NotImplementedError: This method is only implemented for DatetimeIndex, PeriodIndex and TimedeltaIndex; Got type RangeIndex"
+   },
+   {
+    "id": "PANDAS-012",
+    "block": 0,
+    "status": "error",
+    "category": "real_error",
+    "message": "FileNotFoundError: [Errno 2] No such file or directory: 'data.csv'"
+   },
+   {
+    "id": "PANDAS-013",
+    "block": 0,
+    "status": "ok",
+    "category": "ok",
+    "message": ""
+   },
+   {
+    "id": "PANDAS-014",
+    "block": 0,
+    "status": "error",
+    "category": "real_error",
+    "message": "TypeError: \"delimiter\" must be string, not bool"
+   },
+   {
+    "id": "PANDAS-015",
+    "block": 0,
+    "status": "error",
+    "category": "incomplete_snippet",
+    "message": "NameError: name 'data' is not defined"
+   },
+   {
+    "id": "PANDAS-016",
+    "block": 0,
+    "status": "error",
+    "category": "real_error",
+    "message": "AttributeError: 'numpy.ndarray' object has no attribute 'to_numpy'"
+   },
+   {
+    "id": "PANDAS-017",
+    "block": 0,
+    "status": "error",
+    "category": "real_error",
+    "message": "ModuleNotFoundError: No module named 'openpyxl'"
+   },
+   {
+    "id": "PANDAS-018",
+    "block": 0,
+    "status": "ok",
+    "category": "ok",
+    "message": ""
+   },
+   {
+    "id": "PANDAS-019",
+    "block": 0,
+    "status": "error",
+    "category": "real_error",
+    "message": "TypeError: Index does not support mutable operations"
+   },
+   {
+    "id": "PANDAS-020",
+    "block": 0,
+    "status": "ok",
+    "category": "ok",
+    "message": ""
+   },
+   {
+    "id": "PANDAS-021",
+    "block": 0,
+    "status": "ok",
+    "category": "ok",
+    "message": ""
+   },
+   {
+    "id": "PANDAS-022",
+    "block": 0,
+    "status": "warning",
+    "category": "warning",
+    "message": "FutureWarning: DataFrame.interpolate with object dtype is deprecated and will raise in a future version. Call obj.infer_objects(copy=False) before interpolating inst"
+   },
+   {
+    "id": "PANDAS-023",
+    "block": 0,
+    "status": "error",
+    "category": "real_error",
+    "message": "KeyError: 'ts'"
+   },
+   {
+    "id": "PANDAS-024",
+    "block": 0,
+    "status": "error",
+    "category": "incomplete_snippet",
+    "message": "NameError: name 'custom_func' is not defined"
+   },
+   {
+    "id": "PANDAS-025",
+    "block": 0,
+    "status": "ok",
+    "category": "ok",
+    "message": ""
+   },
+   {
+    "id": "PANDAS-026",
+    "block": 0,
+    "status": "error",
+    "category": "real_error",
+    "message": "KeyError: 'col'"
+   },
+   {
+    "id": "PANDAS-027",
+    "block": 0,
+    "status": "ok",
+    "category": "ok",
+    "message": ""
+   },
+   {
+    "id": "PANDAS-028",
+    "block": 0,
+    "status": "error",
+    "category": "real_error",
+    "message": "KeyError: 'A'"
+   },
+   {
+    "id": "PANDAS-029",
+    "block": 0,
+    "status": "error",
+    "category": "real_error",
+    "message": "KeyError: 'col'"
+   },
+   {
+    "id": "PANDAS-030",
+    "block": 0,
+    "status": "ok",
+    "category": "ok",
+    "message": ""
+   },
+   {
+    "id": "PANDAS-031",
+    "block": 0,
+    "status": "error",
+    "category": "real_error",
+    "message": "ValueError: All values are NA"
+   },
+   {
+    "id": "PANDAS-032",
+    "block": 0,
+    "status": "error",
+    "category": "real_error",
+    "message": "ModuleNotFoundError: No module named 'pandas_compat'"
+   },
+   {
+    "id": "PANDAS-033",
+    "block": 0,
+    "status": "ok",
+    "category": "ok",
+    "message": ""
+   },
+   {
+    "id": "PANDAS-038",
+    "block": 0,
+    "status": "ok",
+    "category": "ok",
+    "message": ""
+   },
+   {
+    "id": "PANDAS-039",
+    "block": 0,
+    "status": "warning",
+    "category": "warning",
+    "message": "FutureWarning: 'Q-DEC' is deprecated and will be removed in a future version, please use 'QE-DEC' instead."
+   },
+   {
+    "id": "PANDAS-040",
+    "block": 0,
+    "status": "ok",
+    "category": "ok",
+    "message": ""
+   },
+   {
+    "id": "PANDAS-041",
+    "block": 0,
+    "status": "warning",
+    "category": "warning",
+    "message": "FutureWarning: 'BM' is deprecated and will be removed in a future version, please use 'BME' instead."
+   },
+   {
+    "id": "PANDAS-042",
+    "block": 0,
+    "status": "error",
+    "category": "real_error",
+    "message": "    - passing `format='mixed'`, and the format will be inferred for each element individually. You might want to use `dayfirst` alongside this."
+   },
+   {
+    "id": "PANDAS-043",
+    "block": 0,
+    "status": "error",
+    "category": "real_error",
+    "message": "ValueError: Invalid frequency: B-Y, failed to parse with error message: ValueError(\"Invalid frequency: B-Y, failed to parse with error message: ValueError('Bad freq suffix Y')\")"
+   }
+  ]
+ },
+ "full": {
+  "blocks": 13,
+  "counts": {
+   "incomplete_snippet": 4,
+   "real_error": 4,
+   "ok": 4,
+   "warning": 1
+  },
+  "results": [
+   {
+    "id": "PANDAS-006",
+    "block": 0,
+    "status": "error",
+    "category": "incomplete_snippet",
+    "message": "NameError: name 'df1' is not defined. Did you mean: 'df'?"
+   },
+   {
+    "id": "PANDAS-007",
+    "block": 0,
+    "status": "error",
+    "category": "real_error",
+    "message": "IndentationError: expected an indented block after 'for' statement on line 13"
+   },
+   {
+    "id": "PANDAS-011",
+    "block": 0,
+    "status": "error",
+    "category": "real_error",
+    "message": "AttributeError: 'DataFrame' object has no attribute 'tshift'. Did you mean: 'shift'?"
+   },
+   {
+    "id": "PANDAS-014",
+    "block": 0,
+    "status": "error",
+    "category": "incomplete_snippet",
+    "message": "NameError: name 'other' is not defined. Did you mean: 'iter'?"
+   },
+   {
+    "id": "PANDAS-015",
+    "block": 0,
+    "status": "error",
+    "category": "incomplete_snippet",
+    "message": "NameError: name 'data' is not defined"
+   },
+   {
+    "id": "PANDAS-020",
+    "block": 0,
+    "status": "ok",
+    "category": "ok",
+    "message": ""
+   },
+   {
+    "id": "PANDAS-022",
+    "block": 0,
+    "status": "ok",
+    "category": "ok",
+    "message": ""
+   },
+   {
+    "id": "PANDAS-024",
+    "block": 0,
+    "status": "ok",
+    "category": "ok",
+    "message": ""
+   },
+   {
+    "id": "PANDAS-025",
+    "block": 0,
+    "status": "ok",
+    "category": "ok",
+    "message": ""
+   },
+   {
+    "id": "PANDAS-026",
+    "block": 0,
+    "status": "error",
+    "category": "real_error",
+    "message": "KeyError: 'col'"
+   },
+   {
+    "id": "PANDAS-026",
+    "block": 1,
+    "status": "error",
+    "category": "real_error",
+    "message": "KeyError: 'col'"
+   },
+   {
+    "id": "PANDAS-030",
+    "block": 0,
+    "status": "error",
+    "category": "incomplete_snippet",
+    "message": "NameError: name 'values' is not defined"
+   },
+   {
+    "id": "PANDAS-038",
+    "block": 0,
+    "status": "warning",
+    "category": "warning",
+    "message": "FutureWarning: 'M' is deprecated and will be removed in a future version, please use 'ME' instead."
+   }
+  ]
+ }
+}

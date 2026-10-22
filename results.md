@@ -193,3 +193,41 @@ Notes and limits:
 - The sample is small, and I picked APIs that were easy to test.
 
 **Takeaway:** DocPilot retrieves well when the API is in its index, and the main limit is what the index covers. Adding `Index`, `GroupBy` and `ExcelWriter` pages, and a short notes section for non-API topics, is the next fix.
+
+## P4: three-system comparison (38 AI-generated questions, pandas 1.5 and 2.2)
+
+**Important:** ChatGPT wrote the questions and the expected-API labels. They are not from real users, and the labels are only partly checked (see the section above). Everything below uses one Groq model (`openai/gpt-oss-20b`) and is a small sample.
+
+**Systems:** (1) plain LLM, no retrieval. (2) Retrieval only: the top search chunk, no LLM and no code. (3) Full DocPilot: retrieval plus the cited LLM answer.
+
+| | Plain LLM | Retrieval only | Full DocPilot |
+|---|---|---|---|
+| Questions answered | 38 of 38 | 38 of 38 | 14 of 38 (24 abstained, 2 answered without code) |
+| Answers with code | 37 | 0 | 12 |
+| Stale answers flagged by the checker (pandas 2.2) | 1 of 37 | not applicable | 1 of 12 |
+| Stale after reading the flagged answers | 0 | not applicable | 0 |
+| Code blocks run (pandas 2.2) | 38 | not applicable | 13 |
+| Ran without error, raw | 18 (47.4%) | not applicable | 5 (38.5%) |
+| Ran without error, adjusted* | 20 (52.6%) | not applicable | 7 (53.8%) |
+| Median / p95 latency (s) | 1.15 / 2.8 | 0.09 / 0.16 | 14.79 / 18.02 |
+| Answers I judged wrong by reading (lower bound) | at least 9 | not applicable | 0 found (only 5 answers read) |
+
+*Adjusted means I added columns and a date index to the test data after seeing the failures. It fixed only 3 blocks.
+
+**Stale-answer rate does not separate the systems.** The checker flagged 2 answers. Both showed the removed API as a "before" example, so both were false positives. After reading them, both systems score 0 stale. The checker only sees calls covered by the 29 rules.
+
+**The real difference is abstention.** Full DocPilot declined 24 of 38 questions, which fits the 26 questions whose API is not in the index. The plain model answered everything, and at least 9 of its answers were wrong.
+
+**Failure analysis (plain LLM, 15 blocks still failing after the test-data fix, my hand judgment):**
+- 7: the answer's code is wrong. 005 tells you to import a removed module. 016 calls `.to_numpy()` on a NumPy array. 019 says an Index can be mutated. 023 uses a `date_parser` argument `to_datetime()` does not have. 032 invents a `pandas_compat` module. 042 uses `format='business_quarter_end'`, which is not a frequency alias. 043 recommends `B-Y`, which is invalid. The correct alias is `BYE`.
+- 3: expected errors ("before" examples or a deliberate raise): 009 block 0, 014, 031.
+- 5: my test environment: 009 block 1, 012, 017, 028, 029.
+- Wrong text with code that runs: 025 says `Series.view` was removed (it is deprecated). 031 says `skipna` was removed and that no warning is issued. A check on pandas 2.2.3 showed a FutureWarning.
+
+**Full DocPilot (2 errors left):** 011 is a "before" example. 007 is an incomplete fragment.
+
+**Limits:**
+- Full DocPilot wrote only 13 blocks, so its execution rate is too small to compare with plain.
+- 9 wrong plain answers is a lower bound, because I read only errored and flagged answers.
+- Full DocPilot is about 13 times slower than plain at the median. I did not test why.
+- Running without error does not prove the answer is correct.
